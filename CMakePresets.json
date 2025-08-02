@@ -1,0 +1,67 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "windows-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}",
+            "installDir": "extensions/Pixelpart",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-x64",
+            "displayName": "Windows x64",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
+            }
+        },
+        {
+            "name": "windows-x86",
+            "displayName": "Windows x86",
+            "inherits": "windows-base",
+            "cacheVariables": {
+                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x86"
+            }
+        },
+        {
+            "name": "linux-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}",
+            "installDir": "extensions/Pixelpart",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "linux-x64",
+            "displayName": "Linux x64",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
+            }
+        },
+        {
+            "name": "linux-x86",
+            "displayName": "Linux x86",
+            "inherits": "linux-base",
+            "cacheVariables": {
+                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x86"
+            }
+        }
+    ]
+}

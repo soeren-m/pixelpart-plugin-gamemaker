@@ -8,7 +8,7 @@
     "children":[],
     "name":"Default",
   },
-  "defaultScriptType":0,
+  "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -27,7 +27,9 @@
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"Sprite2d.ppfx","CopyToMask":-1,"filePath":"datafiles","name":"Sprite2d.ppfx","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -35,12 +37,21 @@
   },
   "name":"PixelpartPluginGameMaker",
   "resources":[
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Pixelpart","path":"extensions/Pixelpart/Pixelpart.yy",},},
+    {"id":{"name":"obj_SampleEffect","path":"objects/obj_SampleEffect/obj_SampleEffect.yy",},},
+    {"id":{"name":"rm_Sample","path":"rooms/rm_Sample/rm_Sample.yy",},},
+    {"id":{"name":"scr_PixelpartEffect","path":"scripts/scr_PixelpartEffect/scr_PixelpartEffect.yy",},},
+    {"id":{"name":"scr_PixelpartEffectRenderer","path":"scripts/scr_PixelpartEffectRenderer/scr_PixelpartEffectRenderer.yy",},},
+    {"id":{"name":"scr_PixelpartEffectResource","path":"scripts/scr_PixelpartEffectResource/scr_PixelpartEffectResource.yy",},},
+    {"id":{"name":"scr_PixelpartGraphicsResourceProvider","path":"scripts/scr_PixelpartGraphicsResourceProvider/scr_PixelpartGraphicsResourceProvider.yy",},},
+    {"id":{"name":"scr_PixelpartParticleMaterial","path":"scripts/scr_PixelpartParticleMaterial/scr_PixelpartParticleMaterial.yy",},},
+    {"id":{"name":"scr_PixelpartParticleRenderer","path":"scripts/scr_PixelpartParticleRenderer/scr_PixelpartParticleRenderer.yy",},},
+    {"id":{"name":"sha_PixelpartSpriteUnlitAlpha","path":"shaders/sha_PixelpartSpriteUnlitAlpha/sha_PixelpartSpriteUnlitAlpha.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rm_Sample","path":"rooms/rm_Sample/rm_Sample.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
