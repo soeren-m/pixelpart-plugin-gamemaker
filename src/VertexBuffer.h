@@ -9,9 +9,12 @@ class VertexBuffer : Buffer {
 public:
 	VertexBuffer(char* ptr);
 
-	void addVertex(glm::vec3 position,
-		glm::vec4 color, glm::vec2 textureCoord,
-		glm::vec3 velocity, float life, float id);
+	void addVertex(const pixelpart::float3_t& position,
+		const pixelpart::float4_t& color,
+		const pixelpart::float2_t& textureCoord,
+		const pixelpart::float3_t& velocity,
+		pixelpart::float_t life,
+		std::uint32_t id);
 
 private:
 	char* pointer = nullptr;

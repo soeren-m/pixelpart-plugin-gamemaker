@@ -1,4 +1,4 @@
-function PixelpartEffect(_effect_resource) constructor
+function PixelpartEffect(_effect_resource, _particle_capacity = 10000) constructor
 {
 	effect_resource = _effect_resource;
 
@@ -27,7 +27,8 @@ function PixelpartEffect(_effect_resource) constructor
 	// Deserialize effect
 	effect_ptr = ptr(pixelpart_load_effect(
 		buffer_read(effect_resource.data_buffer, buffer_string),
-		buffer_get_size(effect_resource.data_buffer)));
+		buffer_get_size(effect_resource.data_buffer),
+		_particle_capacity));
 
 	if effect_ptr != pointer_null
 	{

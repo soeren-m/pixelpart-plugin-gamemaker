@@ -1,6 +1,8 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include <cstddef>
+
 namespace pixelpart_gms2 {
 class Buffer {
 public:
@@ -15,10 +17,22 @@ public:
 	}
 
 	template <typename T>
+	T peek() {
+		return *reinterpret_cast<T*>(pointer);
+	}
+
+	template <typename T>
 	void write(T value) {
 		*reinterpret_cast<T*>(pointer) = value;
 		pointer += sizeof(T);
 	}
+
+	template <typename T>
+	void poke(T value) {
+		*reinterpret_cast<T*>(pointer) = value;
+	}
+
+	void seek(std::ptrdiff_t count);
 
 private:
 	char* pointer = nullptr;

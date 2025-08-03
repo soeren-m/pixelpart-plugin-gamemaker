@@ -16,7 +16,7 @@ std::string effectRuntimePtrString = "";
 }
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpart_gms2::string data, pixelpart_gms2::real size) {
+GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpart_gms2::string data, pixelpart_gms2::real size, pixelpart_gms2::real particleCapacity) {
 	if(!data || size <= 0) {
 		pixelpart_gms2::lastError ="Effect data is empty";
 		pixelpart_gms2::effectRuntimePtrString = "0000000000000000";
@@ -28,7 +28,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 		pixelpart_gms2::EffectRuntime* effectRuntime = new pixelpart_gms2::EffectRuntime();
 		effectRuntime->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
 		effectRuntime->effectEngine = std::unique_ptr<pixelpart::SingleThreadedEffectEngine>(
-			new pixelpart::SingleThreadedEffectEngine(effectRuntime->effectAsset.effect(), 1000));
+			new pixelpart::SingleThreadedEffectEngine(effectRuntime->effectAsset.effect(), static_cast<std::uint32_t>(std::max(particleCapacity, 1.0))));
 
 		effectRuntime->effectAsset.effect().applyInputs();
 
