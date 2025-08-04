@@ -12,7 +12,6 @@ public:
 	void addVertex(const pixelpart::float3_t& position,
 		const pixelpart::float4_t& color,
 		const pixelpart::float2_t& textureCoord,
-		const pixelpart::float3_t& velocity,
 		pixelpart::float_t life,
 		std::uint32_t id);
 

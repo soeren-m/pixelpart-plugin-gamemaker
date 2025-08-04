@@ -404,12 +404,12 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_particle_sprite_vertex_d
 			position[2] *= effectRuntime->effectScale;
 			position[3] *= effectRuntime->effectScale;
 
-			vertexBuffer.addVertex(position[0], particles.color[p], uv[0], particles.velocity[p], particles.life[p], particles.id[p]);
-			vertexBuffer.addVertex(position[1], particles.color[p], uv[1], particles.velocity[p], particles.life[p], particles.id[p]);
-			vertexBuffer.addVertex(position[3], particles.color[p], uv[3], particles.velocity[p], particles.life[p], particles.id[p]);
-			vertexBuffer.addVertex(position[1], particles.color[p], uv[1], particles.velocity[p], particles.life[p], particles.id[p]);
-			vertexBuffer.addVertex(position[2], particles.color[p], uv[2], particles.velocity[p], particles.life[p], particles.id[p]);
-			vertexBuffer.addVertex(position[3], particles.color[p], uv[3], particles.velocity[p], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[0], particles.color[p], uv[0], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[1], particles.color[p], uv[1], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[3], particles.color[p], uv[3], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[1], particles.color[p], uv[1], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[2], particles.color[p], uv[2], particles.life[p], particles.id[p]);
+			vertexBuffer.addVertex(position[3], particles.color[p], uv[3], particles.life[p], particles.id[p]);
 		}
 
 		return 1;
@@ -511,26 +511,22 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_particle_trail_vertex_da
 				pixelpart::float4_t colorEnd = trail.color[p + 1];
 				pixelpart::float4_t colorCenter = (trail.color[p] + trail.color[p + 1]) * 0.5;
 
-				pixelpart::float3_t velocityStart = trail.velocity[p];
-				pixelpart::float3_t velocityEnd = trail.velocity[p + 1];
-				pixelpart::float3_t velocityCenter = (trail.velocity[p] + trail.velocity[p + 1]) * 0.5;
-
 				pixelpart::float_t lifeStart = trail.life[p];
 				pixelpart::float_t lifeEnd = trail.life[p + 1];
 				pixelpart::float_t lifeCenter = (trail.life[p] + trail.life[p + 1]) * 0.5;
 
-				vertexBuffer.addVertex(position[0], colorStart, uv[0], velocityStart, lifeStart, entry.first);
-				vertexBuffer.addVertex(position[1], colorStart, uv[1], velocityStart, lifeStart, entry.first);
-				vertexBuffer.addVertex(position[4], colorCenter, uv[4], velocityCenter, lifeCenter, entry.first);
-				vertexBuffer.addVertex(position[2], colorEnd, uv[2], velocityEnd, lifeEnd, entry.first);
-				vertexBuffer.addVertex(position[0], colorStart, uv[0], velocityStart, lifeStart, entry.first);
-				vertexBuffer.addVertex(position[4], colorCenter, uv[4], velocityCenter, lifeCenter, entry.first);
-				vertexBuffer.addVertex(position[1], colorStart, uv[1], velocityStart, lifeStart, entry.first);
-				vertexBuffer.addVertex(position[3], colorEnd, uv[3], velocityEnd, lifeEnd, entry.first);
-				vertexBuffer.addVertex(position[4], colorCenter, uv[4], velocityCenter, lifeCenter, entry.first);
-				vertexBuffer.addVertex(position[3], colorEnd, uv[3], velocityEnd, lifeEnd, entry.first);
-				vertexBuffer.addVertex(position[2], colorEnd, uv[2], velocityEnd, lifeEnd, entry.first);
-				vertexBuffer.addVertex(position[4], colorCenter, uv[4], velocityCenter, lifeCenter, entry.first);
+				vertexBuffer.addVertex(position[0], colorStart, uv[0], lifeStart, entry.first);
+				vertexBuffer.addVertex(position[1], colorStart, uv[1], lifeStart, entry.first);
+				vertexBuffer.addVertex(position[4], colorCenter, uv[4], lifeCenter, entry.first);
+				vertexBuffer.addVertex(position[2], colorEnd, uv[2], lifeEnd, entry.first);
+				vertexBuffer.addVertex(position[0], colorStart, uv[0], lifeStart, entry.first);
+				vertexBuffer.addVertex(position[4], colorCenter, uv[4], lifeCenter, entry.first);
+				vertexBuffer.addVertex(position[1], colorStart, uv[1], lifeStart, entry.first);
+				vertexBuffer.addVertex(position[3], colorEnd, uv[3], lifeEnd, entry.first);
+				vertexBuffer.addVertex(position[4], colorCenter, uv[4], lifeCenter, entry.first);
+				vertexBuffer.addVertex(position[3], colorEnd, uv[3], lifeEnd, entry.first);
+				vertexBuffer.addVertex(position[2], colorEnd, uv[2], lifeEnd, entry.first);
+				vertexBuffer.addVertex(position[4], colorCenter, uv[4], lifeCenter, entry.first);
 			}
 		}
 

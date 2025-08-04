@@ -151,7 +151,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_i
 	return -1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_material_built_in(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
+GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_material_builtin(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
 	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;

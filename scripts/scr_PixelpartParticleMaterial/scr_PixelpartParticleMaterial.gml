@@ -13,11 +13,12 @@ enum PixelpartMaterialParameterType
 	RESOURCE_IMAGE = 10
 }
 
-function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _graphics_resource_provider) constructor
+function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _material_desc, _graphics_resource_provider) constructor
 {
 	effect_ptr = _effect_ptr;
 	emitter_id = _emitter_id;
 	type_id = _type_id;
+	material_desc = _material_desc;
 
 	mat_parameter_count = pixelpart_particle_type_get_material_parameter_count(effect_ptr, type_id);
 	mat_parameter_ids = array_create(mat_parameter_count);
@@ -37,32 +38,81 @@ function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _graphics
 	parameter_value_buffer = buffer_create(2048, buffer_fixed, 1);
 	texture_resource_id = "";
 
+	prev_blendenable = true;
+	prev_blendmode = bm_normal;
+
 	static cleanup = function()
 	{
 		buffer_delete(parameter_value_buffer);
 	}
 
-	static apply_parameters = function(_shader)
+	static apply = function()
 	{
+		// Set shader
+		shader_set(material_desc.shader);
+
+		// Apply parameters
 		for (var _index = 0; _index < mat_parameter_count; _index++)
 		{
-			apply_parameter(_shader, mat_parameter_ids[_index]);
+			apply_parameter(mat_parameter_ids[_index]);
+		}
+
+		prev_blendenable = gpu_get_blendenable();
+		prev_blendmode = gpu_get_blendmode();
+
+		// Apply blend mode
+		switch (material_desc.blend_mode)
+		{
+			case PixelpartBlendMode.OFF:
+				gpu_set_blendenable(false);
+				break;
+			case PixelpartBlendMode.NORMAL:
+				gpu_set_blendenable(true);
+				gpu_set_blendmode(bm_normal);
+				break;
+			case PixelpartBlendMode.ADDITIVE:
+				gpu_set_blendenable(true);
+				gpu_set_blendmode(bm_add);
+				break;
+			case PixelpartBlendMode.SUBTRACTIVE:
+				gpu_set_blendenable(true);
+				gpu_set_blendmode(bm_subtract);
+				break;
+			default:
+				break;
 		}
 	}
 
-	static apply_parameter = function(_shader, _parameter_id)
+	static reset = function()
 	{
-		var _parameter_name = ""; // TODO
-		var _parameter_type = pixelpart_particle_type_get_material_parameter_type(effect_ptr, type_id, _parameter_id);
+		// Reset blend mode
+		gpu_set_blendmode(prev_blendmode);
+		gpu_set_blendenable(prev_blendenable);
 
-		var _uniform = shader_get_uniform(_shader, _parameter_name);
+		// Reset shader
+		shader_reset();
+	}
+
+	static apply_parameter = function(_param_id)
+	{
+		var _param_name = material_desc.parameter_names[? _param_id];
+		if is_undefined(_param_name)
+		{
+			// Parameter not found
+			return;
+		}
+
+		var _param_type = pixelpart_particle_type_get_material_parameter_type(effect_ptr, type_id, _param_id);
 
 		// Get value of material parameter
-		pixelpart_particle_type_get_material_parameter_value(effect_ptr, type_id, _parameter_id,
+		pixelpart_particle_type_get_material_parameter_value(effect_ptr, type_id, _param_id,
 			buffer_get_address(parameter_value_buffer));
 
-		// Set uniform value
-		switch (_parameter_type)
+		// Get uniform handle for parameter
+		var _uniform = shader_get_uniform(material_desc.shader, _param_name);
+
+		// Set uniform to parameter value
+		switch (_param_type)
 		{
 			case PixelpartMaterialParameterType.INT:
 			case PixelpartMaterialParameterType.ENUM:

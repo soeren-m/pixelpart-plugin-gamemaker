@@ -9,7 +9,6 @@ VertexBuffer::VertexBuffer(char* ptr) : Buffer(ptr) {
 void VertexBuffer::addVertex(const pixelpart::float3_t& position,
 	const pixelpart::float4_t& color,
 	const pixelpart::float2_t& textureCoord,
-	const pixelpart::float3_t& velocity,
 	pixelpart::float_t life,
 	std::uint32_t id) {
 	write(static_cast<float>(position.x));
@@ -20,9 +19,6 @@ void VertexBuffer::addVertex(const pixelpart::float3_t& position,
 	write(static_cast<std::uint8_t>(color.a * 255.0));
 	write(static_cast<float>(textureCoord.x));
 	write(static_cast<float>(textureCoord.y));
-	write(static_cast<float>(velocity.x));
-	write(static_cast<float>(velocity.y));
-	write(static_cast<float>(velocity.z));
 	write(static_cast<float>(life));
 	write(static_cast<float>(id));
 }
