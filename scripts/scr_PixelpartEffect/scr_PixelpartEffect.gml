@@ -201,38 +201,144 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Nodes
 
-	static find_node = function(node_name)
+	static find_node = function(_node_name)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		var _id = pixelpart_find_node(effect_ptr, _node_name);
+		if !pixelpart_node_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _node = pixelpart_create_node(effect_ptr, _id);
+		if is_undefined(_node)
+		{
+			show_debug_message("[Pixelpart] Failed to create node");
+		}
+
+		return _node;
 	}
 
-	static get_node = function(id)
+	static get_node = function(_id)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		if !pixelpart_node_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _node = pixelpart_create_node(effect_ptr, _id);
+		if is_undefined(_node)
+		{
+			show_debug_message("[Pixelpart] Failed to create node");
+		}
+
+		return _node;
 	}
 
-	static get_node_at_index = function(index)
+	static get_node_at_index = function(_index)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		var _id = pixelpart_find_node_by_index(effect_ptr, _index);
+		if !pixelpart_node_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _node = pixelpart_create_node(effect_ptr, _id);
+		if is_undefined(_node)
+		{
+			show_debug_message("[Pixelpart] Failed to create node");
+		}
+
+		return _node;
 	}
 
 	#endregion
 
 	#region Particle types
 
-	static find_particle_type = function(particle_type_name)
+	static find_particle_type = function(_particle_type_name)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		var _id = pixelpart_find_particle_type(effect_ptr, _particle_type_name);
+		if !pixelpart_particle_type_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _particle_type = new PixelpartParticleType(effect_ptr, _id);
+		if is_undefined(_particle_type)
+		{
+			show_debug_message("[Pixelpart] Failed to create particle type");
+		}
+
+		return _particle_type;
 	}
 
-	static get_particle_type = function(id)
+	static get_particle_type = function(_id)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		if !pixelpart_particle_type_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _particle_type = new PixelpartParticleType(effect_ptr, _id);
+		if is_undefined(_particle_type)
+		{
+			show_debug_message("[Pixelpart] Failed to create particle type");
+		}
+
+		return _particle_type;
 	}
 
-	static get_particle_type_at_index = function(index)
+	static get_particle_type_at_index = function(_index)
 	{
-		// TODO
+		if effect_ptr == pointer_null
+		{
+			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
+			return undefined;
+		}
+
+		var _id = pixelpart_find_particle_type_by_index(effect_ptr, _index);
+		if !pixelpart_particle_type_exists(effect_ptr, _id)
+		{
+			return undefined;
+		}
+
+		var _particle_type = new PixelpartParticleType(effect_ptr, _id);
+		if is_undefined(_particle_type)
+		{
+			show_debug_message("[Pixelpart] Failed to create particle type");
+		}
+
+		return _particle_type;
 	}
 
 	#endregion

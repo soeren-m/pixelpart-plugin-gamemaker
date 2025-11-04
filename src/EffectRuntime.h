@@ -12,8 +12,11 @@
 #include <cstdint>
 #include <vector>
 #include <unordered_map>
+#include <random>
 
 namespace pixelpart_gms2 {
+extern std::mt19937 rng;
+
 struct TrailMeshData {
 	std::uint32_t particleCount = 0;
 	pixelpart::float_t length = 0.0;

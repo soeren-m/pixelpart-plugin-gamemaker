@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_PixelpartAnimatedPropertyFloat2",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_PixelpartAnimatedPropertyFloat2",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

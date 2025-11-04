@@ -16,6 +16,8 @@ using real = double;
 using string = char*;
 using const_string = const char*;
 
+extern const std::string nullPointerString;
+
 std::string toBufferString(void* ptr);
 }
 

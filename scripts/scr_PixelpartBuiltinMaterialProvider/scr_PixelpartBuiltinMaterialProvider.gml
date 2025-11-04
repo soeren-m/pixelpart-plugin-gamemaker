@@ -84,7 +84,8 @@ function PixelpartBuiltinMaterialProvider() constructor
 	static cleanup = function()
 	{
 		var _keys = variable_struct_get_names(builtin_materials);
-		for (var _index = array_length(_keys) - 1; _index >= 0; _index--) {
+		for (var _index = array_length(_keys) - 1; _index >= 0; _index--)
+		{
 			var _mat = builtin_materials[$ _keys[_index]];
 			ds_map_destroy(_mat.parameter_ids);
 		}

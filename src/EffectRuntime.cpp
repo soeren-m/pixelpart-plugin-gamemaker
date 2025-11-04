@@ -1,6 +1,6 @@
 #include "EffectRuntime.h"
-#include "Buffer.h"
 #include "Error.h"
+#include "Buffer.h"
 #include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/common/Curve.h"
 #include "pixelpart-runtime/common/Transform.h"
@@ -12,6 +12,8 @@
 #include <exception>
 
 namespace pixelpart_gms2 {
+std::mt19937 rng;
+
 std::string effectRuntimePtrString = "";
 }
 
@@ -19,7 +21,7 @@ extern "C" {
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpart_gms2::string data, pixelpart_gms2::real size, pixelpart_gms2::real particleCapacity) {
 	if(!data || size <= 0) {
 		pixelpart_gms2::lastError ="Effect data is empty";
-		pixelpart_gms2::effectRuntimePtrString = "0000000000000000";
+		pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::nullPointerString;
 
 		return pixelpart_gms2::effectRuntimePtrString.c_str();
 	}
@@ -40,7 +42,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 		pixelpart_gms2::lastError = std::string(e.what());
 	}
 
-	pixelpart_gms2::effectRuntimePtrString = "0000000000000000";
+	pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::nullPointerString;
 
 	return pixelpart_gms2::effectRuntimePtrString.c_str();
 }

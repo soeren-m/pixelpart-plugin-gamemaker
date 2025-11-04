@@ -5,6 +5,7 @@ namespace pixelpart_gms2 {
 std::string lastError ="";
 
 const std::string invalidEffectRuntimeError = "Invalid effect runtime";
+const std::string invalidPropertyError = "Invalid property";
 const std::string invalidArgumentError = "Invalid argument";
 }
 
