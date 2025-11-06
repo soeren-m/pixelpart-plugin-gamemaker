@@ -2,6 +2,7 @@
 #include "Error.h"
 #include "Buffer.h"
 #include "EffectRuntime.h"
+#include "pixelpart-runtime/common/Id.h"
 #include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/effect/StaticProperty.h"
 #include "pixelpart-runtime/effect/AnimatedProperty.h"
@@ -29,7 +30,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_set_infinite(pix
 
 	try {
 		pixelpart::ForceField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(pixelpart::id_t(forceFieldId));
 
 		forceField.infinite(mode);
 
@@ -51,7 +52,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_is_infinite(pixe
 
 	try {
 		const pixelpart::ForceField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(pixelpart::id_t(forceFieldId));
 
 		return forceField.infinite() ? 1 : 0;
 	}
@@ -73,7 +74,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_force_field_get_stre
 
 	try {
 		pixelpart::ForceField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.strength());
@@ -97,7 +98,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 
 	try {
 		pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.accelerationDirection());
@@ -121,7 +122,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 
 	try {
 		pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.accelerationDirectionVariance());
@@ -145,7 +146,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 
 	try {
 		pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.accelerationStrengthVariance());
@@ -171,7 +172,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_set_accel
 
 	try {
 		pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::Buffer valueBuffer(valueBufferPtr);
 		std::int32_t x = static_cast<std::int32_t>(std::max(valueBuffer.read<pixelpart::float_t>(), 1.0));
@@ -199,7 +200,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 
 	try {
 		const pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		return forceField.accelerationGridSizeX();
 	}
@@ -219,7 +220,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 
 	try {
 		const pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		return forceField.accelerationGridSizeY();
 	}
@@ -239,7 +240,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 
 	try {
 		const pixelpart::AccelerationField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
 		return forceField.accelerationGridSizeZ();
 	}
@@ -259,7 +260,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_set_vector_fiel
 
 	try {
 		pixelpart::VectorField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(pixelpart::id_t(forceFieldId));
 
 		forceField.vectorFieldFilter(static_cast<pixelpart::VectorField::Filter>(filter));
 
@@ -281,7 +282,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_get_vector_fiel
 
 	try {
 		const pixelpart::VectorField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(pixelpart::id_t(forceFieldId));
 
 		return static_cast<pixelpart_gms2::real>(forceField.vectorFieldFilter());
 	}
@@ -303,7 +304,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_vector_field_get_tig
 
 	try {
 		pixelpart::VectorField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.tightness());
@@ -327,7 +328,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noiseOctaves());
@@ -351,7 +352,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noiseFrequency());
@@ -375,7 +376,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noisePersistence());
@@ -399,7 +400,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noiseLacunarity());
@@ -421,7 +422,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_set_noise_animat
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		forceField.noiseAnimated(animated);
 
@@ -443,7 +444,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_is_noise_animate
 
 	try {
 		const pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		return forceField.noiseAnimated() ? 1 : 0;
 	}
@@ -465,7 +466,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noiseAnimationTimeScale());
@@ -489,7 +490,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 
 	try {
 		pixelpart::NoiseField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.noiseAnimationTimeBase());
@@ -513,7 +514,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_veloc
 
 	try {
 		pixelpart::DragField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.velocityInfluence());
@@ -537,7 +538,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_size_
 
 	try {
 		pixelpart::DragField& forceField =
-			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(forceFieldId);
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(pixelpart::id_t(forceFieldId));
 
 		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
 			&forceField.sizeInfluence());

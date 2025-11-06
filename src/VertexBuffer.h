@@ -14,9 +14,6 @@ public:
 		const pixelpart::float2_t& textureCoord,
 		pixelpart::float_t life,
 		std::uint32_t id);
-
-private:
-	char* pointer = nullptr;
 };
 }
 

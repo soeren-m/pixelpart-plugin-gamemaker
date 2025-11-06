@@ -2,8 +2,8 @@
 #include "Error.h"
 #include "Buffer.h"
 #include "EffectRuntime.h"
-#include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/common/Id.h"
+#include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/effect/StaticProperty.h"
 #include "pixelpart-runtime/effect/AnimatedProperty.h"
 #include "pixelpart-runtime/effect/ParticleType.h"
@@ -56,7 +56,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_exists(pixelpa
 		return -1;
 	}
 
-	return effectRuntime->effectAsset.effect().particleTypes().contains(particleTypeId) ? 1 : 0;
+	return effectRuntime->effectAsset.effect().particleTypes().contains(pixelpart::id_t(particleTypeId)) ? 1 : 0;
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_index(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
@@ -66,7 +66,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_index(pixe
 		return -1;
 	}
 
-	std::uint32_t particleTypeIndex = effectRuntime->effectAsset.effect().particleTypes().indexOf(particleTypeId);
+	std::uint32_t particleTypeIndex = effectRuntime->effectAsset.effect().particleTypes().indexOf(pixelpart::id_t(particleTypeId));
 	if(particleTypeIndex == pixelpart::id_t::nullValue) {
 		return -1;
 	}
@@ -103,7 +103,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_na
 
 	try {
 		const pixelpart::ParticleType& particleType =
-			effectRuntime->effectAsset.effect().particleTypes().at(particleTypeId);
+			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
 		return particleType.name().c_str();
 	}

@@ -40,6 +40,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			pixelpart_last_error());
 	}
 
+	trigger_collection = new PixelpartTriggerCollection(effect_ptr);
+	effect_input_collection = new PixelpartEffectInputCollection(effect_ptr);
+
 	static cleanup = function()
 	{
 		if effect_renderer != pointer_null
@@ -53,6 +56,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			pixelpart_delete_effect(effect_ptr);
 			effect_ptr = pointer_null;
 		}
+
+		delete trigger_collection;
+		delete effect_input_collection;
 	}
 
 	static draw = function()
@@ -123,78 +129,198 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Inputs
 
-	static set_input_bool = function(input_name, value)
+	static set_input_bool = function(_input_name, _value)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		pixelpart_set_effect_input_bool(effect_ptr, _input_id, _value);
 	}
 
-	static set_input_int = function(input_name, value)
+	static set_input_int = function(_input_name, _value)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		pixelpart_set_effect_input_int(effect_ptr, _input_id, _value);
 	}
 
-	static set_input_float = function(input_name, value)
+	static set_input_float = function(_input_name, _value)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		pixelpart_set_effect_input_float(effect_ptr, _input_id, _value);
 	}
 
-	static set_input_float2 = function(input_name, x, y)
+	static set_input_float2 = function(_input_name, _x, _y)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _param_buffer = buffer_create(2 * 8, buffer_fixed, 8);
+		buffer_write(_param_buffer, buffer_f64, _x);
+		buffer_write(_param_buffer, buffer_f64, _y);
+		pixelpart_set_effect_input_float2(effect_ptr, _input_id, buffer_get_address(_param_buffer));
+		buffer_delete(_param_buffer);
 	}
 
-	static set_input_float3 = function(input_name, x, y, z)
+	static set_input_float3 = function(_input_name, _x, _y, _z)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _param_buffer = buffer_create(3 * 8, buffer_fixed, 8);
+		buffer_write(_param_buffer, buffer_f64, _x);
+		buffer_write(_param_buffer, buffer_f64, _y);
+		buffer_write(_param_buffer, buffer_f64, _z);
+		pixelpart_set_effect_input_float3(effect_ptr, _input_id, buffer_get_address(_param_buffer));
+		buffer_delete(_param_buffer);
 	}
 
-	static set_input_float4 = function(input_name, x, y, z, w)
+	static set_input_float4 = function(_input_name, _x, _y, _z, _w)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _param_buffer = buffer_create(4 * 8, buffer_fixed, 8);
+		buffer_write(_param_buffer, buffer_f64, _x);
+		buffer_write(_param_buffer, buffer_f64, _y);
+		buffer_write(_param_buffer, buffer_f64, _z);
+		buffer_write(_param_buffer, buffer_f64, _w);
+		pixelpart_set_effect_input_float4(effect_ptr, _input_id, buffer_get_address(_param_buffer));
+		buffer_delete(_param_buffer);
 	}
 
-	static get_input_bool = function(input_name)
+	static get_input_bool = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		return pixelpart_get_effect_input_bool(effect_ptr, _input_id);
 	}
 
-	static get_input_int = function(input_name)
+	static get_input_int = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		return pixelpart_get_effect_input_int(effect_ptr, _input_id);
 	}
 
-	static get_input_float = function(input_name)
+	static get_input_float = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		return pixelpart_get_effect_input_float(effect_ptr, _input_id);
 	}
 
-	static get_input_float2 = function(input_name)
+	static get_input_float2 = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _result_buffer = buffer_create(2 * 8, buffer_fixed, 8);
+		pixelpart_get_effect_input_float2(effect_ptr, _input_id, buffer_get_address(_result_buffer))
+		var _x = buffer_read(_result_buffer, buffer_f64);
+		var _y = buffer_read(_result_buffer, buffer_f64);
+		buffer_delete(_result_buffer);
+
+		return [_x, _y];
 	}
 
-	static get_input_float3 = function(input_name)
+	static get_input_float3 = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _result_buffer = buffer_create(3 * 8, buffer_fixed, 8);
+		pixelpart_get_effect_input_float3(effect_ptr, _input_id, buffer_get_address(_result_buffer))
+		var _x = buffer_read(_result_buffer, buffer_f64);
+		var _y = buffer_read(_result_buffer, buffer_f64);
+		var _z = buffer_read(_result_buffer, buffer_f64);
+		buffer_delete(_result_buffer);
+
+		return [_x, _y, _z];
 	}
 
-	static get_input_float4 = function(input_name)
+	static get_input_float4 = function(_input_name)
 	{
-		// TODO
+		var _input_id = effect_input_collection.get_input_id(_input_name);
+		if _input_id < 0
+		{
+			return;
+		}
+
+		var _result_buffer = buffer_create(4 * 8, buffer_fixed, 8);
+		pixelpart_get_effect_input_float4(effect_ptr, _input_id, buffer_get_address(_result_buffer))
+		var _x = buffer_read(_result_buffer, buffer_f64);
+		var _y = buffer_read(_result_buffer, buffer_f64);
+		var _z = buffer_read(_result_buffer, buffer_f64);
+		var _w = buffer_read(_result_buffer, buffer_f64);
+		buffer_delete(_result_buffer);
+
+		return [_x, _y, _z, _w];
 	}
 
 	#endregion
 
 	#region Triggers
 
-	static activate_trigger = function(trigger_name)
+	static activate_trigger = function(_trigger_name)
 	{
-		// TODO
+		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
+		if _trigger_id < 0
+		{
+			return;
+		}
+
+		pixelpart_activate_trigger(effect_ptr, _trigger_id);
 	}
 
-	static is_trigger_activated = function(trigger_name)
+	static is_trigger_activated = function(_trigger_name)
 	{
-		// TODO
+		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
+		if _trigger_id < 0
+		{
+			return;
+		}
+
+		return pixelpart_is_trigger_activated(effect_ptr, _trigger_id);
 	}
 
 	#endregion

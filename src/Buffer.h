@@ -32,7 +32,11 @@ public:
 		*reinterpret_cast<T*>(pointer) = value;
 	}
 
+	void writeString(const char* str);
+
 	void seek(std::ptrdiff_t count);
+
+	char* ptr() const;
 
 private:
 	char* pointer = nullptr;

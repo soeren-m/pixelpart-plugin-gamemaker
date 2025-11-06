@@ -6,6 +6,7 @@ target_sources(pixelpart-gamemaker PRIVATE
 	Buffer.cpp
 	Collider.cpp
 	Common.cpp
+	EffectInput.cpp
 	EffectRuntime.cpp
 	Error.cpp
 	ForceField.cpp
@@ -22,4 +23,5 @@ target_sources(pixelpart-gamemaker PRIVATE
 	StaticPropertyFloat3.cpp
 	StaticPropertyFloat4.cpp
 	StaticPropertyInt.cpp
+	Trigger.cpp
 	VertexBuffer.cpp)
