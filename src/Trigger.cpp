@@ -75,6 +75,6 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_trigger_activated(pixelpa
 		return -1;
 	}
 
-	return effectRuntime->effectEngine->runtimeContext().triggerActivated(pixelpart::id_t(triggerId)) ? 1 : 0;
+	return effectRuntime->effectEngine->context().triggerActivated(pixelpart::id_t(triggerId)) ? 1 : 0;
 }
 }

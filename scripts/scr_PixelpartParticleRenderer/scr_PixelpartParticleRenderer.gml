@@ -12,8 +12,6 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 	type_id = _type_id;
 	graphics_resource_provider = _graphics_resource_provider;
 
-	renderer_type = pixelpart_particle_type_get_renderer(effect_ptr, type_id);
-
 	var _material_id_buffer = buffer_create(2048, buffer_fixed, 1);
 	pixelpart_particle_type_get_material_id(effect_ptr, type_id,
 		buffer_get_address(_material_id_buffer),
@@ -66,6 +64,8 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 	// Create vertex buffer
 	particle_vertex_buffer = vertex_create_buffer_from_buffer_ext(vertex_data_buffer, particle_vertex_format, 0, vertex_buffer_capacity);
 
+	buffer_size_buffer = buffer_create(2 * 4, buffer_fixed, 4);
+
 	static cleanup = function()
 	{
 		if !is_undefined(material)
@@ -75,14 +75,17 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 			material = undefined;
 		}
 
-		vertex_delete_buffer(particle_vertex_buffer)
-		particle_vertex_buffer = -1
+		vertex_delete_buffer(particle_vertex_buffer);
+		particle_vertex_buffer = -1;
 
-		vertex_format_delete(particle_vertex_format)
-		particle_vertex_format = -1
+		vertex_format_delete(particle_vertex_format);
+		particle_vertex_format = -1;
 
-		buffer_delete(vertex_data_buffer)
-		vertex_data_buffer = -1
+		buffer_delete(vertex_data_buffer);
+		vertex_data_buffer = -1;
+
+		buffer_delete(buffer_size_buffer);
+		buffer_size_buffer = -1;
 	}
 
 	static render = function()
@@ -115,19 +118,16 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 
 	static update_vertices = function()
 	{
-		// Prepare and get vertex count
-		var _vertex_count = 0;
-		switch (renderer_type)
+		// Construct geometry and get required buffer size
+		var _result = pixelpart_construct_particle_geometry(effect_ptr, emitter_id, type_id,
+			buffer_get_address(buffer_size_buffer));
+		if _result <= 0
 		{
-			case PixelpartRendererType.SPRITE:
-				_vertex_count = pixelpart_prepare_particle_sprite_vertex_data(effect_ptr, emitter_id, type_id);
-				break;
-			case PixelpartRendererType.TRAIL:
-				_vertex_count = pixelpart_prepare_particle_trail_vertex_data(effect_ptr, emitter_id, type_id);
-				break;
-			default:
-				return 0;
+			return 0;
 		}
+
+		var _vertex_count = buffer_peek(buffer_size_buffer, 0, buffer_u32);
+		show_debug_message("{0}",_vertex_count);
 
 		// Resize vertex data buffer if it's too small
 		if _vertex_count > vertex_buffer_capacity
@@ -136,19 +136,8 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 			buffer_resize(vertex_data_buffer, vertex_buffer_capacity * particle_vertex_stride);
 		}
 
-		// Get vertex data
-		switch (renderer_type)
-		{
-			case PixelpartRendererType.SPRITE:
-				pixelpart_get_particle_sprite_vertex_data(effect_ptr, emitter_id, type_id, buffer_get_address(vertex_data_buffer));
-				break;
-			case PixelpartRendererType.TRAIL:
-				pixelpart_get_particle_trail_vertex_data(effect_ptr, emitter_id, type_id, buffer_get_address(vertex_data_buffer));
-				break;
-			default:
-				break;
-		}
-
+		// Get vertex data and update vertex buffer
+		pixelpart_generate_particle_vertex_data(effect_ptr, emitter_id, type_id, buffer_get_address(vertex_data_buffer));
 		update_vertex_buffer(_vertex_count);
 
 		return _vertex_count;

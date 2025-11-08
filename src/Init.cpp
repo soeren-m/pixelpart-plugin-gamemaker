@@ -1,6 +1,6 @@
 #include "Common.h"
 #include "Error.h"
-#include "pixelpart-runtime/computegraph/ComputeGraph.h"
+#include "pixelpart-runtime/effect/ComputeGraph.h"
 #include <exception>
 
 extern "C" {

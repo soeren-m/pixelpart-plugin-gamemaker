@@ -5,8 +5,14 @@
 #include "pixelpart-runtime/common/Curve.h"
 #include "pixelpart-runtime/common/Transform.h"
 #include "pixelpart-runtime/effect/Node.h"
+#include "pixelpart-runtime/effect/ParticleType.h"
+#include "pixelpart-runtime/effect/EffectRuntimeContext.h"
 #include "pixelpart-runtime/engine/SingleThreadedEffectEngine.h"
-#include "pixelpart-runtime/computegraph/ComputeGraph.h"
+#include "pixelpart-runtime/engine/DefaultParticleGenerator.h"
+#include "pixelpart-runtime/engine/DefaultParticleModifier.h"
+#include "pixelpart-runtime/engine/ParticleCollection.h"
+#include "pixelpart-runtime/vertex/VertexFormat.h"
+#include "pixelpart-runtime/vertex/VertexAttribute.h"
 #include <string>
 #include <algorithm>
 #include <exception>
@@ -20,7 +26,7 @@ std::string effectRuntimePtrString = "";
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpart_gms2::string data, pixelpart_gms2::real size, pixelpart_gms2::real particleCapacity) {
 	if(!data || size <= 0) {
-		pixelpart_gms2::lastError ="Effect data is empty";
+		pixelpart_gms2::lastError = "Effect data is empty";
 		pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::nullPointerString;
 
 		return pixelpart_gms2::effectRuntimePtrString.c_str();
@@ -29,10 +35,43 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 	try {
 		pixelpart_gms2::EffectRuntime* effectRuntime = new pixelpart_gms2::EffectRuntime();
 		effectRuntime->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
-		effectRuntime->effectEngine = std::unique_ptr<pixelpart::SingleThreadedEffectEngine>(
-			new pixelpart::SingleThreadedEffectEngine(effectRuntime->effectAsset.effect(), static_cast<std::uint32_t>(std::max(particleCapacity, 1.0))));
+		effectRuntime->effectEngine = std::make_unique<pixelpart::SingleThreadedEffectEngine>(
+			effectRuntime->effectAsset.effect(),
+			std::make_shared<pixelpart::DefaultParticleGenerator>(),
+			std::make_shared<pixelpart::DefaultParticleModifier>(),
+			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
 
 		effectRuntime->effectAsset.effect().applyInputs();
+
+		std::size_t vertexStride = sizeof(float) * 6 + sizeof(std::uint8_t) * 4;
+
+		pixelpart::VertexFormat vertexBasedVertexFormat({
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::position2d, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, 0, vertexStride),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::texture_coord, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 2 + sizeof(std::uint8_t) * 4, vertexStride),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::life, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 4 + sizeof(std::uint8_t) * 4, vertexStride),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::id, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 5 + sizeof(std::uint8_t) * 4, vertexStride),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::color, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 1, 0, sizeof(float) * 4),
+			},
+			pixelpart::VertexWindingOrder::ccw);
+
+		for(const pixelpart::ParticleEmissionPair& emissionPair : effectRuntime->effectAsset.effect().particleEmissionPairs()) {
+			const pixelpart::ParticleType& particleType = effectRuntime->effectAsset.effect().particleTypes().at(emissionPair.typeId);
+
+			pixelpart::VertexFormat vertexFormat;
+			switch(particleType.renderer()) {
+				case pixelpart::ParticleRendererType::sprite:
+				case pixelpart::ParticleRendererType::trail:
+					vertexFormat = vertexBasedVertexFormat;
+					break;
+				default:
+					break;
+			}
+
+			effectRuntime->vertexGenerators[emissionPair] = std::make_unique<pixelpart::ParticleVertexGenerator>(
+				effectRuntime->effectAsset.effect(), emissionPair.emitterId, emissionPair.typeId,
+				vertexFormat);
+			effectRuntime->vertexBufferDimensions[emissionPair] = pixelpart::VertexDataBufferDimensions();
+		}
 
 		pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::toBufferString(effectRuntime);
 
@@ -122,22 +161,26 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_advance_effect(pixelpart_gms
 		effectRuntime->simulationTime -= timeStep;
 		effectRuntime->effectEngine->advance(timeStep);
 
-		if(loop > 0.5 && effectRuntime->effectEngine->runtimeContext().time() > loopTime) {
-			effectRuntime->effectEngine->restart(false);
+		if(loop > 0.5 && effectRuntime->effectEngine->context().time() > loopTime) {
+			effectRuntime->effectEngine->restart();
 		}
 	}
 
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_restart_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real reset) {
+GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_restart_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real clear) {
 	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	effectRuntime->effectEngine->restart(reset > 0.5);
+	if(clear) {
+		effectRuntime->effectEngine->clearParticles();
+	}
+
+	effectRuntime->effectEngine->restart();
 
 	return 1;
 }
@@ -159,7 +202,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_time(pixelpart_gm
 		return -1;
 	}
 
-	return effectRuntime->effectEngine->runtimeContext().time();
+	return effectRuntime->effectEngine->context().time();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_node_count(pixelpart_gms2::string runtimePtr) {
@@ -189,7 +232,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(effectRuntime->effectAsset.effect().particleRuntimeIds().size());
+	return static_cast<pixelpart_gms2::real>(effectRuntime->effectAsset.effect().particleEmissionPairs().size());
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_instances(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string instanceBufferPtr) {
@@ -201,9 +244,9 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_
 
 	pixelpart_gms2::Buffer instanceBuffer = pixelpart_gms2::Buffer(instanceBufferPtr);
 
-	for(const pixelpart::ParticleRuntimeId runtimeId : effectRuntime->effectAsset.effect().particleRuntimeIds()) {
-		instanceBuffer.write<std::uint32_t>(runtimeId.emitterId.value());
-		instanceBuffer.write<std::uint32_t>(runtimeId.typeId.value());
+	for(pixelpart::ParticleEmissionPair emissionPair : effectRuntime->effectAsset.effect().particleEmissionPairs()) {
+		instanceBuffer.write<std::uint32_t>(emissionPair.emitterId.value());
+		instanceBuffer.write<std::uint32_t>(emissionPair.typeId.value());
 	}
 
 	return 1;
@@ -216,9 +259,11 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_count(pi
 		return -1;
 	}
 
-	return effectRuntime->effectEngine->particleCount(
+	const pixelpart::ParticleCollection* particleCollection = effectRuntime->effectEngine->state().particleCollection(
 		pixelpart::id_t(particleEmitterId),
 		pixelpart::id_t(particleTypeId));
+
+	return particleCollection->count();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_spawn_particles(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real count) {
@@ -231,10 +276,11 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_spawn_particles(pixelpart_gm
 		return 0;
 	}
 
-	effectRuntime->effectEngine->spawnParticles(
+	effectRuntime->effectEngine->generateParticles(
+		static_cast<std::uint32_t>(count),
 		pixelpart::id_t(particleEmitterId),
 		pixelpart::id_t(particleTypeId),
-		static_cast<std::uint32_t>(count));
+		pixelpart::EffectRuntimeContext());
 
 	return 1;
 }

@@ -14,7 +14,7 @@
   "copyToTargets":64,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.8.1",
+  "extensionVersion":"1.8.3",
   "files":[
     {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":64,"filename":"pixelpart_x64.dll","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
@@ -34,10 +34,8 @@
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_effect_particle_count","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_effect_particle_count","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_spawn_particles","argCount":0,"args":[1,2,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_spawn_particles","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_sorted_particle_runtime_instances","argCount":0,"args":[1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_sorted_particle_runtime_instances","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_prepare_particle_sprite_vertex_data","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_prepare_particle_sprite_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_prepare_particle_trail_vertex_data","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_prepare_particle_trail_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_get_particle_sprite_vertex_data","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_particle_sprite_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_get_particle_trail_vertex_data","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_particle_trail_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"pixelpart_construct_particle_geometry","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_construct_particle_geometry","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"pixelpart_generate_particle_vertex_data","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_generate_particle_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_count","argCount":0,"args":[1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_count","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_id","argCount":0,"args":[1,2,1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_width","argCount":0,"args":[1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_width","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

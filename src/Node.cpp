@@ -319,7 +319,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_node_is_active(pixelpart_gms
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.active(effectRuntime->effectEngine->runtimeContext()) ? 1.0 : 0.0;
+		return node.active(effectRuntime->effectEngine->context()) ? 1.0 : 0.0;
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
@@ -339,7 +339,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_node_get_local_time(pixelpar
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.life(effectRuntime->effectEngine->runtimeContext());
+		return node.life(effectRuntime->effectEngine->context());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
