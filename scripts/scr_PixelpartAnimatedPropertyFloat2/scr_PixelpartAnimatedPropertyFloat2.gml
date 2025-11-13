@@ -63,9 +63,9 @@ function PixelpartAnimatedPropertyFloat2(_property_ptr) constructor
 
 		return [_x, _y];
 	}
-	static keyframe_index = function(_position, epsilon)
+	static keyframe_index = function(_position, _epsilon)
 	{
-		pixelpart_animated_property_float2_keyframe_index(property_ptr, _position, epsilon);
+		return pixelpart_animated_property_float2_keyframe_index(property_ptr, _position, _epsilon);
 	}
 
 	static set_keyframe_interpolation = function(_method)
@@ -81,8 +81,8 @@ function PixelpartAnimatedPropertyFloat2(_property_ptr) constructor
 	{
 		pixelpart_animated_property_float2_enable_adaptive_cache(property_ptr);
 	}
-	static enable_fixed_cache = function(size)
+	static enable_fixed_cache = function(_size)
 	{
-		pixelpart_animated_property_float2_enable_fixed_cache(property_ptr, size);
+		pixelpart_animated_property_float2_enable_fixed_cache(property_ptr, _size);
 	}
 }
