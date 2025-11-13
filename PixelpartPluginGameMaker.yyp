@@ -38,6 +38,7 @@
   "name":"PixelpartPluginGameMaker",
   "resources":[
     {"id":{"name":"Pixelpart","path":"extensions/Pixelpart/Pixelpart.yy",},},
+    {"id":{"name":"obj_PixelpartEffect","path":"objects/obj_PixelpartEffect/obj_PixelpartEffect.yy",},},
     {"id":{"name":"obj_SampleEffect","path":"objects/obj_SampleEffect/obj_SampleEffect.yy",},},
     {"id":{"name":"rm_Sample","path":"rooms/rm_Sample/rm_Sample.yy",},},
     {"id":{"name":"scr_PixelpartAccelerationField","path":"scripts/scr_PixelpartAccelerationField/scr_PixelpartAccelerationField.yy",},},
@@ -55,6 +56,7 @@
     {"id":{"name":"scr_PixelpartEffectInputCollection","path":"scripts/scr_PixelpartEffectInputCollection/scr_PixelpartEffectInputCollection.yy",},},
     {"id":{"name":"scr_PixelpartEffectRenderer","path":"scripts/scr_PixelpartEffectRenderer/scr_PixelpartEffectRenderer.yy",},},
     {"id":{"name":"scr_PixelpartEffectResource","path":"scripts/scr_PixelpartEffectResource/scr_PixelpartEffectResource.yy",},},
+    {"id":{"name":"scr_PixelpartEvent","path":"scripts/scr_PixelpartEvent/scr_PixelpartEvent.yy",},},
     {"id":{"name":"scr_PixelpartForceField","path":"scripts/scr_PixelpartForceField/scr_PixelpartForceField.yy",},},
     {"id":{"name":"scr_PixelpartGraphicsResourceProvider","path":"scripts/scr_PixelpartGraphicsResourceProvider/scr_PixelpartGraphicsResourceProvider.yy",},},
     {"id":{"name":"scr_PixelpartGroupNode","path":"scripts/scr_PixelpartGroupNode/scr_PixelpartGroupNode.yy",},},

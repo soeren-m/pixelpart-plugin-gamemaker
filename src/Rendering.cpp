@@ -135,10 +135,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_generate_particle_vertex_dat
 			const glm::vec4& color = colorBuffer[vertexIndex];
 
 			std::size_t bufferOffset = vertexIndex * vertexStride + colorVertexOffset;
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 0) = static_cast<std::uint8_t>(color.r * 255.0f);
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 1) = static_cast<std::uint8_t>(color.g * 255.0f);
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 2) = static_cast<std::uint8_t>(color.b * 255.0f);
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 3) = static_cast<std::uint8_t>(color.a * 255.0f);
+			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 0) = static_cast<std::uint8_t>(std::clamp(color.r * 255.0f, 0.0f, 255.0f));
+			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 1) = static_cast<std::uint8_t>(std::clamp(color.g * 255.0f, 0.0f, 255.0f));
+			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 2) = static_cast<std::uint8_t>(std::clamp(color.b * 255.0f, 0.0f, 255.0f));
+			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 3) = static_cast<std::uint8_t>(std::clamp(color.a * 255.0f, 0.0f, 255.0f));
 		}
 
 		return 1;

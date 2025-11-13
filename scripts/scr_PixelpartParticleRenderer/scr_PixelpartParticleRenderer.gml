@@ -127,7 +127,6 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 		}
 
 		var _vertex_count = buffer_peek(buffer_size_buffer, 0, buffer_u32);
-		show_debug_message("{0}",_vertex_count);
 
 		// Resize vertex data buffer if it's too small
 		if _vertex_count > vertex_buffer_capacity

@@ -1,10 +1,11 @@
-px_effect_res = new PixelpartEffectResource();
-px_effect_res.load("Sprite2d.ppfx");
+event_inherited();
 
-px_effect = new PixelpartEffect(px_effect_res);
-px_effect.effect_scale = 200;
+finished_event.subscribe(function()
+{
+	show_debug_message("Effect finished");
+});
 
-var _particle_type = px_effect.get_particle_type_at_index(0);
+var _particle_type = get_particle_type_at_index(0);
 var _particle_type_index = 0;
 while !is_undefined(_particle_type)
 {
@@ -12,10 +13,10 @@ while !is_undefined(_particle_type)
 		_particle_type.get_name(), _particle_type.get_id(), _particle_type.get_parent_id());
 
 	_particle_type_index++;
-	_particle_type = px_effect.get_particle_type_at_index(_particle_type_index);
+	_particle_type = get_particle_type_at_index(_particle_type_index);
 }
 
-var _node = px_effect.get_node_at_index(0);
+var _node = get_node_at_index(0);
 var _node_index = 0;
 while !is_undefined(_node)
 {
@@ -67,5 +68,5 @@ while !is_undefined(_node)
 		_node.get_name(), _node.get_id(), _node.get_parent_id(), _typestr);
 
 	_node_index++;
-	_node = px_effect.get_node_at_index(_node_index);
+	_node = get_node_at_index(_node_index);
 }

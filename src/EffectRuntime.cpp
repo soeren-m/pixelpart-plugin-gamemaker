@@ -4,7 +4,9 @@
 #include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/common/Curve.h"
 #include "pixelpart-runtime/common/Transform.h"
+#include "pixelpart-runtime/effect/Effect.h"
 #include "pixelpart-runtime/effect/Node.h"
+#include "pixelpart-runtime/effect/ParticleEmitter.h"
 #include "pixelpart-runtime/effect/ParticleType.h"
 #include "pixelpart-runtime/effect/EffectRuntimeContext.h"
 #include "pixelpart-runtime/engine/SingleThreadedEffectEngine.h"
@@ -149,11 +151,13 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_advance_effect(pixelpart_gms
 	}
 
 	pixelpart_gms2::Buffer paramBuffer(paramBufferPtr);
-	pixelpart_gms2::real dt = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	pixelpart_gms2::real loop = paramBuffer.read<pixelpart_gms2::real>();
-	pixelpart_gms2::real loopTime = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	pixelpart_gms2::real speed = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	pixelpart_gms2::real timeStep = std::max(paramBuffer.read<pixelpart_gms2::real>() * speed, 0.001);
+	pixelpart::float_t dt = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
+	bool loop = paramBuffer.read<pixelpart_gms2::real>() > 0.5;
+	pixelpart::float_t loopTime = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
+	pixelpart::float_t speed = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
+	pixelpart::float_t timeStep = std::max(paramBuffer.read<pixelpart_gms2::real>() * speed, 0.001);
+	std::uint32_t seed = static_cast<std::uint32_t>(std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0));
+	bool randomSeed = paramBuffer.read<pixelpart_gms2::real>() > 0.5;
 
 	effectRuntime->simulationTime += dt * speed;
 
@@ -161,8 +165,12 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_advance_effect(pixelpart_gms
 		effectRuntime->simulationTime -= timeStep;
 		effectRuntime->effectEngine->advance(timeStep);
 
-		if(loop > 0.5 && effectRuntime->effectEngine->context().time() > loopTime) {
+		if(loop && effectRuntime->effectEngine->context().time() > loopTime) {
 			effectRuntime->effectEngine->restart();
+
+			if(!randomSeed) {
+				effectRuntime->effectEngine->reseed(seed);
+			}
 		}
 	}
 
@@ -185,14 +193,16 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_restart_effect(pixelpart_gms
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_3d(pixelpart_gms2::string runtimePtr) {
+GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_reseed_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real seed) {
 	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	return effectRuntime->effectAsset.effect().is3d() ? 1.0 : 0.0;
+	effectRuntime->effectEngine->reseed(static_cast<std::uint32_t>(std::max(seed, 0.0)));
+
+	return 1;
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_time(pixelpart_gms2::string runtimePtr) {
@@ -203,6 +213,46 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_time(pixelpart_gm
 	}
 
 	return effectRuntime->effectEngine->context().time();
+}
+
+GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_finished(pixelpart_gms2::string runtimePtr) {
+	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		return -1;
+	}
+
+	const pixelpart::Effect& effect = effectRuntime->effectAsset.effect();
+	pixelpart::float_t time = effectRuntime->effectEngine->context().time();
+
+	for(const auto* particleEmitter : effect.sceneGraph().nodesWithType<pixelpart::ParticleEmitter>()) {
+		if(!particleEmitter->primary()) {
+			continue;
+		}
+
+		if(particleEmitter->active(effectRuntime->effectEngine->context()) || particleEmitter->repeat() ||
+			time < particleEmitter->start() + particleEmitter->duration()) {
+			return 0;
+		}
+	}
+
+	for(const auto& [emissionPair, particleCollection] : effectRuntime->effectEngine->state().particleCollections()) {
+		if(particleCollection.count() > 0) {
+			return 0;
+		}
+	}
+
+	return 1;
+}
+
+GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_3d(pixelpart_gms2::string runtimePtr) {
+	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		return -1;
+	}
+
+	return effectRuntime->effectAsset.effect().is3d() ? 1.0 : 0.0;
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_node_count(pixelpart_gms2::string runtimePtr) {
