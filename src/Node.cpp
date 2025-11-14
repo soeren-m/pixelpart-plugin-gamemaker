@@ -173,7 +173,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_node_get_parent_id(pixelpart
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.parentId().value();
+		return node.parentId().value() ? static_cast<pixelpart_gms2::real>(node.parentId().value()) : -1;
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());

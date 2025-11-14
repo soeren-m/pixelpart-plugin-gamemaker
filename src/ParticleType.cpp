@@ -85,7 +85,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_parent_id(
 		const pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		return particleType.parentId().value();
+		return particleType.parentId().valid() ? static_cast<pixelpart_gms2::real>(particleType.parentId().value()) : -1;
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
