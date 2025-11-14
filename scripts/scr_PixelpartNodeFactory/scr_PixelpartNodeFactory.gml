@@ -29,7 +29,7 @@ function pixelpart_create_node(_effect_ptr, _node_id)
 		case PixelpartNodeType.ACCELERATION_FIELD:
 			return new PixelpartAccelerationField(_effect_ptr, _node_id);
 		case PixelpartNodeType.VECTOR_FIELD:
-			return new PixelpartVectorFieldFilter(_effect_ptr, _node_id);
+			return new PixelpartVectorField(_effect_ptr, _node_id);
 		case PixelpartNodeType.NOISE_FIELD:
 			return new PixelpartNoiseField(_effect_ptr, _node_id);
 		case PixelpartNodeType.DRAG_FIELD:
