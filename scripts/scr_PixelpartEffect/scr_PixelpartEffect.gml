@@ -189,7 +189,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			return false;
 		}
 
-		return pixelpart_is_effect_3d(effect_ptr);
+		return bool(pixelpart_is_effect_3d(effect_ptr));
 	}
 
 	#region Inputs
@@ -280,10 +280,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return false;
 		}
 
-		return pixelpart_get_effect_input_bool(effect_ptr, _input_id);
+		return bool(pixelpart_get_effect_input_bool(effect_ptr, _input_id));
 	}
 
 	static get_input_int = function(_input_name)
@@ -291,7 +291,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return 0;
 		}
 
 		return pixelpart_get_effect_input_int(effect_ptr, _input_id);
@@ -302,7 +302,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return 0.0;
 		}
 
 		return pixelpart_get_effect_input_float(effect_ptr, _input_id);
@@ -313,7 +313,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return [0.0, 0.0];
 		}
 
 		var _result_buffer = buffer_create(2 * 8, buffer_fixed, 8);
@@ -330,7 +330,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return [0.0, 0.0, 0.0];
 		}
 
 		var _result_buffer = buffer_create(3 * 8, buffer_fixed, 8);
@@ -348,7 +348,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _input_id = effect_input_collection.get_input_id(_input_name);
 		if _input_id < 0
 		{
-			return;
+			return [0.0, 0.0, 0.0, 0.0];
 		}
 
 		var _result_buffer = buffer_create(4 * 8, buffer_fixed, 8);
@@ -382,10 +382,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
 		if _trigger_id < 0
 		{
-			return;
+			return false;
 		}
 
-		return pixelpart_is_trigger_activated(effect_ptr, _trigger_id);
+		return bool(pixelpart_is_trigger_activated(effect_ptr, _trigger_id));
 	}
 
 	#endregion

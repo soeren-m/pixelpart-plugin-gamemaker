@@ -53,12 +53,12 @@ function PixelpartNode(_effect_ptr, _node_id) constructor
 	}
 	static is_repeating = function()
 	{
-		return pixelpart_node_is_repeating(effect_ptr, node_id);
+		return bool(pixelpart_node_is_repeating(effect_ptr, node_id));
 	}
 
 	static is_active = function()
 	{
-		return pixelpart_node_is_active(effect_ptr, node_id);
+		return bool(pixelpart_node_is_active(effect_ptr, node_id));
 	}
 
 	static get_local_time = function()

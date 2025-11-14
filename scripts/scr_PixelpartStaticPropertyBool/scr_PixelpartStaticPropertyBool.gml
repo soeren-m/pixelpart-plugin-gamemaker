@@ -4,7 +4,7 @@ function PixelpartStaticPropertyBool(_property_ptr) constructor
 
 	static value = function()
 	{
-		return pixelpart_static_property_bool_value(property_ptr);
+		return bool(pixelpart_static_property_bool_value(property_ptr));
 	}
 
 	static set_base_value = function(_value)
@@ -13,6 +13,6 @@ function PixelpartStaticPropertyBool(_property_ptr) constructor
 	}
 	static get_base_value = function()
 	{
-		return pixelpart_static_property_bool_get_base_value(property_ptr);
+		return bool(pixelpart_static_property_bool_get_base_value(property_ptr));
 	}
 }

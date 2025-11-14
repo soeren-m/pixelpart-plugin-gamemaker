@@ -102,7 +102,7 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 	}
 	static is_position_relative = function()
 	{
-		return pixelpart_particle_type_is_position_relative(effect_ptr, node_id);
+		return bool(pixelpart_particle_type_is_position_relative(effect_ptr, node_id));
 	}
 
 	static set_rotation_mode = function(_mode)
@@ -129,7 +129,7 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 	}
 	static is_visible = function()
 	{
-		return pixelpart_particle_type_is_visible(effect_ptr, node_id);
+		return bool(pixelpart_particle_type_is_visible(effect_ptr, node_id));
 	}
 
 	static set_layer = function(_layer)

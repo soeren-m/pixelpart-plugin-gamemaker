@@ -19,6 +19,6 @@ function PixelpartNoiseField(_effect_ptr, _node_id) : PixelpartForceField(_effec
 	}
 	static is_noise_animated = function()
 	{
-		return pixelpart_noise_field_is_noise_animated(effect_ptr, node_id);
+		return bool(pixelpart_noise_field_is_noise_animated(effect_ptr, node_id));
 	}
 }

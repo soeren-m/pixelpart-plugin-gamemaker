@@ -9,6 +9,6 @@ function PixelpartForceField(_effect_ptr, _node_id) : PixelpartNode(_effect_ptr,
 	}
 	static is_infinite = function()
 	{
-		return pixelpart_force_field_is_infinite(effect_ptr, node_id);
+		return bool(pixelpart_force_field_is_infinite(effect_ptr, node_id));
 	}
 }
