@@ -1,0 +1,26 @@
+name: Windows build
+on:
+  workflow_call:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    name: Build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update submodules
+        uses: ./.github/actions/submodules
+
+      - name: Compile
+        run: |
+          cmake --preset windows-x64
+          cmake --build build/windows-x64 --target install --config Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixelpart-windows
+          path: ./pixelpart-plugin/extensions/Pixelpart/pixelpart_x64.dll
