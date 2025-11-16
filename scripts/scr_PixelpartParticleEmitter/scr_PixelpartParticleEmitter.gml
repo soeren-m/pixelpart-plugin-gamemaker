@@ -1,5 +1,5 @@
 // Types of emitter shapes.
-enum PixelpartShapeType
+enum PixelpartEmitterShape
 {
 	// The emitter generates particles at a single point.
 	POINT = 0,
@@ -30,7 +30,7 @@ enum PixelpartShapeType
 // When spawning particles inside the emitter shape, particle emitters can use different techniques
 // to determine the exact points where particles are spawned.
 // For example, you may want to spawn particles near the edge of the shape or on in a grid-like pattern.
-enum PixelpartDistributionType
+enum PixelpartEmitterDistribution
 {
 	// Particles are spawned at randomly generated locations (uniform distribution) inside the emitter area.
 	UNIFORM = 0,
@@ -52,7 +52,7 @@ enum PixelpartDistributionType
 }
 
 // Order of points for grid distribution mode.
-enum PixelpartGridOrderType
+enum PixelpartEmitterGridOrder
 {
 	XYZ = 0,
 	XZY = 1,
@@ -64,7 +64,7 @@ enum PixelpartGridOrderType
 
 // Modes for particle emission.
 // The emission mode of particle emitters controls when particles are created during the lifetime of the emitter.
-enum PixelpartEmissionModeType
+enum PixelpartEmitterEmissionMode
 {
 	// The emitter continuously spawns particles throughout its lifetime.
 	CONTINUOUS = 0,
@@ -82,7 +82,7 @@ enum PixelpartEmissionModeType
 // When a particle is created by the particle emitter,
 // it decides in which direction to emit the particle
 // based on the specified direction and the given direction mode.
-enum PixelpartDirectionModeType
+enum PixelpartEmitterDirectionMode
 {
 	// Particles shoot off in a common direction.
 	FIXED = 0,
