@@ -6,7 +6,7 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "build/${presetName}",
-            "installDir": "extensions/Pixelpart",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
@@ -37,7 +37,7 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "build/${presetName}",
-            "installDir": "extensions/Pixelpart",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
