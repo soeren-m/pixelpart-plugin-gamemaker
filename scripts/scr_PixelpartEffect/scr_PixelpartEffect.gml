@@ -1,20 +1,49 @@
+/// @desc An object that plays a Pixelpart effect.
+/// This struct offers methods and properties to change how the effect is simulated and rendered.
+/// @param {struct} _effect_resource Effect resource to play
+/// @param {real} _particle_capacity Maximum number of particles per particle type
 function PixelpartEffect(_effect_resource, _particle_capacity = 10000) constructor
 {
+	// Whether the effect is currently playing or not.
 	playing = true;
+
+	// Whether the effect restarts automatically after time loop_time.
 	loop = false;
+
+	// Time in seconds after which the effect loops.
+	// Only effective if loop=true.
 	loop_time = 1;
+
+	// Time in seconds the effect is pre-simulated before being rendered.
+	// This value impacts performance and should be kept as low as possible.
 	warmup_time = 0;
+
+	// How fast the effect is being played.
 	speed = 1;
+
+	// At which rate the effect is simulated, in frames per second.
 	frame_rate = 60;
+
+	// Seed used to initialize the effect simulation.
+	//This seed is used if random_seed is not enabled.
 	seed = 0;
+
+	// Whether to use a random seed to initialize the effect simulation.
 	random_seed = false;
 
+	// Multiplier for the size of the effect.
+	// Adjust this value if the effect appears too small or too large in the scene.
 	effect_scale = 1;
+
+	// Whether to flip the effect horizontally.
 	flip_h = false;
+
+	// Whether to flip the effect vertically.
 	flip_v = true;
 
+	// Event that is invoked when the effect is finished.
+	// This event is never invoked for effects with repeating particle emitters.
 	finished_event = new PixelpartEvent();
-	finished_event_invoked = false;
 
 	advance_effect_param_buffer = buffer_create(7 * 8, buffer_fixed, 1);
 
@@ -22,6 +51,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	effect_renderer = pointer_null;
 
 	first_step = true;
+	finished_event_invoked = false;
 
 	if !buffer_exists(_effect_resource.data_buffer)
 	{
@@ -48,6 +78,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	trigger_collection = new PixelpartTriggerCollection(effect_ptr);
 	effect_input_collection = new PixelpartEffectInputCollection(effect_ptr);
 
+	/// @desc Cleanup effect.
 	static cleanup = function()
 	{
 		delete finished_event;
@@ -68,6 +99,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		delete effect_input_collection;
 	}
 
+	/// @desc Draw effect, should be called in Draw event.
 	static draw = function()
 	{
 		if effect_ptr == pointer_null
@@ -78,6 +110,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		effect_renderer.render();
 	}
 
+	/// @desc Advance the effect simulation by given time.
+	/// @param {real} _dt Time to advance the effect simulation in seconds
+	/// @param {real} _pos_x X position of the effect
+	/// @param {real} _pos_y Y position of the effect
 	static advance = function(_dt, _pos_x, _pos_y)
 	{
 		if effect_ptr == pointer_null || !playing
@@ -134,6 +170,8 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		}
 	}
 
+	/// @desc Restart the effect.
+	/// @param {bool} _clear Whether to remove existing particles
 	static restart = function(_clear)
 	{
 		if effect_ptr == pointer_null
@@ -145,6 +183,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_restart_effect(effect_ptr, _clear);
 	}
 
+	/// @desc Generate particles of the given type from the given emitter.
+	/// @param {string} _particle_emitter_name Name of the particle emitter
+	/// @param {string} _particle_type_name Name of the particle type
+	/// @param {real} _count Number of particles to generate
 	static spawn_particles = function(_particle_emitter_name, _particle_type_name, _count)
 	{
 		if effect_ptr == pointer_null
@@ -170,6 +212,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_spawn_particles(effect_ptr, _particle_emitter_id, _particle_type_id, _count);
 	}
 
+	/// @desc Time in seconds since the effect has started playing.
 	static get_current_time = function()
 	{
 		if effect_ptr == pointer_null
@@ -181,6 +224,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return pixelpart_get_effect_time(effect_ptr);
 	}
 
+	/// @desc Whether the effect is a 3D effect.
 	static is_3d = function()
 	{
 		if effect_ptr == pointer_null
@@ -194,6 +238,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Inputs
 
+	/// @desc Set effect input to the given value. The effect input must be of type bool.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {bool} _value New value
 	static set_input_bool = function(_input_name, _value)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -205,6 +252,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_set_effect_input_bool(effect_ptr, _input_id, _value);
 	}
 
+	/// @desc Set effect input to the given value. The effect input must be of type int.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {real} _value New value
 	static set_input_int = function(_input_name, _value)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -216,6 +266,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_set_effect_input_int(effect_ptr, _input_id, _value);
 	}
 
+	/// @desc Set effect input to the given value. The effect input must be of type float.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {real} _value New value
 	static set_input_float = function(_input_name, _value)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -227,6 +280,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_set_effect_input_float(effect_ptr, _input_id, _value);
 	}
 
+	/// @desc Set effect input to the given value. The effect input must be of type float2.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {real} _x X component of new value
+	/// @param {real} _y Y component of new value
 	static set_input_float2 = function(_input_name, _x, _y)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -242,6 +299,11 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		buffer_delete(_param_buffer);
 	}
 
+	/// @desc Set effect input to the given value. The effect input must be of type float3.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {real} _x X component of new value
+	/// @param {real} _y Y component of new value
+	/// @param {real} _z Z component of new value
 	static set_input_float3 = function(_input_name, _x, _y, _z)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -258,6 +320,12 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		buffer_delete(_param_buffer);
 	}
 
+	/// @desc Set effect input to the given value. The effect input must be of type float4.
+	/// @param {string} _input_name Name of the effect input
+	/// @param {real} _x X component of new value
+	/// @param {real} _y Y component of new value
+	/// @param {real} _z Z component of new value
+	/// @param {real} _w W component of new value
 	static set_input_float4 = function(_input_name, _x, _y, _z, _w)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -275,6 +343,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		buffer_delete(_param_buffer);
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type bool.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {bool} Value of the effect input
 	static get_input_bool = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -286,6 +357,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return bool(pixelpart_get_effect_input_bool(effect_ptr, _input_id));
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type int.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {real} Value of the effect input
 	static get_input_int = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -297,6 +371,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return pixelpart_get_effect_input_int(effect_ptr, _input_id);
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type float.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {real} Value of the effect input
 	static get_input_float = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -308,6 +385,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return pixelpart_get_effect_input_float(effect_ptr, _input_id);
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type float2.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {array} Value of the effect input (x, y)
 	static get_input_float2 = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -325,6 +405,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return [_x, _y];
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type float3.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {array} Value of the effect input (x, y, z)
 	static get_input_float3 = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -343,6 +426,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return [_x, _y, _z];
 	}
 
+	/// @desc Return value of an effect input. The effect input must be of type float4.
+	/// @param {string} _input_name Name of the effect input
+	/// @returns {array} Value of the effect input (x, y, z, w)
 	static get_input_float4 = function(_input_name)
 	{
 		var _input_id = effect_input_collection.get_input_id(_input_name);
@@ -366,6 +452,8 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Triggers
 
+	/// @desc Activate trigger with the given name.
+	/// @param {string} _trigger_name Name of the trigger
 	static activate_trigger = function(_trigger_name)
 	{
 		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
@@ -377,6 +465,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		pixelpart_activate_trigger(effect_ptr, _trigger_id);
 	}
 
+	/// @desc Return whether the trigger with the given name was activated.
+	/// @param {string} _trigger_name Name of the trigger
+	/// @returns {bool} true if the trigger was activated
 	static is_trigger_activated = function(_trigger_name)
 	{
 		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
@@ -392,6 +483,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Nodes
 
+	/// @desc Return the node with the given name.
+	/// @param {string} _node_name Node name
+	/// @returns {struct|undefined} Node or undefined if no node with this name exists
 	static find_node = function(_node_name)
 	{
 		if effect_ptr == pointer_null
@@ -415,6 +509,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return _node;
 	}
 
+	/// @desc Return the node with the given ID.
+	/// @param {real} _id Node ID
+	/// @returns {struct|undefined} Node or undefined if no node with this ID exists
 	static get_node = function(_id)
 	{
 		if effect_ptr == pointer_null
@@ -437,6 +534,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return _node;
 	}
 
+	/// @desc Return the node at the given index.
+	/// @param {real} _index Node index, starting from 0
+	/// @returns {struct|undefined} Node or undefined if no node at this index exists
 	static get_node_at_index = function(_index)
 	{
 		if effect_ptr == pointer_null
@@ -464,6 +564,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	#region Particle types
 
+	/// @desc Return the particle type with the given name.
+	/// @param {string} _particle_type_name Particle type name
+	/// @returns {struct|undefined} Particle type or undefined if no particle type with this name exists
 	static find_particle_type = function(_particle_type_name)
 	{
 		if effect_ptr == pointer_null
@@ -487,6 +590,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return _particle_type;
 	}
 
+	/// @desc Return the particle type with the given ID.
+	/// @param {real} _id Particle type ID
+	/// @returns {struct|undefined} Particle type or undefined if no particle type with this ID exists
 	static get_particle_type = function(_id)
 	{
 		if effect_ptr == pointer_null
@@ -509,6 +615,9 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		return _particle_type;
 	}
 
+	/// @desc Return the particle type at the given index.
+	/// @param {real} _index Particle type index
+	/// @returns {struct|undefined} Particle type or undefined if no particle type at this index exists
 	static get_particle_type_at_index = function(_index)
 	{
 		if effect_ptr == pointer_null
