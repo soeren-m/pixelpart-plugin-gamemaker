@@ -49,10 +49,10 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 
 		pixelpart::VertexFormat vertexBasedVertexFormat({
 				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::position2d, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, 0, vertexStride),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::color, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_uint8, 0, sizeof(float) * 2, vertexStride),
 				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::texture_coord, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 2 + sizeof(std::uint8_t) * 4, vertexStride),
 				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::life, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 4 + sizeof(std::uint8_t) * 4, vertexStride),
-				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::id, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 5 + sizeof(std::uint8_t) * 4, vertexStride),
-				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::color, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 1, 0, sizeof(float) * 4),
+				pixelpart::VertexAttribute(pixelpart::VertexAttributeUsage::id, pixelpart::VertexDataGenerationMode::vertex, pixelpart::VertexDataType::type_float, 0, sizeof(float) * 5 + sizeof(std::uint8_t) * 4, vertexStride)
 			},
 			pixelpart::VertexWindingOrder::ccw);
 
@@ -72,7 +72,6 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 			effectRuntime->vertexGenerators[emissionPair] = std::make_unique<pixelpart::ParticleVertexGenerator>(
 				effectRuntime->effectAsset.effect(), emissionPair.emitterId, emissionPair.typeId,
 				vertexFormat);
-			effectRuntime->vertexBufferDimensions[emissionPair] = pixelpart::VertexDataBufferDimensions();
 		}
 
 		pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::toBufferString(effectRuntime);

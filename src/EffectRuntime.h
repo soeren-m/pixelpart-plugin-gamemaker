@@ -8,7 +8,6 @@
 #include "pixelpart-runtime/asset/EffectAsset.h"
 #include "pixelpart-runtime/engine/EffectEngine.h"
 #include "pixelpart-runtime/vertex/ParticleVertexGenerator.h"
-#include "pixelpart-runtime/vertex/VertexDataBufferDimensions.h"
 #include <memory>
 #include <cstdint>
 #include <unordered_map>
@@ -26,8 +25,6 @@ struct EffectRuntime {
 
 	std::unordered_map<pixelpart::ParticleEmissionPair,
 		std::unique_ptr<pixelpart::ParticleVertexGenerator>> vertexGenerators;
-	std::unordered_map<pixelpart::ParticleEmissionPair,
-		pixelpart::VertexDataBufferDimensions> vertexBufferDimensions;
 };
 }
 

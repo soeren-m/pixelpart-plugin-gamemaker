@@ -13,6 +13,7 @@
 #include "pixelpart-runtime/effect/EffectRuntimeContext.h"
 #include "pixelpart-runtime/engine/ParticleCollection.h"
 #include "pixelpart-runtime/vertex/VertexDataBufferCollection.h"
+#include "pixelpart-runtime/vertex/VertexDataBufferDimensions.h"
 #include "pixelpart-runtime/vertex/SceneContext.h"
 #include <cstdint>
 #include <cstring>
@@ -73,8 +74,6 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(
 			particleCollection->count(),
 			runtimeContext, sceneContext);
 
-		effectRuntime->vertexBufferDimensions[emissionPair] = bufferDimensions;
-
 		pixelpart_gms2::Buffer bufferSizeBuffer(bufferSizeBufferPtr);
 		for(std::size_t bufferSize : bufferDimensions) {
 			bufferSizeBuffer.write(static_cast<std::uint32_t>(bufferSize));
@@ -110,36 +109,17 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_generate_particle_vertex_dat
 			return 0;
 		}
 
-		const auto& bufferDimensions = effectRuntime->vertexBufferDimensions[emissionPair];
-
 		pixelpart::EffectRuntimeContext runtimeContext = effectRuntime->effectEngine->context();
 		pixelpart::SceneContext sceneContext;
 		sceneContext.effectScale = effectRuntime->effectScale;
 
-		std::vector<glm::vec4> colorBuffer;
-		colorBuffer.resize(bufferDimensions[1]);
-
 		auto& vertexGenerator = effectRuntime->vertexGenerators.at(emissionPair);
 		vertexGenerator->generateVertexData(pixelpart::VertexDataBufferCollection({
-				reinterpret_cast<std::uint8_t*>(vertexBufferPtr),
-				reinterpret_cast<std::uint8_t*>(colorBuffer.data())
+				reinterpret_cast<std::uint8_t*>(vertexBufferPtr)
 			}),
 			particleCollection->readPtr(),
 			particleCollection->count(),
 			runtimeContext, sceneContext);
-
-		std::size_t colorVertexOffset = sizeof(float) * 2;
-		std::size_t vertexStride = sizeof(float) * 6 + sizeof(std::uint8_t) * 4;
-
-		for(std::size_t vertexIndex = 0; vertexIndex < bufferDimensions[0]; vertexIndex++) {
-			const glm::vec4& color = colorBuffer[vertexIndex];
-
-			std::size_t bufferOffset = vertexIndex * vertexStride + colorVertexOffset;
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 0) = static_cast<std::uint8_t>(std::clamp(color.r * 255.0f, 0.0f, 255.0f));
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 1) = static_cast<std::uint8_t>(std::clamp(color.g * 255.0f, 0.0f, 255.0f));
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 2) = static_cast<std::uint8_t>(std::clamp(color.b * 255.0f, 0.0f, 255.0f));
-			*reinterpret_cast<std::uint8_t*>(vertexBufferPtr + bufferOffset + 3) = static_cast<std::uint8_t>(std::clamp(color.a * 255.0f, 0.0f, 255.0f));
-		}
 
 		return 1;
 	}
