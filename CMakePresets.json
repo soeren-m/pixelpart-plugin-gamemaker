@@ -54,14 +54,6 @@
             "cacheVariables": {
                 "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
             }
-        },
-        {
-            "name": "linux-x86",
-            "displayName": "Linux x86",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x86"
-            }
         }
     ]
 }

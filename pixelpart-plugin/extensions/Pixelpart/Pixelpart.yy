@@ -11,12 +11,12 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"",
-  "copyToTargets":64,
+  "copyToTargets":192,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"1.8.3",
   "files":[
-    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":64,"filename":"pixelpart_x64.dll","final":"","functions":[
+    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":192,"filename":"pixelpart_x64.dll","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_load_effect","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_load_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_delete_effect","argCount":0,"args":[1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_delete_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
@@ -261,7 +261,9 @@
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_triggers","argCount":0,"args":[1,1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_triggers","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_activate_trigger","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_activate_trigger","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_is_trigger_activated","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_is_trigger_activated","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-      ],"init":"pixelpart_init","kind":1,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+      ],"init":"pixelpart_init","kind":1,"name":"","order":[],"origname":"","ProxyFiles":[
+        {"$GMProxyFile":"","%Name":"libpixelpart.so","name":"libpixelpart.so","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":7,},
+      ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject":null,
   "hasConvertedCodeInjection":true,

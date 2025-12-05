@@ -24,8 +24,13 @@ endif()
 
 # Architecture-specific settings
 if(PIXELPART_GAMEMAKER_ARCHITECTURE STREQUAL "x64")
-	set_target_properties(pixelpart-gamemaker PROPERTIES
-		OUTPUT_NAME "pixelpart_x64")
+	if(WIN32)
+		set_target_properties(pixelpart-gamemaker PROPERTIES
+			OUTPUT_NAME "pixelpart_x64")
+	else()
+		set_target_properties(pixelpart-gamemaker PROPERTIES
+			OUTPUT_NAME "pixelpart")
+	endif()
 
 	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		add_compile_options("-m64")
@@ -53,15 +58,12 @@ add_subdirectory(src)
 add_subdirectory(pixelpart-runtime)
 
 # Link pixelpart-runtime library
+set_target_properties(pixelpart-runtime PROPERTIES
+	POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(pixelpart-gamemaker
 	PRIVATE pixelpart-runtime)
 
-# Link libgcc and libstdc++ statically
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	target_link_options(pixelpart-gamemaker
-		PRIVATE -static -static-libgcc -static-libstdc++)
-endif()
-
 # Install binaries
 install(TARGETS pixelpart-gamemaker
+	LIBRARY DESTINATION .
 	RUNTIME DESTINATION .)

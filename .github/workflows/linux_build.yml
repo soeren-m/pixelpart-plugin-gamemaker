@@ -1,0 +1,26 @@
+name: Linux build
+on:
+  workflow_call:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-22.04
+    name: Build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update submodules
+        uses: ./.github/actions/submodules
+
+      - name: Compile
+        run: |
+          cmake --preset linux-x64
+          cmake --build build/linux-x64 --target install --config Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixelpart-linux
+          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpart.so
