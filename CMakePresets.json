@@ -54,6 +54,22 @@
             "cacheVariables": {
                 "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
             }
+        },
+        {
+            "name": "macos-universal",
+            "displayName": "macOS Universal",
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
         }
     ]
 }

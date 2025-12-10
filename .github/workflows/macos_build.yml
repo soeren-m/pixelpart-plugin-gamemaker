@@ -1,0 +1,26 @@
+name: macOS build
+on:
+  workflow_call:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    name: Build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update submodules
+        uses: ./.github/actions/submodules
+
+      - name: Compile
+        run: |
+          cmake --preset macos-universal
+          cmake --build build/macos-universal --target install --config Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixelpart-macos
+          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpart.dylib
