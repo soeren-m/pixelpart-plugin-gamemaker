@@ -16,8 +16,9 @@
   "exportToGame":true,
   "extensionVersion":"1.8.3",
   "files":[
-    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":194,"filename":"pixelpart_x64.dll","final":"","functions":[
+    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":194,"filename":"pixelpart_x64.dll","final":"pixelpart_shutdown","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"pixelpart_shutdown","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_shutdown","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_load_effect","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_load_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_delete_effect","argCount":0,"args":[1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_delete_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_set_effect_scale","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_set_effect_scale","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

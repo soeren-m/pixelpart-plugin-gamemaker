@@ -7,7 +7,8 @@
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
             "condition": {
                 "type": "equals",
@@ -27,7 +28,8 @@
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
             "condition": {
                 "type": "equals",
@@ -48,7 +50,8 @@
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64"
+                "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64",
+                "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
             "condition": {
                 "type": "equals",

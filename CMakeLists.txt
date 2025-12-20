@@ -29,7 +29,6 @@ if(WIN32)
 endif()
 
 # Options for pixelpart-runtime
-set(PIXELPART_RUNTIME_MULTITHREADING OFF)
 set(PIXELPART_RUNTIME_SIMD ON)
 
 # Includes

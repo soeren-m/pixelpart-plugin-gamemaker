@@ -9,6 +9,7 @@
 #include "pixelpart-runtime/effect/ParticleEmitter.h"
 #include "pixelpart-runtime/effect/ParticleType.h"
 #include "pixelpart-runtime/effect/EffectRuntimeContext.h"
+#include "pixelpart-runtime/engine/MultiThreadedEffectEngine.h"
 #include "pixelpart-runtime/engine/SingleThreadedEffectEngine.h"
 #include "pixelpart-runtime/engine/DefaultParticleGenerator.h"
 #include "pixelpart-runtime/engine/DefaultParticleModifier.h"
@@ -20,6 +21,10 @@
 #include <exception>
 
 namespace pixelpart_gms2 {
+#ifdef PIXELPART_RUNTIME_MULTITHREADING
+std::shared_ptr<pixelpart::ThreadPool> threadPool;
+#endif
+
 std::mt19937 rng;
 
 std::string effectRuntimePtrString = "";
@@ -37,11 +42,21 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 	try {
 		pixelpart_gms2::EffectRuntime* effectRuntime = new pixelpart_gms2::EffectRuntime();
 		effectRuntime->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
+
+#ifdef PIXELPART_RUNTIME_MULTITHREADING
+		effectRuntime->effectEngine = std::make_unique<pixelpart::MultiThreadedEffectEngine>(
+			effectRuntime->effectAsset.effect(),
+			std::make_shared<pixelpart::DefaultParticleGenerator>(),
+			std::make_shared<pixelpart::DefaultParticleModifier>(),
+			pixelpart_gms2::threadPool,
+			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
+#else
 		effectRuntime->effectEngine = std::make_unique<pixelpart::SingleThreadedEffectEngine>(
 			effectRuntime->effectAsset.effect(),
 			std::make_shared<pixelpart::DefaultParticleGenerator>(),
 			std::make_shared<pixelpart::DefaultParticleModifier>(),
 			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
+#endif
 
 		effectRuntime->effectAsset.effect().applyInputs();
 
