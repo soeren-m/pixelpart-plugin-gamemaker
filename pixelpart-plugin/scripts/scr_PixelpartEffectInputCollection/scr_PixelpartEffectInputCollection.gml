@@ -1,5 +1,11 @@
 function PixelpartEffectInputCollection(_effect_ptr) constructor
 {
+	if _effect_ptr == pointer_null
+	{
+		effect_inputs = {};
+		return;
+	}
+
 	var _input_count = pixelpart_get_effect_input_count(_effect_ptr);
 	var _id_buffer = buffer_create(_input_count * 4, buffer_fixed, 4);
 	var _type_buffer = buffer_create(_input_count * 4, buffer_fixed, 4);
