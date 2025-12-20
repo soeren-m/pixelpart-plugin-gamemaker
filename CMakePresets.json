@@ -4,7 +4,6 @@
         {
             "name": "windows-base",
             "hidden": true,
-            "generator": "Ninja",
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
@@ -19,18 +18,7 @@
         {
             "name": "windows-x64",
             "displayName": "Windows x64",
-            "inherits": "windows-base",
-            "cacheVariables": {
-                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
-            }
-        },
-        {
-            "name": "windows-x86",
-            "displayName": "Windows x86",
-            "inherits": "windows-base",
-            "cacheVariables": {
-                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x86"
-            }
+            "inherits": "windows-base"
         },
         {
             "name": "linux-base",
@@ -50,10 +38,7 @@
         {
             "name": "linux-x64",
             "displayName": "Linux x64",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "PIXELPART_GAMEMAKER_ARCHITECTURE": "x64"
-            }
+            "inherits": "linux-base"
         },
         {
             "name": "macos-universal",

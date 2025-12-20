@@ -12,38 +12,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Messages
 message(STATUS "Pixelpart plugin for GameMaker: Version ${PIXELPART_GAMEMAKER_VERSION}")
-message(STATUS "Pixelpart plugin for GameMaker: Target ${CMAKE_SYSTEM_NAME}")
+message(STATUS "Pixelpart plugin for GameMaker: System ${CMAKE_SYSTEM_NAME}")
 
 # Target
 add_library(pixelpart-gamemaker SHARED)
 
+set_target_properties(pixelpart-gamemaker PROPERTIES
+	OUTPUT_NAME "pixelpart")
+
 # OS-specific settings
 if(WIN32)
 	set(CMAKE_SHARED_LIBRARY_PREFIX "")
-endif()
 
-# Architecture-specific settings
-if(PIXELPART_GAMEMAKER_ARCHITECTURE STREQUAL "x64")
-	if(WIN32)
-		set_target_properties(pixelpart-gamemaker PROPERTIES
-			OUTPUT_NAME "pixelpart_x64")
-	else()
-		set_target_properties(pixelpart-gamemaker PROPERTIES
-			OUTPUT_NAME "pixelpart")
-	endif()
-
-	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		add_compile_options("-m64")
-		add_link_options("-m64")
-	endif()
-else()
 	set_target_properties(pixelpart-gamemaker PROPERTIES
-		OUTPUT_NAME "pixelpart")
-
-	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		add_compile_options("-m32")
-		add_link_options("-m32")
-	endif()
+		OUTPUT_NAME "pixelpart_x64")
 endif()
 
 # Options for pixelpart-runtime
