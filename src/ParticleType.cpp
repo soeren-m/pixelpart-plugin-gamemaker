@@ -19,7 +19,7 @@ std::string particleTypePropertyPtrString = "";
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_find_particle_type(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string bufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -36,7 +36,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_find_particle_type(pixelpart
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_find_particle_type_by_index(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeIndex) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -50,7 +50,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_find_particle_type_by_index(
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_exists(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -60,7 +60,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_exists(pixelpa
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_index(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -75,7 +75,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_index(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_parent_id(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -95,7 +95,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_parent_id(
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_name(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return "";
@@ -115,7 +115,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_na
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_position_relative(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real relative) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -137,7 +137,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_position_r
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_position_relative(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -157,7 +157,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_position_re
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_rotation_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -179,7 +179,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_rotation_m
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_rotation_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -199,7 +199,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_rotation_m
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_alignment_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -221,7 +221,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_alignment_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_alignment_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -241,10 +241,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_alignment_
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_pivot(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -253,22 +253,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_pi
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.pivot());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_motion_path_force(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -277,19 +277,19 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_mo
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.motionPathForce());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_visible(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real visible) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -311,7 +311,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_visible(pi
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_visible(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -331,7 +331,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_visible(pix
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_layer(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real layer) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -353,7 +353,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_set_layer(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_layer(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -373,7 +373,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_layer(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_id(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string bufferPtr, pixelpart_gms2::real bufferSize) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -403,7 +403,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_i
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_material_builtin(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -423,7 +423,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_is_material_bu
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_parameter_count(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -443,7 +443,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_parameter_ids(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string parameterIdBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -470,7 +470,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_parameter_type(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real parameterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -490,7 +490,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_parameter_value(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real parameterId, pixelpart_gms2::string resultBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -548,7 +548,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_material_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_renderer(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -568,7 +568,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_type_get_renderer(p
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_mesh_renderer_mesh_resource_id(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return "";
@@ -588,10 +588,10 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_me
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_count(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -600,22 +600,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_co
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.count());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_lifespan(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -624,22 +624,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_li
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.lifespan());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_initial_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -648,22 +648,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_in
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.initialSize());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_initial_rotation(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -672,22 +672,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_in
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.initialRotation());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_initial_velocity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -696,22 +696,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_in
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.initialVelocity());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_inherited_velocity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -720,22 +720,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_in
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.inheritedVelocity());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_initial_opacity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -744,22 +744,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_in
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.initialOpacity());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_motion_path(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -768,22 +768,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_mo
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.motionPath());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -792,22 +792,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_si
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.size());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_stretch(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -816,22 +816,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_st
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.stretch());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_physical_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -840,22 +840,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ph
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.physicalSize());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_rotation(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -864,22 +864,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ro
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.rotation());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_rotation_by_speed(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -888,22 +888,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ro
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.rotationBySpeed());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_acceleration(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -912,22 +912,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ac
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.acceleration());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_radial_acceleration(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -936,22 +936,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ra
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.radialAcceleration());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_weight(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -960,22 +960,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_we
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.weight());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_bounce(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -984,22 +984,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_bo
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.bounce());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_friction(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1008,22 +1008,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_fr
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.friction());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_color(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1032,22 +1032,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_co
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.color());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_opacity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1056,22 +1056,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_op
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.opacity());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_lifespan_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1080,22 +1080,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_li
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.lifespanVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_size_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1104,22 +1104,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_si
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.sizeVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_rotation_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1128,22 +1128,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ro
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.rotationVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_angular_velocity_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1152,22 +1152,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_an
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.angularVelocityVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_velocity_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1176,22 +1176,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_ve
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.velocityVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_color_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1200,22 +1200,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_co
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.colorVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_opacity_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 
 		return pixelpart_gms2::particleTypePropertyPtrString.c_str();
 	}
@@ -1224,12 +1224,12 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_type_get_op
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::ptrToString(
 			&particleType.opacityVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleTypePropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleTypePropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleTypePropertyPtrString.c_str();

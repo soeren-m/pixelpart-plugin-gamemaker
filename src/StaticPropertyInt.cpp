@@ -5,7 +5,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::int_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -15,7 +15,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_value(pi
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real value) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::int_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -27,7 +27,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_set_base
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_get_base_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::int_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;

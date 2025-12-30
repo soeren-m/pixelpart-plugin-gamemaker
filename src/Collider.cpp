@@ -18,10 +18,10 @@ std::string colliderPropertyPtrString = "";
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_kill_on_contact(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 
 		return pixelpart_gms2::colliderPropertyPtrString.c_str();
 	}
@@ -30,21 +30,21 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_kill_on
 		pixelpart::Collider& collider =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::Collider>(pixelpart::id_t(colliderId));
 
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::toBufferString(&collider.killOnContact());
+		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::ptrToString(&collider.killOnContact());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::colliderPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_bounce(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 
 		return pixelpart_gms2::colliderPropertyPtrString.c_str();
 	}
@@ -53,21 +53,21 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_bounce(
 		pixelpart::Collider& collider =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::Collider>(pixelpart::id_t(colliderId));
 
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::toBufferString(&collider.bounce());
+		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::ptrToString(&collider.bounce());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::colliderPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_friction(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 
 		return pixelpart_gms2::colliderPropertyPtrString.c_str();
 	}
@@ -76,18 +76,18 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_collider_get_frictio
 		pixelpart::Collider& collider =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::Collider>(pixelpart::id_t(colliderId));
 
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::toBufferString(&collider.friction());
+		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::ptrToString(&collider.friction());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::colliderPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::colliderPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::colliderPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_add_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -114,7 +114,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_add_point(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_set_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId, pixelpart_gms2::real index, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -141,7 +141,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_set_point(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_remove_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId, pixelpart_gms2::real index) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -167,7 +167,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_remove_point(p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_get_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId, pixelpart_gms2::real index, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -194,7 +194,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_get_point(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_line_collider_get_point_count(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real colliderId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;

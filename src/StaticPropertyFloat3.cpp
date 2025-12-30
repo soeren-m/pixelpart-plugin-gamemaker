@@ -6,7 +6,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float3_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float3_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::float3_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::float3_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float3_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -23,7 +23,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float3_value
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float3_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float3_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::float3_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::float3_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float3_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -40,7 +40,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float3_set_b
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float3_get_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float3_t>* property = reinterpret_cast<pixelpart::StaticProperty<pixelpart::float3_t>*>(propertyPtr);
+	pixelpart::StaticProperty<pixelpart::float3_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float3_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;

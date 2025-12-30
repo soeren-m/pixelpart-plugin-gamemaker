@@ -7,7 +7,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_at(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real position) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -17,7 +17,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_at(p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_add_keyframe(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real position, pixelpart_gms2::real value) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -29,7 +29,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_add_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_remove_keyframe(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real index) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -45,7 +45,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_remo
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_keyframe_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real index, pixelpart_gms2::real value) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -61,7 +61,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_keyframe_position(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real index, pixelpart_gms2::real position) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -77,7 +77,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_clear_keyframes(pixelpart_gms2::string propertyPtr) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -89,7 +89,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_clea
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyframe_count(pixelpart_gms2::string propertyPtr) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -99,7 +99,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyf
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyframe_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real index) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -113,7 +113,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyf
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyframe_index(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real position, pixelpart_gms2::real epsilon) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -123,7 +123,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_keyf
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_keyframe_interpolation(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real method) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -135,7 +135,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_set_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_get_keyframe_interpolation(pixelpart_gms2::string propertyPtr) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -145,7 +145,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_get_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_enable_adaptive_cache(pixelpart_gms2::string propertyPtr) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -157,7 +157,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_enab
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_animated_property_float_enable_fixed_cache(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real size) {
-	pixelpart::AnimatedProperty<pixelpart::float_t>* property = reinterpret_cast<pixelpart::AnimatedProperty<pixelpart::float_t>*>(propertyPtr);
+	pixelpart::AnimatedProperty<pixelpart::float_t>* property = pixelpart_gms2::parsePtr<pixelpart::AnimatedProperty<pixelpart::float_t>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;

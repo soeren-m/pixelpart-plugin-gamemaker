@@ -2,22 +2,22 @@
 ///	Acceleration fields also allow you to subdivide the force area with a grid,
 ///	where each grid cell has a different force direction and strength.
 ///	This can be useful for organic looking particle motion.
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node ID
 function PixelpartAccelerationField(_effect_ptr, _node_id) : PixelpartForceField(_effect_ptr, _node_id) constructor
 {
 	// Direction in which particles are accelerated, in degrees.
 	// For 3D effects, the direction is composed of roll, yaw and pitch.
 	acceleration_direction = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_acceleration_field_get_acceleration_direction(_effect_ptr, _node_id)));
+		pixelpart_acceleration_field_get_acceleration_direction(_effect_ptr, _node_id));
 
 	// How much the force direction varies between cells of the grid.
 	acceleration_direction_variance = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_acceleration_field_get_acceleration_direction_variance(_effect_ptr, _node_id)));
+		pixelpart_acceleration_field_get_acceleration_direction_variance(_effect_ptr, _node_id));
 
 	// How much the force strength varies between cells of the grid.
 	acceleration_strength_variance = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_acceleration_field_get_acceleration_strength_variance(_effect_ptr, _node_id)));
+		pixelpart_acceleration_field_get_acceleration_strength_variance(_effect_ptr, _node_id));
 
 	/// @desc Set the number of cells in each dimension of the force field grid.
 	/// Each cell of the grid varies in direction and strength determined by the direction and strength variance values.

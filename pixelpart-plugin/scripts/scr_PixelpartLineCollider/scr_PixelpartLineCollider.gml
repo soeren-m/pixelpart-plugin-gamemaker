@@ -1,7 +1,7 @@
 /// @desc Collider consisting of several connected line segments (2D only).
 /// Line colliders combine several collision segments together and
 /// are defined by a set of points at the vertices of the line segments.
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node ID
 function PixelpartLineCollider(_effect_ptr, _node_id) : PixelpartCollider(_effect_ptr, _node_id) constructor
 {

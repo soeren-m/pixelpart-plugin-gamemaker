@@ -46,7 +46,7 @@ std::vector<pixelpart::float3_t> getParticleEmitterShapePoints(const pixelpart::
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_shape(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real shape) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -68,7 +68,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_shape(p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -88,7 +88,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape(p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_add_shape_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -119,7 +119,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_add_shape_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_remove_shape_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real index) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -148,7 +148,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_remove_shap
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_shape_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real index, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -179,7 +179,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_shape_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape_point(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real index, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -206,7 +206,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape_point_count(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -226,7 +226,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_shape_p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_distribution(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -248,7 +248,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_distrib
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_distribution(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -268,7 +268,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_distrib
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_grid_order(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -290,7 +290,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_grid_or
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_order(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -310,7 +310,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_or
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_grid_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -341,7 +341,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_grid_si
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_size_x(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -361,7 +361,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_si
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_size_y(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -381,7 +381,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_si
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_size_z(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -401,7 +401,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_grid_si
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_emission_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -423,7 +423,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_emissio
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_emission_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -443,7 +443,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_emissio
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_direction_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -465,7 +465,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_set_directi
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_direction_mode(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -485,10 +485,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_particle_emitter_get_directi
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_emitter_get_direction(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleEmitterPropertyPtrString = "";
 
 		return pixelpart_gms2::particleEmitterPropertyPtrString.c_str();
 	}
@@ -497,21 +497,21 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_emitter_get
 		pixelpart::ParticleEmitter& emitter =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::toBufferString(&emitter.direction());
+		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::ptrToString(&emitter.direction());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleEmitterPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleEmitterPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_emitter_get_spread(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real emitterId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleEmitterPropertyPtrString = "";
 
 		return pixelpart_gms2::particleEmitterPropertyPtrString.c_str();
 	}
@@ -520,11 +520,11 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_particle_emitter_get
 		pixelpart::ParticleEmitter& emitter =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::toBufferString(&emitter.spread());
+		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::ptrToString(&emitter.spread());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::particleEmitterPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::particleEmitterPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::particleEmitterPropertyPtrString.c_str();

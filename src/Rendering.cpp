@@ -25,7 +25,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_sorted_particle_runtime_instances(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string indexBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -48,7 +48,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_sorted_particle_runtime_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string bufferSizeBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -89,7 +89,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_generate_particle_vertex_data(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string vertexBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;

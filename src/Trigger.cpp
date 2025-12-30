@@ -13,7 +13,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_trigger_count(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -23,7 +23,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_trigger_count(pixelpart_
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_triggers(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string idBufferPtr, pixelpart_gms2::string nameBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -57,7 +57,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_triggers(pixelpart_gms2:
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_activate_trigger(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real triggerId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime || !effectRuntime->effectEngine) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -69,7 +69,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_activate_trigger(pixelpart_g
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_trigger_activated(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real triggerId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime || !effectRuntime->effectEngine) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;

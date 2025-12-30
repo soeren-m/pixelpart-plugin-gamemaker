@@ -1,0 +1,36 @@
+name: Android build
+on:
+  workflow_call:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-22.04
+    name: Build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update submodules
+        uses: ./.github/actions/submodules
+
+      - name: Compile for x86_64
+        run: |
+          cmake --preset android-x64
+          cmake --build build/android-x64 --target install --config Release
+
+      - name: Compile for arm64
+        run: |
+          cmake --preset android-arm64
+          cmake --build build/android-arm64 --target install --config Release
+
+      - name: Compile for arm
+        run: |
+          cmake --preset android-arm
+          cmake --build build/android-arm --target install --config Release
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pixelpart-android
+          path: ./pixelpart-plugin/extensions/Pixelpart/AndroidSource/libs/

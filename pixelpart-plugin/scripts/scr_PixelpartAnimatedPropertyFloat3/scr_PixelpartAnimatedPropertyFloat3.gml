@@ -2,7 +2,7 @@
 /// Scene objects of an effect like particle emitters and force fields have properties that change over time
 /// and are affected by effect inputs. Such properties are represented by one of the PixelpartAnimatedProperty classes,
 /// depending on the type of the property.
-/// @param {pointer} _property_ptr Property pointer
+/// @param {string} _property_ptr Property pointer
 function PixelpartAnimatedPropertyFloat3(_property_ptr) constructor
 {
 	property_ptr = _property_ptr;

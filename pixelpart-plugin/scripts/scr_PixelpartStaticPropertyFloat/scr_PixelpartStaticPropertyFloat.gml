@@ -1,7 +1,7 @@
 /// @desc Float property affected by effect inputs.
 /// Scene objects of an effect like particle emitters and force fields have properties that do not change over time,
 /// but can be affected by effect inputs. Such properties are represented by one of the PixelpartStaticProperty classes.
-/// @param {pointer} _property_ptr Property pointer
+/// @param {string} _property_ptr Property pointer
 function PixelpartStaticPropertyFloat(_property_ptr) constructor
 {
 	property_ptr = _property_ptr;

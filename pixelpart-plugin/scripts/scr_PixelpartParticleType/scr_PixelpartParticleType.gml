@@ -46,122 +46,122 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 
 	// Center of rotation relative to the particle’s center.
 	pivot = new PixelpartStaticPropertyFloat3(
-		ptr(pixelpart_particle_type_get_pivot(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_pivot(_effect_ptr, _particle_type_id));
 
 	// How much particles are influenced by the motion path.
 	// Set to 0 to disable motion paths.
 	motion_path_force = new PixelpartStaticPropertyFloat(
-		ptr(pixelpart_particle_type_get_motion_path_force(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_motion_path_force(_effect_ptr, _particle_type_id));
 
 	// How many particles of this type are spawned by emitters.
 	count = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_count(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_count(_effect_ptr, _particle_type_id));
 
 	// How long particles exist after being spawned by emitters.
 	lifespan = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_lifespan(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_lifespan(_effect_ptr, _particle_type_id));
 
 	// Size of each particle when created.
 	initial_size = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_initial_size(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_initial_size(_effect_ptr, _particle_type_id));
 
 	// Rotation of each particle when created, in degrees.
 	// For 3D effects, rotation is composed of roll, yaw and pitch.
 	initial_rotation = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_initial_rotation(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_initial_rotation(_effect_ptr, _particle_type_id));
 
 	// How fast each particle is initially after being spawned by the emitter.
 	initial_velocity = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_initial_velocity(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_initial_velocity(_effect_ptr, _particle_type_id));
 
 	// How much speed particles inherit from the parent particle or emitter.
 	inherited_velocity = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_inherited_velocity(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_inherited_velocity(_effect_ptr, _particle_type_id));
 
 	// Opacity of each particle when created.
 	initial_opacity = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_initial_opacity(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_initial_opacity(_effect_ptr, _particle_type_id));
 
 	// Motion path for particles.
 	motion_path = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_motion_path(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_motion_path(_effect_ptr, _particle_type_id));
 
 	// Size of each particle over its lifetime as a fraction of its initial size.
 	size = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_size(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_size(_effect_ptr, _particle_type_id));
 
 	// How much particles are stretched based on their speed.
 	stretch = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_stretch(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_stretch(_effect_ptr, _particle_type_id));
 
 	// Relative size of each particle for motion and collision calculations over its lifetime.
 	physical_size = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_physical_size(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_physical_size(_effect_ptr, _particle_type_id));
 
 	// How particles rotate over time from their initial rotation, in degrees.
 	// For 3D effects, rotation is composed of roll, yaw and pitch.
 	rotation = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_rotation(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_rotation(_effect_ptr, _particle_type_id));
 
 	// How much particles rotate based on their velocity, in degrees.
 	rotation_by_speed = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_type_get_rotation_by_speed(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_rotation_by_speed(_effect_ptr, _particle_type_id));
 
 	// Linear acceleration applied to each particle over its lifetime.
 	acceleration = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_acceleration(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_acceleration(_effect_ptr, _particle_type_id));
 
 	// Acceleration of each particle towards the emitter over its lifetime.
 	radial_acceleration = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_radial_acceleration(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_radial_acceleration(_effect_ptr, _particle_type_id));
 
 	// How strongly each particle is affected by force fields over its lifetime.
 	weight = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_weight(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_weight(_effect_ptr, _particle_type_id));
 
 	// How much each particle bounces back from colliders over its lifetime.
 	bounce = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_bounce(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_bounce(_effect_ptr, _particle_type_id));
 
 	// How resistant each particle is to sliding down colliders over its lifetime.
 	friction = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_friction(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_friction(_effect_ptr, _particle_type_id));
 
 	// Color of each particle over its lifetime.
 	color = new PixelpartAnimatedPropertyFloat4(
-		ptr(pixelpart_particle_type_get_color(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_color(_effect_ptr, _particle_type_id));
 
 	// Opacity of each particle over its lifetime as a fraction of its initial opacity.
 	opacity = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_type_get_opacity(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_opacity(_effect_ptr, _particle_type_id));
 
 	// How much the lifespan varies between particles.
 	lifespan_variance = new PixelpartStaticPropertyFloat(
-		ptr(pixelpart_particle_type_get_lifespan_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_lifespan_variance(_effect_ptr, _particle_type_id));
 
 	// How much the size varies between particles.
 	size_variance = new PixelpartStaticPropertyFloat(
-		ptr(pixelpart_particle_type_get_size_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_size_variance(_effect_ptr, _particle_type_id));
 
 	// How much the rotation varies between particles, in degrees.
 	rotation_variance = new PixelpartStaticPropertyFloat3(
-		ptr(pixelpart_particle_type_get_rotation_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_rotation_variance(_effect_ptr, _particle_type_id));
 
 	// How much the angular velocity varies between particles, in degrees/second.
 	angular_velocity_variance = new PixelpartStaticPropertyFloat3(
-		ptr(pixelpart_particle_type_get_angular_velocity_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_angular_velocity_variance(_effect_ptr, _particle_type_id));
 
 	// How much the speed varies between particles.
 	velocity_variance = new PixelpartStaticPropertyFloat(
-		ptr(pixelpart_particle_type_get_velocity_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_velocity_variance(_effect_ptr, _particle_type_id));
 
 	// How much the color varies between particles.
 	color_variance = new PixelpartStaticPropertyFloat4(
-		ptr(pixelpart_particle_type_get_color_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_color_variance(_effect_ptr, _particle_type_id));
 
 	// How much the opacity varies between particles.
 	opacity_variance = new PixelpartStaticPropertyFloat(
-		ptr(pixelpart_particle_type_get_opacity_variance(_effect_ptr, _particle_type_id)));
+		pixelpart_particle_type_get_opacity_variance(_effect_ptr, _particle_type_id));
 
 	/// @desc ID of the particle type.
 	/// @returns {real} ID

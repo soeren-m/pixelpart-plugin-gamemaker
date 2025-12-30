@@ -2,14 +2,14 @@
 /// and changing the particles' velocity.
 /// Force fields affect particles by attracting, repelling or accelerating them in some direction
 /// and can be used to model gravity, wind and other natural effects.
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node ID
 function PixelpartForceField(_effect_ptr, _node_id) : PixelpartNode(_effect_ptr, _node_id) constructor
 {
 	// How strongly particles are affected by the force field.
 	// Negative values reverse the force direction. Attraction fields then repel particles, for example.
 	strength = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_force_field_get_strength(_effect_ptr, _node_id)));
+		pixelpart_force_field_get_strength(_effect_ptr, _node_id));
 
 	/// @desc Set whether the force field has an infinite area of effect.
 	/// @param {bool} _mode Whether the force field has an infinite area of effect

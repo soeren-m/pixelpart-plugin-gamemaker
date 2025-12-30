@@ -103,20 +103,20 @@ enum PixelpartEmitterDirectionMode
 /// @desc Node that emits particles.
 /// Particle emitters continuously spawn new particles of assigned particle types in a defined area.
 /// They also define in which direction particles move initially.
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node ID
 function PixelpartParticleEmitter(_effect_ptr, _node_id) : PixelpartNode(_effect_ptr, _node_id) constructor
 {
 	// Direction in which particles move when spawned, in degrees.
 	// For 3D effects, the direction is composed of roll, yaw and pitch.
 	direction = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_particle_emitter_get_direction(_effect_ptr, _node_id)));
+		pixelpart_particle_emitter_get_direction(_effect_ptr, _node_id));
 
 	// How much the direction varies.
 	// A spread of 0° means that particles only move in the specified direction,
 	// while 360° leads to particles shooting off in all directions.
 	spread = new PixelpartAnimatedPropertyFloat(
-		ptr(pixelpart_particle_emitter_get_spread(_effect_ptr, _node_id)));
+		pixelpart_particle_emitter_get_spread(_effect_ptr, _node_id));
 
 	/// @desc Set shape of the emitter area.
 	/// @param {real} _shape Shape of the emitter area

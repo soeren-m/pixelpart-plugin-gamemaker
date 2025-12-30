@@ -9,7 +9,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_count(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -19,7 +19,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_count(pix
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_id(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real index, pixelpart_gms2::string resourceIdBufferPtr, pixelpart_gms2::real resourceIdBufferSize) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -50,7 +50,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_id(pixelp
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_width(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -74,7 +74,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_width(pix
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_height(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -98,7 +98,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_height(pi
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_channels(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -122,7 +122,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_channels(
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_color_space(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -146,7 +146,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_color_spa
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_data_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -170,7 +170,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_data_size
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_image_resource_data(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string resourceId, pixelpart_gms2::string imageDataBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;

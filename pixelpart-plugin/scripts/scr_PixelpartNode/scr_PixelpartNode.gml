@@ -1,6 +1,6 @@
 /// @desc An object in an effect like a particle emitter or a force field.
 /// Nodes can be moved, rotated and scaled and move together with their parent node if present.
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node ID
 function PixelpartNode(_effect_ptr, _node_id) constructor
 {
@@ -9,16 +9,16 @@ function PixelpartNode(_effect_ptr, _node_id) constructor
 
 	// Position of the node.
 	position = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_node_get_position(_effect_ptr, _node_id)));
+		pixelpart_node_get_position(_effect_ptr, _node_id));
 
 	// Rotation of the node in degrees.
 	// For 3D effects, the rotation is composed of roll, yaw and pitch.
 	rotation = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_node_get_rotation(_effect_ptr, _node_id)));
+		pixelpart_node_get_rotation(_effect_ptr, _node_id));
 
 	// Size of the node.
 	scale = new PixelpartAnimatedPropertyFloat3(
-		ptr(pixelpart_node_get_scale(_effect_ptr, _node_id)));
+		pixelpart_node_get_scale(_effect_ptr, _node_id));
 
 	/// @desc Type of the node.
 	/// @returns {real} Type

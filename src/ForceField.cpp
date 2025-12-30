@@ -22,7 +22,7 @@ std::string forceFieldPropertyPtrString = "";
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_set_infinite(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId, pixelpart_gms2::real mode) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -44,7 +44,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_set_infinite(pix
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_is_infinite(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -64,10 +64,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_force_field_is_infinite(pixe
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_force_field_get_strength(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -76,22 +76,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_force_field_get_stre
 		pixelpart::ForceField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ForceField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.strength());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_get_acceleration_direction(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -100,22 +100,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 		pixelpart::AccelerationField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.accelerationDirection());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_get_acceleration_direction_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -124,22 +124,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 		pixelpart::AccelerationField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.accelerationDirectionVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_get_acceleration_strength_variance(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -148,19 +148,19 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_acceleration_field_g
 		pixelpart::AccelerationField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::AccelerationField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.accelerationStrengthVariance());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_set_acceleration_grid_size(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -192,7 +192,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_set_accel
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_acceleration_grid_size_x(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -212,7 +212,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_acceleration_grid_size_y(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -232,7 +232,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_acceleration_grid_size_z(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -252,7 +252,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_acceleration_field_get_accel
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_set_vector_field_filter(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId, pixelpart_gms2::real filter) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -274,7 +274,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_set_vector_fiel
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_get_vector_field_filter(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -294,10 +294,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_vector_field_get_vector_fiel
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_vector_field_get_tightness(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -306,22 +306,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_vector_field_get_tig
 		pixelpart::VectorField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VectorField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.tightness());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_octaves(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -330,22 +330,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noiseOctaves());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_frequency(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -354,22 +354,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noiseFrequency());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_persistence(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -378,22 +378,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noisePersistence());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_lacunarity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -402,19 +402,19 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noiseLacunarity());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_set_noise_animated(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId, pixelpart_gms2::real animated) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -436,7 +436,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_set_noise_animat
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_is_noise_animated(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
 		return -1;
@@ -456,10 +456,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_noise_field_is_noise_animate
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_animation_time_scale(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -468,22 +468,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noiseAnimationTimeScale());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_noise_animation_time_base(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -492,22 +492,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_noise_field_get_nois
 		pixelpart::NoiseField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::NoiseField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.noiseAnimationTimeBase());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_velocity_influence(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -516,22 +516,22 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_veloc
 		pixelpart::DragField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.velocityInfluence());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 }
 
 GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_size_influence(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real forceFieldId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = reinterpret_cast<pixelpart_gms2::EffectRuntime*>(runtimePtr);
+	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 
 		return pixelpart_gms2::forceFieldPropertyPtrString.c_str();
 	}
@@ -540,12 +540,12 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_drag_field_get_size_
 		pixelpart::DragField& forceField =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::DragField>(pixelpart::id_t(forceFieldId));
 
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::toBufferString(
+		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::ptrToString(
 			&forceField.sizeInfluence());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::forceFieldPropertyPtrString = pixelpart_gms2::nullPointerString;
+		pixelpart_gms2::forceFieldPropertyPtrString = "";
 	}
 
 	return pixelpart_gms2::forceFieldPropertyPtrString.c_str();

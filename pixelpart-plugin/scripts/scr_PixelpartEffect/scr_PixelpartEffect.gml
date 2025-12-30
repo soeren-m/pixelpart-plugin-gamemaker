@@ -47,7 +47,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 
 	advance_effect_param_buffer = buffer_create(7 * 8, buffer_fixed, 1);
 
-	effect_ptr = pointer_null;
+	effect_ptr = "";
 	effect_renderer = pointer_null;
 
 	first_step = true;
@@ -60,12 +60,12 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	}
 
 	// Deserialize effect
-	effect_ptr = ptr(pixelpart_load_effect(
+	effect_ptr = pixelpart_load_effect(
 		buffer_read(_effect_resource.data_buffer, buffer_string),
 		buffer_get_size(_effect_resource.data_buffer),
-		_particle_capacity));
+		_particle_capacity);
 
-	if effect_ptr != pointer_null
+	if effect_ptr != ""
 	{
 		effect_renderer = new PixelpartEffectRenderer(effect_ptr);
 	}
@@ -89,10 +89,10 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			delete effect_renderer;
 		}
 
-		if effect_ptr != pointer_null
+		if effect_ptr != ""
 		{
 			pixelpart_delete_effect(effect_ptr);
-			effect_ptr = pointer_null;
+			effect_ptr = "";
 		}
 
 		delete trigger_collection;
@@ -102,7 +102,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @desc Draw effect, should be called in Draw event.
 	static draw = function()
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			return;
 		}
@@ -116,7 +116,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @param {real} _pos_y Y position of the effect
 	static advance = function(_dt, _pos_x, _pos_y)
 	{
-		if effect_ptr == pointer_null || !playing
+		if effect_ptr == "" || !playing
 		{
 			return;
 		}
@@ -174,7 +174,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @param {bool} _clear Whether to remove existing particles
 	static restart = function(_clear)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return;
@@ -189,7 +189,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @param {real} _count Number of particles to generate
 	static spawn_particles = function(_particle_emitter_name, _particle_type_name, _count)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return;
@@ -215,7 +215,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @desc Time in seconds since the effect has started playing.
 	static get_current_time = function()
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return 0;
@@ -227,7 +227,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @desc Whether the effect is a 3D effect.
 	static is_3d = function()
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return false;
@@ -488,7 +488,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Node or undefined if no node with this name exists
 	static find_node = function(_node_name)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;
@@ -514,7 +514,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Node or undefined if no node with this ID exists
 	static get_node = function(_id)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;
@@ -539,7 +539,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Node or undefined if no node at this index exists
 	static get_node_at_index = function(_index)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;
@@ -569,7 +569,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Particle type or undefined if no particle type with this name exists
 	static find_particle_type = function(_particle_type_name)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;
@@ -595,7 +595,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Particle type or undefined if no particle type with this ID exists
 	static get_particle_type = function(_id)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;
@@ -620,7 +620,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {struct|undefined} Particle type or undefined if no particle type at this index exists
 	static get_particle_type_at_index = function(_index)
 	{
-		if effect_ptr == pointer_null
+		if effect_ptr == ""
 		{
 			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
 			return undefined;

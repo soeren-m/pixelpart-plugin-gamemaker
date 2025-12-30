@@ -15,7 +15,7 @@ enum PixelpartNodeType
 }
 
 /// @desc Create node object given
-/// @param {pointer} _effect_ptr Pointer to internal effect runtime object
+/// @param {string} _effect_ptr Pointer to internal effect runtime object
 /// @param {real} _node_id Node id
 /// @returns {struct|undefined} Node object or undefined if node not found
 function pixelpart_create_node(_effect_ptr, _node_id)

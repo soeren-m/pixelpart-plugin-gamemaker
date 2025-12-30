@@ -1,15 +1,15 @@
 #include "Common.h"
-#include <cstdint>
-#include <sstream>
-#include <iomanip>
 
 namespace pixelpart_gms2 {
-const std::string nullPointerString = "0000000000000000";
+std::string ptrToString(void* ptr) {
+	static const std::size_t bufferSize = 128;
+	static char buffer[bufferSize];
 
-std::string toBufferString(void* ptr) {
-	std::stringstream stream;
-	stream << std::hex << reinterpret_cast<std::uint64_t>(ptr);
+	std::to_chars_result result =
+		std::to_chars(buffer, buffer + bufferSize, reinterpret_cast<std::uintptr_t>(ptr), 16);
 
-	return stream.str();
+	return result.ec == std::errc()
+		? std::string(buffer, result.ptr - buffer)
+		: std::string();
 }
 }

@@ -5,7 +5,7 @@
 
 extern "C" {
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<bool>* property = reinterpret_cast<pixelpart::StaticProperty<bool>*>(propertyPtr);
+	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -15,7 +15,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_value(p
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real value) {
-	pixelpart::StaticProperty<bool>* property = reinterpret_cast<pixelpart::StaticProperty<bool>*>(propertyPtr);
+	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
@@ -27,7 +27,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_set_bas
 }
 
 GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_get_base_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<bool>* property = reinterpret_cast<pixelpart::StaticProperty<bool>*>(propertyPtr);
+	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
 		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
 		return -1;
