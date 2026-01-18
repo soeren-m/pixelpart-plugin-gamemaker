@@ -1,7 +1,6 @@
 #include "Common.h"
 #include "Error.h"
 #include "Buffer.h"
-#include "VertexBuffer.h"
 #include "EffectRuntime.h"
 #include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/common/Curve.h"

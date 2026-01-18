@@ -27,6 +27,5 @@ else()
 		StaticPropertyFloat3.cpp
 		StaticPropertyFloat4.cpp
 		StaticPropertyInt.cpp
-		Trigger.cpp
-		VertexBuffer.cpp)
+		Trigger.cpp)
 endif()
