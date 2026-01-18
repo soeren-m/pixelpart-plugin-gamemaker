@@ -1,7 +1,7 @@
 #include "VertexBuffer.h"
 #include <cstdint>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 VertexBuffer::VertexBuffer(char* ptr) : Buffer(ptr) {
 
 }

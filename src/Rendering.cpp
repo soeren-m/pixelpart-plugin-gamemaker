@@ -24,10 +24,10 @@
 #include <exception>
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_sorted_particle_runtime_instances(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string indexBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_sorted_particle_runtime_instances(pixelpart_gm::string runtimePtr, pixelpart_gm::string indexBufferPtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -47,10 +47,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_sorted_particle_runtime_
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string bufferSizeBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_construct_particle_geometry(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleEmitterId, pixelpart_gm::real particleTypeId, pixelpart_gm::string bufferSizeBufferPtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -74,7 +74,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(
 			particleCollection->count(),
 			runtimeContext, sceneContext);
 
-		pixelpart_gms2::Buffer bufferSizeBuffer(bufferSizeBufferPtr);
+		pixelpart_gm::Buffer bufferSizeBuffer(bufferSizeBufferPtr);
 		for(std::size_t bufferSize : bufferDimensions) {
 			bufferSizeBuffer.write(static_cast<std::uint32_t>(bufferSize));
 		}
@@ -82,20 +82,20 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_construct_particle_geometry(
 		return 1;
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
+		pixelpart_gm::lastError = std::string(e.what());
 	}
 
 	return -1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_generate_particle_vertex_data(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::string vertexBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_generate_particle_vertex_data(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleEmitterId, pixelpart_gm::real particleTypeId, pixelpart_gm::string vertexBufferPtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 	else if(!vertexBufferPtr) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidArgumentError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidArgumentError;
 		return -1;
 	}
 
@@ -124,7 +124,7 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_generate_particle_vertex_dat
 		return 1;
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
+		pixelpart_gm::lastError = std::string(e.what());
 	}
 
 	return -1;

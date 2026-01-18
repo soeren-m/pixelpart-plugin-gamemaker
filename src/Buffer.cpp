@@ -1,7 +1,7 @@
 #include "Buffer.h"
 #include <cstring>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 Buffer::Buffer(char* ptr) : pointer(ptr) {
 
 }

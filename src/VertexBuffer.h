@@ -4,7 +4,7 @@
 #include "Buffer.h"
 #include "pixelpart-runtime/common/Math.h"
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 class VertexBuffer : Buffer {
 public:
 	VertexBuffer(char* ptr);

@@ -10,123 +10,123 @@
 #include <string>
 #include <exception>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 std::string lightSourcePropertyPtrString = "";
 }
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_light_source_get_attenuation(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real lightSourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_light_source_get_attenuation(pixelpart_gm::string runtimePtr, pixelpart_gm::real lightSourceId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 
-		return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+		return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 	}
 
 	try {
 		pixelpart::LightSource& lightSource =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::LightSource>(pixelpart::id_t(lightSourceId));
 
-		pixelpart_gms2::lightSourcePropertyPtrString = pixelpart_gms2::ptrToString(&lightSource.attenuation());
+		pixelpart_gm::lightSourcePropertyPtrString = pixelpart_gm::ptrToString(&lightSource.attenuation());
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 	}
 
-	return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+	return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 }
 
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_light_source_get_color(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real lightSourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_light_source_get_color(pixelpart_gm::string runtimePtr, pixelpart_gm::real lightSourceId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 
-		return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+		return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 	}
 
 	try {
 		pixelpart::LightSource& lightSource =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::LightSource>(pixelpart::id_t(lightSourceId));
 
-		pixelpart_gms2::lightSourcePropertyPtrString = pixelpart_gms2::ptrToString(&lightSource.color());
+		pixelpart_gm::lightSourcePropertyPtrString = pixelpart_gm::ptrToString(&lightSource.color());
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 	}
 
-	return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+	return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 }
 
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_light_source_get_intensity(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real lightSourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_light_source_get_intensity(pixelpart_gm::string runtimePtr, pixelpart_gm::real lightSourceId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 
-		return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+		return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 	}
 
 	try {
 		pixelpart::LightSource& lightSource =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::LightSource>(pixelpart::id_t(lightSourceId));
 
-		pixelpart_gms2::lightSourcePropertyPtrString = pixelpart_gms2::ptrToString(&lightSource.intensity());
+		pixelpart_gm::lightSourcePropertyPtrString = pixelpart_gm::ptrToString(&lightSource.intensity());
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 	}
 
-	return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+	return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 }
 
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_spot_light_source_get_spot_angle(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real lightSourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_spot_light_source_get_spot_angle(pixelpart_gm::string runtimePtr, pixelpart_gm::real lightSourceId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 
-		return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+		return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 	}
 
 	try {
 		pixelpart::SpotLightSource& lightSource =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::SpotLightSource>(pixelpart::id_t(lightSourceId));
 
-		pixelpart_gms2::lightSourcePropertyPtrString = pixelpart_gms2::ptrToString(&lightSource.spotAngle());
+		pixelpart_gm::lightSourcePropertyPtrString = pixelpart_gm::ptrToString(&lightSource.spotAngle());
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 	}
 
-	return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+	return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 }
 
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_spot_light_source_get_spot_angle_attenuation(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real lightSourceId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_spot_light_source_get_spot_angle_attenuation(pixelpart_gm::string runtimePtr, pixelpart_gm::real lightSourceId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 
-		return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+		return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 	}
 
 	try {
 		pixelpart::SpotLightSource& lightSource =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::SpotLightSource>(pixelpart::id_t(lightSourceId));
 
-		pixelpart_gms2::lightSourcePropertyPtrString = pixelpart_gms2::ptrToString(&lightSource.spotAngleAttenuation());
+		pixelpart_gm::lightSourcePropertyPtrString = pixelpart_gm::ptrToString(&lightSource.spotAngleAttenuation());
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
-		pixelpart_gms2::lightSourcePropertyPtrString = "";
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::lightSourcePropertyPtrString = "";
 	}
 
-	return pixelpart_gms2::lightSourcePropertyPtrString.c_str();
+	return pixelpart_gm::lightSourcePropertyPtrString.c_str();
 }
 }

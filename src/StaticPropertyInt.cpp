@@ -4,20 +4,20 @@
 #include "pixelpart-runtime/effect/StaticProperty.h"
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_int_value(pixelpart_gm::string propertyPtr) {
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(property->value());
+	return static_cast<pixelpart_gm::real>(property->value());
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real value) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_int_set_base_value(pixelpart_gm::string propertyPtr, pixelpart_gm::real value) {
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 
@@ -26,13 +26,13 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_set_base
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_int_get_base_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_int_get_base_value(pixelpart_gm::string propertyPtr) {
+	pixelpart::StaticProperty<pixelpart::int_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::int_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(property->baseValue());
+	return static_cast<pixelpart_gm::real>(property->baseValue());
 }
 }

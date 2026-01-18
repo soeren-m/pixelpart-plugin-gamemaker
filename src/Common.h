@@ -7,14 +7,14 @@
 #include <charconv>
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
-	#define GMS2_API
-	#define GMS2_EXPORT __declspec(dllexport)
+	#define GM_API
+	#define GM_EXPORT __declspec(dllexport)
 #else
-	#define GMS2_API
-	#define GMS2_EXPORT
+	#define GM_API
+	#define GM_EXPORT
 #endif
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 using real = double;
 using string = char*;
 using const_string = const char*;

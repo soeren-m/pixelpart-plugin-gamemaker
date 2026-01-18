@@ -3,7 +3,7 @@
 
 #include <cstddef>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 class Buffer {
 public:
 	Buffer(char* ptr);

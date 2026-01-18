@@ -5,52 +5,52 @@
 #include "pixelpart-runtime/effect/StaticProperty.h"
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float2_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_float2_value(pixelpart_gm::string propertyPtr, pixelpart_gm::string valueBufferPtr) {
+	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 	else if(!valueBufferPtr) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidArgumentError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidArgumentError;
 		return -1;
 	}
 
-	pixelpart_gms2::Buffer valueBuffer(valueBufferPtr);
+	pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
 	valueBuffer.write(property->value());
 
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float2_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_float2_set_base_value(pixelpart_gm::string propertyPtr, pixelpart_gm::string valueBufferPtr) {
+	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 	else if(!valueBufferPtr) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidArgumentError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidArgumentError;
 		return -1;
 	}
 
-	pixelpart_gms2::Buffer valueBuffer(valueBufferPtr);
+	pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
 	property->baseValue(valueBuffer.read<pixelpart::float2_t>());
 
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_float2_get_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::string valueBufferPtr) {
-	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_float2_get_base_value(pixelpart_gm::string propertyPtr, pixelpart_gm::string valueBufferPtr) {
+	pixelpart::StaticProperty<pixelpart::float2_t>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<pixelpart::float2_t>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 	else if(!valueBufferPtr) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidArgumentError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidArgumentError;
 		return -1;
 	}
 
-	pixelpart_gms2::Buffer valueBuffer(valueBufferPtr);
+	pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
 	valueBuffer.write(property->baseValue());
 
 	return 1;

@@ -1,6 +1,6 @@
 #include "Common.h"
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 std::string ptrToString(void* ptr) {
 	static const std::size_t bufferSize = 128;
 	static char buffer[bufferSize];

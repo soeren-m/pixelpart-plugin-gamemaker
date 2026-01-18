@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 extern std::string lastError;
 
 extern const std::string invalidEffectRuntimeError;

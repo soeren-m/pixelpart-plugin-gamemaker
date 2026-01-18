@@ -4,20 +4,20 @@
 #include "pixelpart-runtime/effect/StaticProperty.h"
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_bool_value(pixelpart_gm::string propertyPtr) {
+	pixelpart::StaticProperty<bool>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 
 	return property->value() ? 1 : 0;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_set_base_value(pixelpart_gms2::string propertyPtr, pixelpart_gms2::real value) {
-	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_bool_set_base_value(pixelpart_gm::string propertyPtr, pixelpart_gm::real value) {
+	pixelpart::StaticProperty<bool>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 
@@ -26,10 +26,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_set_bas
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_static_property_bool_get_base_value(pixelpart_gms2::string propertyPtr) {
-	pixelpart::StaticProperty<bool>* property = pixelpart_gms2::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_static_property_bool_get_base_value(pixelpart_gm::string propertyPtr) {
+	pixelpart::StaticProperty<bool>* property = pixelpart_gm::parsePtr<pixelpart::StaticProperty<bool>>(propertyPtr);
 	if(!property) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidPropertyError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
 		return -1;
 	}
 

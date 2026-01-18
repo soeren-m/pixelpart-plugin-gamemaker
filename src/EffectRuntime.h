@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <random>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 #ifdef PIXELPART_RUNTIME_MULTITHREADING
 extern std::shared_ptr<pixelpart::ThreadPool> threadPool;
 #endif

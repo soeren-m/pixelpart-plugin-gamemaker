@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <exception>
 
-namespace pixelpart_gms2 {
+namespace pixelpart_gm {
 #ifdef PIXELPART_RUNTIME_MULTITHREADING
 std::shared_ptr<pixelpart::ThreadPool> threadPool;
 #endif
@@ -31,16 +31,16 @@ std::string effectRuntimePtrString = "";
 }
 
 extern "C" {
-GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpart_gms2::string data, pixelpart_gms2::real size, pixelpart_gms2::real particleCapacity) {
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::string data, pixelpart_gm::real size, pixelpart_gm::real particleCapacity) {
 	if(!data || size <= 0) {
-		pixelpart_gms2::lastError = "Effect data is empty";
-		pixelpart_gms2::effectRuntimePtrString = "";
+		pixelpart_gm::lastError = "Effect data is empty";
+		pixelpart_gm::effectRuntimePtrString = "";
 
-		return pixelpart_gms2::effectRuntimePtrString.c_str();
+		return pixelpart_gm::effectRuntimePtrString.c_str();
 	}
 
 	try {
-		pixelpart_gms2::EffectRuntime* effectRuntime = new pixelpart_gms2::EffectRuntime();
+		pixelpart_gm::EffectRuntime* effectRuntime = new pixelpart_gm::EffectRuntime();
 		effectRuntime->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
 
 #ifdef PIXELPART_RUNTIME_MULTITHREADING
@@ -48,7 +48,7 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 			effectRuntime->effectAsset.effect(),
 			std::make_shared<pixelpart::DefaultParticleGenerator>(),
 			std::make_shared<pixelpart::DefaultParticleModifier>(),
-			pixelpart_gms2::threadPool,
+			pixelpart_gm::threadPool,
 			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
 #else
 		effectRuntime->effectEngine = std::make_unique<pixelpart::SingleThreadedEffectEngine>(
@@ -89,23 +89,23 @@ GMS2_EXPORT pixelpart_gms2::const_string GMS2_API pixelpart_load_effect(pixelpar
 				vertexFormat);
 		}
 
-		pixelpart_gms2::effectRuntimePtrString = pixelpart_gms2::ptrToString(effectRuntime);
+		pixelpart_gm::effectRuntimePtrString = pixelpart_gm::ptrToString(effectRuntime);
 
-		return pixelpart_gms2::effectRuntimePtrString.c_str();
+		return pixelpart_gm::effectRuntimePtrString.c_str();
 	}
 	catch(const std::exception& e) {
-		pixelpart_gms2::lastError = std::string(e.what());
+		pixelpart_gm::lastError = std::string(e.what());
 	}
 
-	pixelpart_gms2::effectRuntimePtrString = "";
+	pixelpart_gm::effectRuntimePtrString = "";
 
-	return pixelpart_gms2::effectRuntimePtrString.c_str();
+	return pixelpart_gm::effectRuntimePtrString.c_str();
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_delete_effect(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_delete_effect(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -114,10 +114,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_delete_effect(pixelpart_gms2
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_set_effect_scale(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real scaleX, pixelpart_gms2::real scaleY) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_scale(pixelpart_gm::string runtimePtr, pixelpart_gm::real scaleX, pixelpart_gm::real scaleY) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -126,10 +126,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_set_effect_scale(pixelpart_g
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_set_effect_transform(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real x, pixelpart_gms2::real y) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm::string runtimePtr, pixelpart_gm::real x, pixelpart_gm::real y) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -157,21 +157,21 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_set_effect_transform(pixelpa
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_advance_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string paramBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_advance_effect(pixelpart_gm::string runtimePtr, pixelpart_gm::string paramBufferPtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	pixelpart_gms2::Buffer paramBuffer(paramBufferPtr);
-	pixelpart::float_t dt = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	bool loop = paramBuffer.read<pixelpart_gms2::real>() > 0.5;
-	pixelpart::float_t loopTime = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	pixelpart::float_t speed = std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0);
-	pixelpart::float_t timeStep = std::max(paramBuffer.read<pixelpart_gms2::real>() * speed, 0.001);
-	std::uint32_t seed = static_cast<std::uint32_t>(std::max(paramBuffer.read<pixelpart_gms2::real>(), 0.0));
-	bool randomSeed = paramBuffer.read<pixelpart_gms2::real>() > 0.5;
+	pixelpart_gm::Buffer paramBuffer(paramBufferPtr);
+	pixelpart::float_t dt = std::max(paramBuffer.read<pixelpart_gm::real>(), 0.0);
+	bool loop = paramBuffer.read<pixelpart_gm::real>() > 0.5;
+	pixelpart::float_t loopTime = std::max(paramBuffer.read<pixelpart_gm::real>(), 0.0);
+	pixelpart::float_t speed = std::max(paramBuffer.read<pixelpart_gm::real>(), 0.0);
+	pixelpart::float_t timeStep = std::max(paramBuffer.read<pixelpart_gm::real>() * speed, 0.001);
+	std::uint32_t seed = static_cast<std::uint32_t>(std::max(paramBuffer.read<pixelpart_gm::real>(), 0.0));
+	bool randomSeed = paramBuffer.read<pixelpart_gm::real>() > 0.5;
 
 	effectRuntime->simulationTime += dt * speed;
 
@@ -191,10 +191,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_advance_effect(pixelpart_gms
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_restart_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real clear) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_restart_effect(pixelpart_gm::string runtimePtr, pixelpart_gm::real clear) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -207,10 +207,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_restart_effect(pixelpart_gms
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_reseed_effect(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real seed) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_reseed_effect(pixelpart_gm::string runtimePtr, pixelpart_gm::real seed) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -219,20 +219,20 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_reseed_effect(pixelpart_gms2
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_time(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_time(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
 	return effectRuntime->effectEngine->context().time();
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_finished(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_effect_finished(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -259,54 +259,54 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_finished(pixelpart
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_is_effect_3d(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_effect_3d(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
 	return effectRuntime->effectAsset.effect().is3d() ? 1.0 : 0.0;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_node_count(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_node_count(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(effectRuntime->effectAsset.effect().sceneGraph().count());
+	return static_cast<pixelpart_gm::real>(effectRuntime->effectAsset.effect().sceneGraph().count());
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_type_count(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_particle_type_count(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(effectRuntime->effectAsset.effect().particleTypes().count());
+	return static_cast<pixelpart_gm::real>(effectRuntime->effectAsset.effect().particleTypes().count());
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_instance_count(pixelpart_gms2::string runtimePtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_particle_runtime_instance_count(pixelpart_gm::string runtimePtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	return static_cast<pixelpart_gms2::real>(effectRuntime->effectAsset.effect().particleEmissionPairs().size());
+	return static_cast<pixelpart_gm::real>(effectRuntime->effectAsset.effect().particleEmissionPairs().size());
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_instances(pixelpart_gms2::string runtimePtr, pixelpart_gms2::string instanceBufferPtr) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_particle_runtime_instances(pixelpart_gm::string runtimePtr, pixelpart_gm::string instanceBufferPtr) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	pixelpart_gms2::Buffer instanceBuffer = pixelpart_gms2::Buffer(instanceBufferPtr);
+	pixelpart_gm::Buffer instanceBuffer = pixelpart_gm::Buffer(instanceBufferPtr);
 
 	for(pixelpart::ParticleEmissionPair emissionPair : effectRuntime->effectAsset.effect().particleEmissionPairs()) {
 		instanceBuffer.write<std::uint32_t>(emissionPair.emitterId.value());
@@ -316,10 +316,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_runtime_
 	return 1;
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_count(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_particle_count(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleEmitterId, pixelpart_gm::real particleTypeId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
@@ -330,10 +330,10 @@ GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_get_effect_particle_count(pi
 	return particleCollection->count();
 }
 
-GMS2_EXPORT pixelpart_gms2::real GMS2_API pixelpart_spawn_particles(pixelpart_gms2::string runtimePtr, pixelpart_gms2::real particleEmitterId, pixelpart_gms2::real particleTypeId, pixelpart_gms2::real count) {
-	pixelpart_gms2::EffectRuntime* effectRuntime = pixelpart_gms2::parsePtr<pixelpart_gms2::EffectRuntime>(runtimePtr);
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_spawn_particles(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleEmitterId, pixelpart_gm::real particleTypeId, pixelpart_gm::real count) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
-		pixelpart_gms2::lastError = pixelpart_gms2::invalidEffectRuntimeError;
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 	else if(count <= 0) {
