@@ -76,8 +76,8 @@ public class PixelpartAndroid {
 	public double pixelpart_get_image_resource_count(String runtimePtr) {
 		return JNIpixelpartgetimageresourcecount(runtimePtr);
 	}
-	public double pixelpart_get_image_resource_id(String runtimePtr, double index, ByteBuffer resourceIdBufferPtr, double resourceIdBufferSize) {
-		return JNIpixelpartgetimageresourceid(runtimePtr, index, resourceIdBufferPtr, resourceIdBufferSize);
+	public String pixelpart_get_image_resource_id(String runtimePtr, double index) {
+		return JNIpixelpartgetimageresourceid(runtimePtr, index);
 	}
 	public double pixelpart_get_image_resource_width(String runtimePtr, String resourceId) {
 		return JNIpixelpartgetimageresourcewidth(runtimePtr, resourceId);
@@ -168,8 +168,8 @@ public class PixelpartAndroid {
 	}
 
 	// Node
-	public double pixelpart_find_node(String runtimePtr, String bufferPtr) {
-		return JNIpixelpartfindnode(runtimePtr, bufferPtr);
+	public double pixelpart_find_node(String runtimePtr, String name) {
+		return JNIpixelpartfindnode(runtimePtr, name);
 	}
 	public double pixelpart_find_node_by_index(String runtimePtr, double nodeIndex) {
 		return JNIpixelpartfindnodebyindex(runtimePtr, nodeIndex);
@@ -400,8 +400,8 @@ public class PixelpartAndroid {
 	}
 
 	// Particle type
-	public double pixelpart_find_particle_type(String runtimePtr, String bufferPtr) {
-		return JNIpixelpartfindparticletype(runtimePtr, bufferPtr);
+	public double pixelpart_find_particle_type(String runtimePtr, String name) {
+		return JNIpixelpartfindparticletype(runtimePtr, name);
 	}
 	public double pixelpart_find_particle_type_by_index(String runtimePtr, double particleTypeIndex) {
 		return JNIpixelpartfindparticletypebyindex(runtimePtr, particleTypeIndex);
@@ -454,8 +454,8 @@ public class PixelpartAndroid {
 	public double pixelpart_particle_type_get_layer(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypegetlayer(runtimePtr, particleTypeId);
 	}
-	public double pixelpart_particle_type_get_material_id(String runtimePtr, double particleTypeId, ByteBuffer bufferPtr, double bufferSize) {
-		return JNIpixelpartparticletypegetmaterialid(runtimePtr, particleTypeId, bufferPtr, bufferSize);
+	public String pixelpart_particle_type_get_material_id(String runtimePtr, double particleTypeId) {
+		return JNIpixelpartparticletypegetmaterialid(runtimePtr, particleTypeId);
 	}
 	public double pixelpart_particle_type_is_material_builtin(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypeismaterialbuiltin(runtimePtr, particleTypeId);

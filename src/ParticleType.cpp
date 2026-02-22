@@ -18,16 +18,16 @@ std::string particleTypePropertyPtrString = "";
 }
 
 extern "C" {
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_particle_type(pixelpart_gm::string runtimePtr, pixelpart_gm::string bufferPtr) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_particle_type(pixelpart_gm::string runtimePtr, pixelpart_gm::string name) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	std::string name(bufferPtr);
+	std::string particleTypeName(name);
 	for(const auto& particleType : effectRuntime->effectAsset.effect().particleTypes()) {
-		if(particleType.name() == name) {
+		if(particleType.name() == particleTypeName) {
 			return particleType.id().value();
 		}
 	}
@@ -54,6 +54,9 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_exists(pixelpart_gm:
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
+	}
+	else if(particleTypeId < 0) {
+		return 0;
 	}
 
 	return effectRuntime->effectAsset.effect().particleTypes().contains(pixelpart::id_t(particleTypeId)) ? 1 : 0;
@@ -372,15 +375,11 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_layer(pixelpart_
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_material_id(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId, pixelpart_gm::string bufferPtr, pixelpart_gm::real bufferSize) {
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_material_id(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
-		return -1;
-	}
-	else if(!bufferPtr || bufferSize < 2) {
-		pixelpart_gm::lastError = pixelpart_gm::invalidArgumentError;
-		return -1;
+		return "";
 	}
 
 	try {
@@ -389,17 +388,13 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_material_id(pixe
 			return 0;
 		}
 
-		std::size_t size = std::min(particleType.materialInstance().materialId().size(), static_cast<std::size_t>(bufferSize) - 1);
-		std::memcpy(bufferPtr, particleType.materialInstance().materialId().c_str(), size);
-		bufferPtr[size] = '\0';
-
-		return static_cast<pixelpart_gm::real>(size);
+		return particleType.materialInstance().materialId().c_str();
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());
 	}
 
-	return -1;
+	return "";
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_is_material_builtin(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {

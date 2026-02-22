@@ -11,12 +11,12 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"",
-  "copyToTargets":202,
+  "copyToTargets":234,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"1.8.3",
   "files":[
-    {"$GMExtensionFile":"","%Name":"Pixelpart.ext","constants":[],"copyToTargets":202,"filename":"Pixelpart.ext","final":"pixelpart_shutdown","functions":[
+    {"$GMExtensionFile":"v1","%Name":"Pixelpart.ext","constants":[],"copyToTargets":234,"filename":"Pixelpart.ext","final":"pixelpart_shutdown","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_shutdown","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_shutdown","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_load_effect","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_load_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
@@ -40,7 +40,7 @@
         {"$GMExtensionFunction":"","%Name":"pixelpart_construct_particle_geometry","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_construct_particle_geometry","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_generate_particle_vertex_data","argCount":0,"args":[1,2,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_generate_particle_vertex_data","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_count","argCount":0,"args":[1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_count","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_id","argCount":0,"args":[1,2,1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_id","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_width","argCount":0,"args":[1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_width","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_height","argCount":0,"args":[1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_height","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_image_resource_channels","argCount":0,"args":[1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_image_resource_channels","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
@@ -139,7 +139,7 @@
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_is_visible","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_is_visible","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_set_layer","argCount":0,"args":[1,2,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_set_layer","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_get_layer","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_get_layer","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-        {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_get_material_id","argCount":0,"args":[1,2,1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_get_material_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_get_material_id","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_get_material_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_is_material_builtin","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_is_material_builtin","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_get_material_parameter_count","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_get_material_parameter_count","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_particle_type_get_material_parameter_ids","argCount":0,"args":[1,2,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_particle_type_get_material_parameter_ids","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
@@ -262,11 +262,13 @@
         {"$GMExtensionFunction":"","%Name":"pixelpart_get_triggers","argCount":0,"args":[1,1,1,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_get_triggers","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_activate_trigger","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_activate_trigger","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_is_trigger_activated","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_is_trigger_activated","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-      ],"init":"pixelpart_init","kind":1,"name":"Pixelpart.ext","order":[],"origname":"","ProxyFiles":[
+      ],"init":"pixelpart_init","kind":1,"name":"Pixelpart.ext","origname":"","ProxyFiles":[
         {"$GMProxyFile":"","%Name":"pixelpart_x64.dll","name":"pixelpart_x64.dll","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":6,},
         {"$GMProxyFile":"","%Name":"libpixelpart.so","name":"libpixelpart.so","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":7,},
         {"$GMProxyFile":"","%Name":"libpixelpart.dylib","name":"libpixelpart.dylib","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":1,},
+        {"$GMProxyFile":"","%Name":"pixelpart.js","name":"pixelpart.js","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":5,},
       ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+    {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":32,"filename":"libpixelpart.js","final":"","functions":[],"init":"","kind":5,"name":"","origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject":null,
   "hasConvertedCodeInjection":true,

@@ -6,9 +6,16 @@
 #include <string>
 #include <charconv>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
 	#define GM_API
 	#define GM_EXPORT __declspec(dllexport)
+#elif defined(__EMSCRIPTEN__)
+	#define GM_API
+	#define GM_EXPORT EMSCRIPTEN_KEEPALIVE
 #else
 	#define GM_API
 	#define GM_EXPORT

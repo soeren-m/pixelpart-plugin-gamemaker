@@ -28,16 +28,16 @@ std::string nodePropertyPtrString = "";
 }
 
 extern "C" {
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_node(pixelpart_gm::string runtimePtr, pixelpart_gm::string bufferPtr) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_node(pixelpart_gm::string runtimePtr, pixelpart_gm::string name) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
 
-	std::string name(bufferPtr);
+	std::string nodeName(name);
 	for(const auto& node : effectRuntime->effectAsset.effect().sceneGraph()) {
-		if(node->name() == name) {
+		if(node->name() == nodeName) {
 			return node->id().value();
 		}
 	}
@@ -64,6 +64,9 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_exists(pixelpart_gm::string r
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
+	}
+	else if(nodeId < 0) {
+		return 0;
 	}
 
 	return effectRuntime->effectAsset.effect().sceneGraph().contains(static_cast<std::uint32_t>(nodeId)) ? 1 : 0;
@@ -173,7 +176,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_parent_id(pixelpart_gm::s
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.parentId().value() ? static_cast<pixelpart_gm::real>(node.parentId().value()) : -1;
+		return node.parentId().valid() ? static_cast<pixelpart_gm::real>(node.parentId().value()) : -1;
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());

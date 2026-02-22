@@ -95,7 +95,7 @@ function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _material
 
 	static apply_parameter = function(_param_id)
 	{
-		var _param_name = material_desc.parameter_names[? _param_id];
+		var _param_name = material_desc.parameter_names[? string(_param_id)];
 		if is_undefined(_param_name)
 		{
 			// Parameter not found
@@ -147,7 +147,7 @@ function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _material
 					buffer_peek(parameter_value_buffer, 0, buffer_bool));
 				break;
 			case PixelpartMaterialParameterType.RESOURCE_IMAGE:
-				texture_resource_id = buffer_peek(parameter_value_buffer, 0, buffer_string);
+				texture_resource_id = pixelpart_buffer_peek_string(parameter_value_buffer, 0);
 				break;
 			default:
 				break;

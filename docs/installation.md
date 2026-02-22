@@ -21,6 +21,6 @@ Linux    | x86_64             | Yes
 macOS    | arm64, x86_64      | Yes
 iOS      |                    | No
 Android  | arm, arm64, x86_64 | Yes
-HTML5    |                    | No
+HTML5    | wasm               | Yes
 GX.games |                    | No
 Console  |                    | No

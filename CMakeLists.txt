@@ -15,7 +15,12 @@ message(STATUS "Pixelpart plugin for GameMaker: Version ${PIXELPART_GAMEMAKER_VE
 message(STATUS "Pixelpart plugin for GameMaker: System ${CMAKE_SYSTEM_NAME}")
 
 # Target
-add_library(pixelpart-gamemaker SHARED)
+if(EMSCRIPTEN)
+	# Need add_executable to generate wasm
+	add_executable(pixelpart-gamemaker)
+else()
+	add_library(pixelpart-gamemaker SHARED)
+endif()
 
 set_target_properties(pixelpart-gamemaker PROPERTIES
 	OUTPUT_NAME "pixelpart")
@@ -26,6 +31,15 @@ if(WIN32)
 
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		OUTPUT_NAME "pixelpart_x64")
+elseif(EMSCRIPTEN)
+	set_target_properties(pixelpart-gamemaker PROPERTIES
+		OUTPUT_NAME "libpixelpart")
+	set_target_properties(pixelpart-gamemaker PROPERTIES
+		COMPILE_FLAGS "-Os")
+	set_target_properties(pixelpart-gamemaker PROPERTIES
+		LINK_FLAGS "--no-entry -Os -s WASM=1 -s SINGLE_FILE=1 \
+			-s EXPORTED_FUNCTIONS=[\"_malloc\",\"_free\"] \
+			-s EXPORTED_RUNTIME_METHODS=[\"HEAPU8\",\"UTF8ToString\",\"stringToUTF8\",\"stringToNewUTF8\",\"lengthBytesUTF8\"]")
 endif()
 
 # Options for pixelpart-runtime

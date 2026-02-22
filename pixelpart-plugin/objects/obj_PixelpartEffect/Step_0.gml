@@ -1,3 +1,5 @@
+/// @desc Advance effect simulation
+
 effect.playing = effect_playing;
 effect.loop = effect_loop;
 effect.loop_time = effect_loop_time;

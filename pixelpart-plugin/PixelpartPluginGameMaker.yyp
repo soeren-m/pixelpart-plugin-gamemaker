@@ -2,7 +2,7 @@
   "$GMProject":"v1",
   "%Name":"PixelpartPluginGameMaker",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -33,7 +33,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"PixelpartPluginGameMaker",
   "resources":[
@@ -50,6 +50,7 @@
     {"id":{"name":"scr_PixelpartBlendMode","path":"scripts/scr_PixelpartBlendMode/scr_PixelpartBlendMode.yy",},},
     {"id":{"name":"scr_PixelpartBuiltinMaterialProvider","path":"scripts/scr_PixelpartBuiltinMaterialProvider/scr_PixelpartBuiltinMaterialProvider.yy",},},
     {"id":{"name":"scr_PixelpartCollider","path":"scripts/scr_PixelpartCollider/scr_PixelpartCollider.yy",},},
+    {"id":{"name":"scr_PixelpartCommon","path":"scripts/scr_PixelpartCommon/scr_PixelpartCommon.yy",},},
     {"id":{"name":"scr_PixelpartDirectionalLightSource","path":"scripts/scr_PixelpartDirectionalLightSource/scr_PixelpartDirectionalLightSource.yy",},},
     {"id":{"name":"scr_PixelpartDragField","path":"scripts/scr_PixelpartDragField/scr_PixelpartDragField.yy",},},
     {"id":{"name":"scr_PixelpartEffect","path":"scripts/scr_PixelpartEffect/scr_PixelpartEffect.yy",},},

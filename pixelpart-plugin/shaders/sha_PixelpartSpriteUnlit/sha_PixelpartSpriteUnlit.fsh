@@ -2,6 +2,8 @@ varying vec2 v_vTextureCoord;
 varying vec4 v_vColour;
 varying float v_vLife;
 
+uniform vec4 u_TextureUV;
+
 uniform vec3 u_Emission;
 uniform int u_ColorBlendMode;
 uniform int u_SpriteSheetRowNumber;
@@ -115,7 +117,7 @@ void main()
 {
 	vec2 textureCoord = pixelpart_AnimateSprite(v_vTextureCoord, v_vLife);
 
-	vec4 color = texture2D(gm_BaseTexture, textureCoord);
+	vec4 color = texture2D(gm_BaseTexture, u_TextureUV.xy + textureCoord * (u_TextureUV.zw - u_TextureUV.xy));
 	color = pixelpart_Blend(color, v_vColour);
 	color.rgb += u_Emission;
 

@@ -112,8 +112,8 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartspawnparti
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetimageresourcecount(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_get_image_resource_count(toStdString(env, arg0).data());
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetimageresourceid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jobject arg2, jdouble arg3) {
-	return pixelpart_get_image_resource_id(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2), arg3);
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetimageresourceid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_get_image_resource_id(toStdString(env, arg0).data(), arg1));
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetimageresourcewidth(JNIEnv* env, jclass cl, jstring arg0, jstring arg1) {
 	return pixelpart_get_image_resource_width(toStdString(env, arg0).data(), toStdString(env, arg1).data());
@@ -490,8 +490,8 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticlety
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetlayer(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_particle_type_get_layer(toStdString(env, arg0).data(), arg1);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetmaterialid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jobject arg2, jdouble arg3) {
-	return pixelpart_particle_type_get_material_id(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2), arg3);
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetmaterialid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_particle_type_get_material_id(toStdString(env, arg0).data(), arg1));
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypeismaterialbuiltin(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_particle_type_is_material_builtin(toStdString(env, arg0).data(), arg1);

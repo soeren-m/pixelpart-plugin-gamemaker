@@ -1,3 +1,5 @@
+/// @desc Clean up effect
+
 effect.cleanup();
 delete effect;
 

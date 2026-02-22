@@ -1,6 +1,6 @@
 function PixelpartEffectInputCollection(_effect_ptr) constructor
 {
-	if _effect_ptr == pointer_null
+	if _effect_ptr == ""
 	{
 		effect_inputs = {};
 		return;
@@ -16,12 +16,21 @@ function PixelpartEffectInputCollection(_effect_ptr) constructor
 		buffer_get_address(_type_buffer),
 		buffer_get_address(_name_buffer));
 
+	// For some reason this is needed for HTML5...
+	var _name_buffer_copy = undefined
+	if os_browser != browser_not_a_browser
+	{
+		var _name_buffer_size = buffer_get_size(_name_buffer);
+		_name_buffer_copy = buffer_create(_name_buffer_size, buffer_fixed, 1);
+		buffer_copy(_name_buffer, 0, _name_buffer_size, _name_buffer_copy, 0);
+	}
+
 	effect_inputs = {};
 
 	for (var _input_index = 0; _input_index < _input_count; _input_index++)
 	{
 		var _input_id = buffer_read(_id_buffer, buffer_u32);
-		var _input_name = buffer_read(_name_buffer, buffer_string);
+		var _input_name = buffer_read(os_browser == browser_not_a_browser ? _name_buffer : _name_buffer_copy, buffer_string);
 
 		effect_inputs[$ _input_name] = _input_id;
 	}
@@ -29,6 +38,11 @@ function PixelpartEffectInputCollection(_effect_ptr) constructor
 	buffer_delete(_id_buffer);
 	buffer_delete(_type_buffer);
 	buffer_delete(_name_buffer);
+
+	if !is_undefined(_name_buffer_copy)
+	{
+		buffer_delete(_name_buffer_copy);
+	}
 
 	static get_input_id = function(_name)
 	{

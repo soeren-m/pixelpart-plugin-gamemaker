@@ -18,5 +18,6 @@ The plugin supports the following target platforms:
 - Linux
 - macOS
 - Android
+- HTML5
 
-At the moment, iOS, console and HTML5 targets are not supported.
+At the moment, iOS and console targets are not supported.

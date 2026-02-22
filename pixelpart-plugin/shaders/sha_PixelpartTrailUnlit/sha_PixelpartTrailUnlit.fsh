@@ -1,6 +1,8 @@
 varying vec2 v_vTextureCoord;
 varying vec4 v_vColour;
 
+uniform vec4 u_TextureUV;
+
 uniform vec3 u_Emission;
 uniform int u_ColorBlendMode;
 
@@ -60,7 +62,7 @@ vec4 pixelpart_Blend(vec4 colorA, vec4 colorB)
 
 void main()
 {
-	vec4 color = texture2D(gm_BaseTexture, v_vTextureCoord);
+	vec4 color = texture2D(gm_BaseTexture, u_TextureUV.xy + v_vTextureCoord * (u_TextureUV.zw - u_TextureUV.xy));
 	color = pixelpart_Blend(color, v_vColour);
 	color.rgb += u_Emission;
 

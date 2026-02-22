@@ -96,6 +96,15 @@
             "cacheVariables": {
                 "ANDROID_ABI": "armeabi-v7a"
             }
+        },
+        {
+            "name": "html5-wasm",
+            "displayName": "HTML5 wasm",
+            "binaryDir": "build/${presetName}",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
         }
     ]
 }

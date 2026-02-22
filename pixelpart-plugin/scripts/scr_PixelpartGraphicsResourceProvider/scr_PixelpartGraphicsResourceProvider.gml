@@ -14,19 +14,12 @@ function PixelpartGraphicsResourceProvider() constructor
 		// Clear old resources
 		clear();
 
-		var _resource_id_buffer = buffer_create(2048, buffer_fixed, 1);
-
 		// Load images
 		var _image_resource_count = pixelpart_get_image_resource_count(_effect_ptr);
 
 		for (var _resource_index = 0; _resource_index < _image_resource_count; _resource_index += 1)
 		{
-			buffer_seek(_resource_id_buffer, buffer_seek_start, 0);
-			pixelpart_get_image_resource_id(_effect_ptr, _resource_index,
-				buffer_get_address(_resource_id_buffer),
-				buffer_get_size(_resource_id_buffer));
-			var _resource_id = buffer_read(_resource_id_buffer, buffer_string);
-
+			var _resource_id = pixelpart_get_image_resource_id(_effect_ptr, _resource_index);
 			var _image_width = pixelpart_get_image_resource_width(_effect_ptr, _resource_id);
 			var _image_height = pixelpart_get_image_resource_height(_effect_ptr, _resource_id);
 			var _image_channels = pixelpart_get_image_resource_channels(_effect_ptr, _resource_id);
@@ -53,8 +46,6 @@ function PixelpartGraphicsResourceProvider() constructor
 
 			buffer_delete(_image_data_buffer);
 		}
-
-		buffer_delete(_resource_id_buffer);
 
 		loaded = true;
 	}

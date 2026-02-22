@@ -104,7 +104,7 @@ function PixelpartBuiltinMaterialProvider() constructor
 			if variable_struct_exists(builtin_material_parameter_ids, _param_name)
 			{
 				var _param_id = builtin_material_parameter_ids[$ _param_name];
-				ds_map_add(_parameter_ids, _param_id, _param_uniform_name);
+				ds_map_add(_parameter_ids, string(_param_id), _param_uniform_name);
 			}
 			else
 			{
