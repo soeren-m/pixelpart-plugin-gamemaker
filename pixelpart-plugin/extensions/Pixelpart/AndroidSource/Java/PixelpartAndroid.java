@@ -153,18 +153,18 @@ public class PixelpartAndroid {
 		return JNIpixelpartgeteffectinputfloat4(runtimePtr, inputId, valueBufferPtr);
 	}
 
-	// Trigger
-	public double pixelpart_get_trigger_count(String runtimePtr) {
-		return JNIpixelpartgettriggercount(runtimePtr);
+	// Effect trigger
+	public double pixelpart_get_effect_trigger_count(String runtimePtr) {
+		return JNIpixelpartgeteffecttriggercount(runtimePtr);
 	}
-	public double pixelpart_get_triggers(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr) {
-		return JNIpixelpartgettriggers(runtimePtr, idBufferPtr, nameBufferPtr);
+	public double pixelpart_get_effect_triggers(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr) {
+		return JNIpixelpartgeteffecttriggers(runtimePtr, idBufferPtr, nameBufferPtr);
 	}
-	public double pixelpart_activate_trigger(String runtimePtr, double triggerId) {
-		return JNIpixelpartactivatetrigger(runtimePtr, triggerId);
+	public double pixelpart_activate_effect_trigger(String runtimePtr, double triggerId) {
+		return JNIpixelpartactivateeffecttrigger(runtimePtr, triggerId);
 	}
-	public double pixelpart_is_trigger_activated(String runtimePtr, double triggerId) {
-		return JNIpixelpartistriggeractivated(runtimePtr, triggerId);
+	public double pixelpart_is_effect_trigger_activated(String runtimePtr, double triggerId) {
+		return JNIpixelpartiseffecttriggeractivated(runtimePtr, triggerId);
 	}
 
 	// Node
@@ -650,12 +650,6 @@ public class PixelpartAndroid {
 	public double pixelpart_animated_property_float_get_keyframe_interpolation(String propertyPtr) {
 		return JNIpixelpartanimatedpropertyfloatgetkeyframeinterpolation(propertyPtr);
 	}
-	public double pixelpart_animated_property_float_enable_adaptive_cache(String propertyPtr) {
-		return JNIpixelpartanimatedpropertyfloatenableadaptivecache(propertyPtr);
-	}
-	public double pixelpart_animated_property_float_enable_fixed_cache(String propertyPtr, double size) {
-		return JNIpixelpartanimatedpropertyfloatenablefixedcache(propertyPtr, size);
-	}
 	public double pixelpart_animated_property_float2_at(String propertyPtr, double position, ByteBuffer valueBufferPtr) {
 		return JNIpixelpartanimatedpropertyfloat2at(propertyPtr, position, valueBufferPtr);
 	}
@@ -688,12 +682,6 @@ public class PixelpartAndroid {
 	}
 	public double pixelpart_animated_property_float2_get_keyframe_interpolation(String propertyPtr) {
 		return JNIpixelpartanimatedpropertyfloat2getkeyframeinterpolation(propertyPtr);
-	}
-	public double pixelpart_animated_property_float2_enable_adaptive_cache(String propertyPtr) {
-		return JNIpixelpartanimatedpropertyfloat2enableadaptivecache(propertyPtr);
-	}
-	public double pixelpart_animated_property_float2_enable_fixed_cache(String propertyPtr, double size) {
-		return JNIpixelpartanimatedpropertyfloat2enablefixedcache(propertyPtr, size);
 	}
 	public double pixelpart_animated_property_float3_at(String propertyPtr, double position, ByteBuffer valueBufferPtr) {
 		return JNIpixelpartanimatedpropertyfloat3at(propertyPtr, position, valueBufferPtr);
@@ -728,12 +716,6 @@ public class PixelpartAndroid {
 	public double pixelpart_animated_property_float3_get_keyframe_interpolation(String propertyPtr) {
 		return JNIpixelpartanimatedpropertyfloat3getkeyframeinterpolation(propertyPtr);
 	}
-	public double pixelpart_animated_property_float3_enable_adaptive_cache(String propertyPtr) {
-		return JNIpixelpartanimatedpropertyfloat3enableadaptivecache(propertyPtr);
-	}
-	public double pixelpart_animated_property_float3_enable_fixed_cache(String propertyPtr, double size) {
-		return JNIpixelpartanimatedpropertyfloat3enablefixedcache(propertyPtr, size);
-	}
 	public double pixelpart_animated_property_float4_at(String propertyPtr, double position, ByteBuffer valueBufferPtr) {
 		return JNIpixelpartanimatedpropertyfloat4at(propertyPtr, position, valueBufferPtr);
 	}
@@ -766,11 +748,5 @@ public class PixelpartAndroid {
 	}
 	public double pixelpart_animated_property_float4_get_keyframe_interpolation(String propertyPtr) {
 		return JNIpixelpartanimatedpropertyfloat4getkeyframeinterpolation(propertyPtr);
-	}
-	public double pixelpart_animated_property_float4_enable_adaptive_cache(String propertyPtr) {
-		return JNIpixelpartanimatedpropertyfloat4enableadaptivecache(propertyPtr);
-	}
-	public double pixelpart_animated_property_float4_enable_fixed_cache(String propertyPtr, double size) {
-		return JNIpixelpartanimatedpropertyfloat4enablefixedcache(propertyPtr, size);
 	}
 }

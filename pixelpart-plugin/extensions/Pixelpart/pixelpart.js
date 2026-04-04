@@ -372,19 +372,19 @@ function pixelpart_get_effect_input_float4(runtimePtr, inputId, valueBufferPtr) 
 	return result;
 }
 
-// Trigger
-function pixelpart_get_trigger_count(runtimePtr) {
+// Effect trigger
+function pixelpart_get_effect_trigger_count(runtimePtr) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_get_trigger_count(runtimeCStr);
+	const result = Module._pixelpart_get_effect_trigger_count(runtimeCStr);
 	Module._free(runtimeCStr);
 
 	return result;
 }
-function pixelpart_get_triggers(runtimePtr, idBufferPtr, nameBufferPtr) {
+function pixelpart_get_effect_triggers(runtimePtr, idBufferPtr, nameBufferPtr) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
 	const nativeIdBufferPtr = Module._malloc(idBufferPtr.byteLength);
 	const nativeNameBufferPtr = Module._malloc(nameBufferPtr.byteLength);
-	const result = Module._pixelpart_get_triggers(runtimeCStr, nativeIdBufferPtr, nativeNameBufferPtr);
+	const result = Module._pixelpart_get_effect_triggers(runtimeCStr, nativeIdBufferPtr, nativeNameBufferPtr);
 	pixelpartjs_copy_from_native_buffer(idBufferPtr, nativeIdBufferPtr);
 	pixelpartjs_copy_from_native_buffer(nameBufferPtr, nativeNameBufferPtr);
 	Module._free(nativeNameBufferPtr);
@@ -393,16 +393,16 @@ function pixelpart_get_triggers(runtimePtr, idBufferPtr, nameBufferPtr) {
 
 	return result;
 }
-function pixelpart_activate_trigger(runtimePtr, triggerId) {
+function pixelpart_activate_effect_trigger(runtimePtr, triggerId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_activate_trigger(runtimeCStr, triggerId);
+	const result = Module._pixelpart_activate_effect_trigger(runtimeCStr, triggerId);
 	Module._free(runtimeCStr);
 
 	return result;
 }
-function pixelpart_is_trigger_activated(runtimePtr, triggerId) {
+function pixelpart_is_effect_trigger_activated(runtimePtr, triggerId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_is_trigger_activated(runtimeCStr, triggerId);
+	const result = Module._pixelpart_is_effect_trigger_activated(runtimeCStr, triggerId);
 	Module._free(runtimeCStr);
 
 	return result;
@@ -1567,20 +1567,6 @@ function pixelpart_animated_property_float_get_keyframe_interpolation(propertyPt
 
 	return result;
 }
-function pixelpart_animated_property_float_enable_adaptive_cache(propertyPtr) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float_enable_adaptive_cache(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float_enable_fixed_cache(propertyPtr, size) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float_enable_fixed_cache(propertyCStr, size);
-	Module._free(propertyCStr);
-
-	return result;
-}
 function pixelpart_animated_property_float2_at(propertyPtr, position, valueBufferPtr) {
 	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
 	const nativeValueBufferPtr = Module._malloc(valueBufferPtr.byteLength);
@@ -1664,20 +1650,6 @@ function pixelpart_animated_property_float2_set_keyframe_interpolation(propertyP
 function pixelpart_animated_property_float2_get_keyframe_interpolation(propertyPtr) {
 	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
 	const result = Module._pixelpart_animated_property_float2_get_keyframe_interpolation(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float2_enable_adaptive_cache(propertyPtr) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float2_enable_adaptive_cache(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float2_enable_fixed_cache(propertyPtr, size) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float2_enable_fixed_cache(propertyCStr, size);
 	Module._free(propertyCStr);
 
 	return result;
@@ -1768,20 +1740,6 @@ function pixelpart_animated_property_float3_get_keyframe_interpolation(propertyP
 
 	return result;
 }
-function pixelpart_animated_property_float3_enable_adaptive_cache(propertyPtr) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float3_enable_adaptive_cache(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float3_enable_fixed_cache(propertyPtr, size) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float3_enable_fixed_cache(propertyCStr, size);
-	Module._free(propertyCStr);
-
-	return result;
-}
 function pixelpart_animated_property_float4_at(propertyPtr, position, valueBufferPtr) {
 	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
 	const nativeValueBufferPtr = Module._malloc(valueBufferPtr.byteLength);
@@ -1865,20 +1823,6 @@ function pixelpart_animated_property_float4_set_keyframe_interpolation(propertyP
 function pixelpart_animated_property_float4_get_keyframe_interpolation(propertyPtr) {
 	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
 	const result = Module._pixelpart_animated_property_float4_get_keyframe_interpolation(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float4_enable_adaptive_cache(propertyPtr) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float4_enable_adaptive_cache(propertyCStr);
-	Module._free(propertyCStr);
-
-	return result;
-}
-function pixelpart_animated_property_float4_enable_fixed_cache(propertyPtr, size) {
-	const propertyCStr = Module.stringToNewUTF8(propertyPtr);
-	const result = Module._pixelpart_animated_property_float4_enable_fixed_cache(propertyCStr, size);
 	Module._free(propertyCStr);
 
 	return result;

@@ -1,7 +1,7 @@
 #include "EffectRuntime.h"
 #include "Error.h"
 #include "Buffer.h"
-#include "pixelpart-runtime/common/Math.h"
+#include "pixelpart-runtime/common/Types.h"
 #include "pixelpart-runtime/common/Curve.h"
 #include "pixelpart-runtime/common/Transform.h"
 #include "pixelpart-runtime/effect/Effect.h"
@@ -21,10 +21,7 @@
 #include <exception>
 
 namespace pixelpart_gm {
-#ifdef PIXELPART_RUNTIME_MULTITHREADING
 std::shared_ptr<pixelpart::ThreadPool> threadPool;
-#endif
-
 std::mt19937 rng;
 
 std::string effectRuntimePtrString = "";
@@ -86,7 +83,7 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::
 
 			effectRuntime->vertexGenerators[emissionPair] = std::make_unique<pixelpart::ParticleVertexGenerator>(
 				effectRuntime->effectAsset.effect(), emissionPair.emitterId, emissionPair.typeId,
-				vertexFormat);
+				vertexFormat, pixelpart_gm::threadPool);
 		}
 
 		pixelpart_gm::effectRuntimePtrString = pixelpart_gm::ptrToString(effectRuntime);

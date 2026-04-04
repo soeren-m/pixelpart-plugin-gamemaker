@@ -60,11 +60,11 @@ public class MainActivity {
 	public static native double JNIpixelpartgeteffectinputfloat3(String runtimePtr, double inputId, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartgeteffectinputfloat4(String runtimePtr, double inputId, ByteBuffer valueBufferPtr);
 
-	// Trigger
-	public static native double JNIpixelpartgettriggercount(String runtimePtr);
-	public static native double JNIpixelpartgettriggers(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr);
-	public static native double JNIpixelpartactivatetrigger(String runtimePtr, double triggerId);
-	public static native double JNIpixelpartistriggeractivated(String runtimePtr, double triggerId);
+	// Effect trigger
+	public static native double JNIpixelpartgeteffecttriggercount(String runtimePtr);
+	public static native double JNIpixelpartgeteffecttriggers(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr);
+	public static native double JNIpixelpartactivateeffecttrigger(String runtimePtr, double triggerId);
+	public static native double JNIpixelpartiseffecttriggeractivated(String runtimePtr, double triggerId);
 
 	// Node
 	public static native double JNIpixelpartfindnode(String runtimePtr, String bufferPtr);
@@ -237,8 +237,6 @@ public class MainActivity {
 	public static native double JNIpixelpartanimatedpropertyfloatkeyframeindex(String propertyPtr, double position, double epsilon);
 	public static native double JNIpixelpartanimatedpropertyfloatsetkeyframeinterpolation(String propertyPtr, double method);
 	public static native double JNIpixelpartanimatedpropertyfloatgetkeyframeinterpolation(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloatenableadaptivecache(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloatenablefixedcache(String propertyPtr, double size);
 	public static native double JNIpixelpartanimatedpropertyfloat2at(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat2addkeyframe(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat2removekeyframe(String propertyPtr, double index);
@@ -250,8 +248,6 @@ public class MainActivity {
 	public static native double JNIpixelpartanimatedpropertyfloat2keyframeindex(String propertyPtr, double position, double epsilon);
 	public static native double JNIpixelpartanimatedpropertyfloat2setkeyframeinterpolation(String propertyPtr, double method);
 	public static native double JNIpixelpartanimatedpropertyfloat2getkeyframeinterpolation(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat2enableadaptivecache(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat2enablefixedcache(String propertyPtr, double size);
 	public static native double JNIpixelpartanimatedpropertyfloat3at(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat3addkeyframe(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat3removekeyframe(String propertyPtr, double index);
@@ -263,8 +259,6 @@ public class MainActivity {
 	public static native double JNIpixelpartanimatedpropertyfloat3keyframeindex(String propertyPtr, double position, double epsilon);
 	public static native double JNIpixelpartanimatedpropertyfloat3setkeyframeinterpolation(String propertyPtr, double method);
 	public static native double JNIpixelpartanimatedpropertyfloat3getkeyframeinterpolation(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat3enableadaptivecache(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat3enablefixedcache(String propertyPtr, double size);
 	public static native double JNIpixelpartanimatedpropertyfloat4at(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat4addkeyframe(String propertyPtr, double position, ByteBuffer valueBufferPtr);
 	public static native double JNIpixelpartanimatedpropertyfloat4removekeyframe(String propertyPtr, double index);
@@ -276,8 +270,6 @@ public class MainActivity {
 	public static native double JNIpixelpartanimatedpropertyfloat4keyframeindex(String propertyPtr, double position, double epsilon);
 	public static native double JNIpixelpartanimatedpropertyfloat4setkeyframeinterpolation(String propertyPtr, double method);
 	public static native double JNIpixelpartanimatedpropertyfloat4getkeyframeinterpolation(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat4enableadaptivecache(String propertyPtr);
-	public static native double JNIpixelpartanimatedpropertyfloat4enablefixedcache(String propertyPtr, double size);
 
 	static {
 		System.loadLibrary("pixelpart");

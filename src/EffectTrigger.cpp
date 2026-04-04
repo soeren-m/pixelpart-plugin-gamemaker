@@ -3,8 +3,8 @@
 #include "Buffer.h"
 #include "EffectRuntime.h"
 #include "pixelpart-runtime/common/Id.h"
-#include "pixelpart-runtime/effect/Trigger.h"
-#include "pixelpart-runtime/effect/TriggerCollection.h"
+#include "pixelpart-runtime/effect/EffectTrigger.h"
+#include "pixelpart-runtime/effect/EffectTriggerCollection.h"
 #include <cstdlib>
 #include <string>
 #include <vector>
@@ -12,7 +12,7 @@
 #include <exception>
 
 extern "C" {
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_trigger_count(pixelpart_gm::string runtimePtr) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_trigger_count(pixelpart_gm::string runtimePtr) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -22,7 +22,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_trigger_count(pixelpart_gm::st
 	return static_cast<pixelpart_gm::real>(effectRuntime->effectAsset.effect().triggers().size());
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_triggers(pixelpart_gm::string runtimePtr, pixelpart_gm::string idBufferPtr, pixelpart_gm::string nameBufferPtr) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_effect_triggers(pixelpart_gm::string runtimePtr, pixelpart_gm::string idBufferPtr, pixelpart_gm::string nameBufferPtr) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -33,7 +33,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_triggers(pixelpart_gm::string 
 		return -1;
 	}
 
-	const pixelpart::TriggerCollection& triggers = effectRuntime->effectAsset.effect().triggers();
+	const pixelpart::EffectTriggerCollection& triggers = effectRuntime->effectAsset.effect().triggers();
 
 	std::vector<pixelpart::id_t> triggerIds;
 	triggerIds.reserve(triggers.size());
@@ -47,7 +47,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_triggers(pixelpart_gm::string 
 	pixelpart_gm::Buffer nameBuffer(nameBufferPtr);
 
 	for(pixelpart::id_t triggerId : triggerIds) {
-		const pixelpart::Trigger& trigger = triggers.at(triggerId);
+		const pixelpart::EffectTrigger& trigger = triggers.at(triggerId);
 
 		idBuffer.write(triggerId.value());
 		nameBuffer.writeString(trigger.name().c_str());
@@ -56,7 +56,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_get_triggers(pixelpart_gm::string 
 	return 1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_activate_trigger(pixelpart_gm::string runtimePtr, pixelpart_gm::real triggerId) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_activate_effect_trigger(pixelpart_gm::string runtimePtr, pixelpart_gm::real triggerId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime || !effectRuntime->effectEngine) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -68,7 +68,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_activate_trigger(pixelpart_gm::str
 	return 1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_trigger_activated(pixelpart_gm::string runtimePtr, pixelpart_gm::real triggerId) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_effect_trigger_activated(pixelpart_gm::string runtimePtr, pixelpart_gm::real triggerId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime || !effectRuntime->effectEngine) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;

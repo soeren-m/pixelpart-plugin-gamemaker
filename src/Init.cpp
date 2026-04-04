@@ -14,8 +14,6 @@ GM_EXPORT pixelpart_gm::real pixelpart_init() {
 			std::thread::hardware_concurrency());
 #endif
 
-		pixelpart::ComputeGraph::nodeFactory.registerBuiltInNodes();
-
 		return 1;
 	}
 	catch(const std::exception& e) {

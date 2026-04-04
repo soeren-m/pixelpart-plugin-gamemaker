@@ -2,8 +2,8 @@
 #include "Error.h"
 #include "Buffer.h"
 #include "EffectRuntime.h"
+#include "pixelpart-runtime/common/Types.h"
 #include "pixelpart-runtime/common/Id.h"
-#include "pixelpart-runtime/common/Math.h"
 #include "pixelpart-runtime/effect/StaticProperty.h"
 #include "pixelpart-runtime/effect/AnimatedProperty.h"
 #include "pixelpart-runtime/effect/ParticleType.h"
@@ -69,12 +69,12 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_index(pixelpart_
 		return -1;
 	}
 
-	std::uint32_t particleTypeIndex = effectRuntime->effectAsset.effect().particleTypes().indexOf(pixelpart::id_t(particleTypeId));
-	if(particleTypeIndex == pixelpart::id_t::nullValue) {
+	auto particleTypeIndex = effectRuntime->effectAsset.effect().particleTypes().indexOf(pixelpart::id_t(particleTypeId));
+	if(!particleTypeIndex) {
 		return -1;
 	}
 
-	return static_cast<pixelpart_gm::real>(particleTypeIndex);
+	return static_cast<pixelpart_gm::real>(particleTypeIndex.value());
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_parent_id(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {

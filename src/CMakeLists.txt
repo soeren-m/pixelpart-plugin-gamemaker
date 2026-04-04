@@ -12,6 +12,7 @@ else()
 		Common.cpp
 		EffectInput.cpp
 		EffectRuntime.cpp
+		EffectTrigger.cpp
 		Error.cpp
 		ForceField.cpp
 		Init.cpp
@@ -26,6 +27,5 @@ else()
 		StaticPropertyFloat2.cpp
 		StaticPropertyFloat3.cpp
 		StaticPropertyFloat4.cpp
-		StaticPropertyInt.cpp
-		Trigger.cpp)
+		StaticPropertyInt.cpp)
 endif()

@@ -462,7 +462,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			return;
 		}
 
-		pixelpart_activate_trigger(effect_ptr, _trigger_id);
+		pixelpart_activate_effect_trigger(effect_ptr, _trigger_id);
 	}
 
 	/// @desc Return whether the trigger with the given name was activated.
@@ -476,7 +476,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			return false;
 		}
 
-		return bool(pixelpart_is_trigger_activated(effect_ptr, _trigger_id));
+		return bool(pixelpart_is_effect_trigger_activated(effect_ptr, _trigger_id));
 	}
 
 	#endregion

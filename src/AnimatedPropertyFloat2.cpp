@@ -136,7 +136,9 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_animated_property_float2_keyframe_
 		return -1;
 	}
 
-	return static_cast<pixelpart_gm::real>(property->keyframeIndex(position, epsilon));
+	auto index = property->keyframeIndex(position, epsilon);
+
+	return index ? static_cast<pixelpart_gm::real>(index.value()) : -1;
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_animated_property_float2_set_keyframe_interpolation(pixelpart_gm::string propertyPtr, pixelpart_gm::real method) {
@@ -159,29 +161,5 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_animated_property_float2_get_keyfr
 	}
 
 	return static_cast<pixelpart_gm::real>(property->keyframeInterpolation());
-}
-
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_animated_property_float2_enable_adaptive_cache(pixelpart_gm::string propertyPtr) {
-	pixelpart::AnimatedProperty<pixelpart::float2_t>* property = pixelpart_gm::parsePtr<pixelpart::AnimatedProperty<pixelpart::float2_t>>(propertyPtr);
-	if(!property) {
-		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
-		return -1;
-	}
-
-	property->enableAdaptiveCache();
-
-	return 1;
-}
-
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_animated_property_float2_enable_fixed_cache(pixelpart_gm::string propertyPtr, pixelpart_gm::real size) {
-	pixelpart::AnimatedProperty<pixelpart::float2_t>* property = pixelpart_gm::parsePtr<pixelpart::AnimatedProperty<pixelpart::float2_t>>(propertyPtr);
-	if(!property) {
-		pixelpart_gm::lastError = pixelpart_gm::invalidPropertyError;
-		return -1;
-	}
-
-	property->enableFixedCache(static_cast<std::size_t>(std::max(size, 1.0)));
-
-	return 1;
 }
 }

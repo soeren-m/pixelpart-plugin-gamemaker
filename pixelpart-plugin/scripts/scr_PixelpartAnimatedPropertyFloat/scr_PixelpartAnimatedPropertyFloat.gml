@@ -89,17 +89,4 @@ function PixelpartAnimatedPropertyFloat(_property_ptr) constructor
 	{
 		return pixelpart_animated_property_float_get_keyframe_interpolation(property_ptr);
 	}
-
-	/// @desc Enable an adaptive cache, which resizes itself automatically if the number of keyframes increases or decreases a lot.
-	static enable_adaptive_cache = function()
-	{
-		pixelpart_animated_property_float_enable_adaptive_cache(property_ptr);
-	}
-
-	/// @desc Enable a fixed cache with the given size, which only stores up to "_size" different values.
-	/// @param {real} _size Cache size
-	static enable_fixed_cache = function(_size)
-	{
-		pixelpart_animated_property_float_enable_fixed_cache(property_ptr, _size);
-	}
 }

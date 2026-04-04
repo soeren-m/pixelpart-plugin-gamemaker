@@ -9,7 +9,7 @@
 #include "Rendering.cpp"
 #include "Resources.cpp"
 #include "EffectInput.cpp"
-#include "Trigger.cpp"
+#include "EffectTrigger.cpp"
 #include "Node.cpp"
 #include "ParticleEmitter.cpp"
 #include "ForceField.cpp"
@@ -189,18 +189,18 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgeteffecti
 	return pixelpart_get_effect_input_float4(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2));
 }
 
-// Trigger
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgettriggercount(JNIEnv* env, jclass cl, jstring arg0) {
-	return pixelpart_get_trigger_count(toStdString(env, arg0).data());
+// Effect trigger
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgeteffecttriggercount(JNIEnv* env, jclass cl, jstring arg0) {
+	return pixelpart_get_effect_trigger_count(toStdString(env, arg0).data());
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgettriggers(JNIEnv* env, jclass cl, jstring arg0, jobject arg1, jobject arg2) {
-	return pixelpart_get_triggers(toStdString(env, arg0).data(), toBufferPtr(env, arg1), toBufferPtr(env, arg2));
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgeteffecttriggers(JNIEnv* env, jclass cl, jstring arg0, jobject arg1, jobject arg2) {
+	return pixelpart_get_effect_triggers(toStdString(env, arg0).data(), toBufferPtr(env, arg1), toBufferPtr(env, arg2));
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartactivatetrigger(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_activate_trigger(toStdString(env, arg0).data(), arg1);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartactivateeffecttrigger(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_activate_effect_trigger(toStdString(env, arg0).data(), arg1);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartistriggeractivated(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_is_trigger_activated(toStdString(env, arg0).data(), arg1);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartiseffecttriggeractivated(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_is_effect_trigger_activated(toStdString(env, arg0).data(), arg1);
 }
 
 // Node
@@ -686,12 +686,6 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpr
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloatgetkeyframeinterpolation(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_animated_property_float_get_keyframe_interpolation(toStdString(env, arg0).data());
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloatenableadaptivecache(JNIEnv* env, jclass cl, jstring arg0) {
-	return pixelpart_animated_property_float_enable_adaptive_cache(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloatenablefixedcache(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_animated_property_float_enable_fixed_cache(toStdString(env, arg0).data(), arg1);
-}
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat2at(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jobject arg2) {
 	return pixelpart_animated_property_float2_at(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2));
 }
@@ -724,12 +718,6 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpr
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat2getkeyframeinterpolation(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_animated_property_float2_get_keyframe_interpolation(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat2enableadaptivecache(JNIEnv* env, jclass cl, jstring arg0) {
-	return pixelpart_animated_property_float2_enable_adaptive_cache(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat2enablefixedcache(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_animated_property_float2_enable_fixed_cache(toStdString(env, arg0).data(), arg1);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat3at(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jobject arg2) {
 	return pixelpart_animated_property_float3_at(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2));
@@ -764,12 +752,6 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpr
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat3getkeyframeinterpolation(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_animated_property_float3_get_keyframe_interpolation(toStdString(env, arg0).data());
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat3enableadaptivecache(JNIEnv* env, jclass cl, jstring arg0) {
-	return pixelpart_animated_property_float3_enable_adaptive_cache(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat3enablefixedcache(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_animated_property_float3_enable_fixed_cache(toStdString(env, arg0).data(), arg1);
-}
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat4at(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jobject arg2) {
 	return pixelpart_animated_property_float4_at(toStdString(env, arg0).data(), arg1, toBufferPtr(env, arg2));
 }
@@ -802,11 +784,5 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpr
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat4getkeyframeinterpolation(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_animated_property_float4_get_keyframe_interpolation(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat4enableadaptivecache(JNIEnv* env, jclass cl, jstring arg0) {
-	return pixelpart_animated_property_float4_enable_adaptive_cache(toStdString(env, arg0).data());
-}
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartanimatedpropertyfloat4enablefixedcache(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_animated_property_float4_enable_fixed_cache(toStdString(env, arg0).data(), arg1);
 }
 }

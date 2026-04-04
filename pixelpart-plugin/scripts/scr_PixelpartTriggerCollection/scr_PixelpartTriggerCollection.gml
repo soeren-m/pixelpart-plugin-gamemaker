@@ -6,11 +6,11 @@ function PixelpartTriggerCollection(_effect_ptr) constructor
 		return;
 	}
 
-	var _trigger_count = pixelpart_get_trigger_count(_effect_ptr);
+	var _trigger_count = pixelpart_get_effect_trigger_count(_effect_ptr);
 	var _id_buffer = buffer_create(_trigger_count * 4, buffer_fixed, 4);
 	var _name_buffer = buffer_create(_trigger_count * 1024, buffer_fixed, 1);
 
-	pixelpart_get_triggers(_effect_ptr,
+	pixelpart_get_effect_triggers(_effect_ptr,
 		buffer_get_address(_id_buffer),
 		buffer_get_address(_name_buffer));
 
