@@ -23,17 +23,17 @@ else()
 endif()
 
 set_target_properties(pixelpart-gamemaker PROPERTIES
-	OUTPUT_NAME "pixelpart")
+	OUTPUT_NAME "pixelpartgm")
 
 # OS-specific settings
 if(WIN32)
 	set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
 	set_target_properties(pixelpart-gamemaker PROPERTIES
-		OUTPUT_NAME "pixelpart_x64")
+		OUTPUT_NAME "pixelpartgm_x64")
 elseif(EMSCRIPTEN)
 	set_target_properties(pixelpart-gamemaker PROPERTIES
-		OUTPUT_NAME "libpixelpart")
+		OUTPUT_NAME "libpixelpartgm")
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		COMPILE_FLAGS "-Os")
 	set_target_properties(pixelpart-gamemaker PROPERTIES

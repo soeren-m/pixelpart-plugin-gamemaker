@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pixelpart-html5
-          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpart.js
+          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpartgm.js

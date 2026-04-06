@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pixelpart-windows
-          path: ./pixelpart-plugin/extensions/Pixelpart/pixelpart_x64.dll
+          path: ./pixelpart-plugin/extensions/Pixelpart/pixelpartgm_x64.dll

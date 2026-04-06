@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pixelpart-macos
-          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpart.dylib
+          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpartgm.dylib

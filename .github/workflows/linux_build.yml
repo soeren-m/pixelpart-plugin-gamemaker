@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pixelpart-linux
-          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpart.so
+          path: ./pixelpart-plugin/extensions/Pixelpart/libpixelpartgm.so
