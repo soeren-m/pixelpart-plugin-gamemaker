@@ -3,6 +3,7 @@
 
 #include "Common.h"
 #include "pixelpart-runtime/common/Types.h"
+#include "pixelpart-runtime/common/Id.h"
 #include "pixelpart-runtime/common/ThreadPool.h"
 #include "pixelpart-runtime/effect/ParticleEmissionPair.h"
 #include "pixelpart-runtime/asset/EffectAsset.h"
@@ -10,6 +11,7 @@
 #include "pixelpart-runtime/vertex/ParticleVertexGenerator.h"
 #include <memory>
 #include <cstdint>
+#include <vector>
 #include <unordered_map>
 #include <random>
 
@@ -21,6 +23,7 @@ struct EffectRuntime {
 	pixelpart::EffectAsset effectAsset;
 	std::unique_ptr<pixelpart::EffectEngine> effectEngine;
 	pixelpart::float_t simulationTime = 0.0;
+	std::vector<pixelpart::id_t> invokedEventIds;
 
 	pixelpart::float3_t effectScale = pixelpart::float3_t(1.0);
 

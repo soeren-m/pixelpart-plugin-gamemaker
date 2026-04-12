@@ -8,6 +8,7 @@
 #include "EffectRuntime.cpp"
 #include "Rendering.cpp"
 #include "Resources.cpp"
+#include "EffectEvent.cpp"
 #include "EffectInput.cpp"
 #include "EffectTrigger.cpp"
 #include "Node.cpp"
@@ -201,6 +202,17 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartactivateef
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartiseffecttriggeractivated(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_is_effect_trigger_activated(toStdString(env, arg0).data(), arg1);
+}
+
+// Effect event
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgeteffecteventcount(JNIEnv* env, jclass cl, jstring arg0) {
+	return pixelpart_get_effect_event_count(toStdString(env, arg0).data());
+}
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgeteffectevents(JNIEnv* env, jclass cl, jstring arg0, jobject arg1, jobject arg2) {
+	return pixelpart_get_effect_events(toStdString(env, arg0).data(), toBufferPtr(env, arg1), toBufferPtr(env, arg2));
+}
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetinvokedeffectevents(JNIEnv* env, jclass cl, jstring arg0, jobject arg1) {
+	return pixelpart_get_invoked_effect_events(toStdString(env, arg0).data(), toBufferPtr(env, arg1));
 }
 
 // Node

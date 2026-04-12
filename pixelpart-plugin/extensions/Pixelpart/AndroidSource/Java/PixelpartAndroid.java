@@ -167,6 +167,17 @@ public class PixelpartAndroid {
 		return JNIpixelpartiseffecttriggeractivated(runtimePtr, triggerId);
 	}
 
+	// Effect event
+	public double pixelpart_get_effect_event_count(String runtimePtr) {
+		return JNIpixelpartgeteffecteventcount(runtimePtr);
+	}
+	public double pixelpart_get_effect_events(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr) {
+		return JNIpixelpartgeteffectevents(runtimePtr, idBufferPtr, nameBufferPtr);
+	}
+	public double pixelpart_get_invoked_effect_events(String runtimePtr, ByteBuffer idBufferPtr) {
+		return JNIpixelpartgetinvokedeffectevents(runtimePtr, idBufferPtr);
+	}
+
 	// Node
 	public double pixelpart_find_node(String runtimePtr, String name) {
 		return JNIpixelpartfindnode(runtimePtr, name);

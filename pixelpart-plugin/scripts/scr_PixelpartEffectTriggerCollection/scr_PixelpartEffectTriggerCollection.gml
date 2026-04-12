@@ -1,4 +1,4 @@
-function PixelpartTriggerCollection(_effect_ptr) constructor
+function PixelpartEffectTriggerCollection(_effect_ptr) constructor
 {
 	if _effect_ptr == ""
 	{

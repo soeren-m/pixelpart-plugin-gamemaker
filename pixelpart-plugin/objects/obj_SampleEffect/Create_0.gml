@@ -4,6 +4,11 @@ finished_event.subscribe(function()
 {
 	show_debug_message("Effect finished");
 });
+effect_event.subscribe(function(_event)
+{
+	show_debug_message("Effect event \"{0}\" invoked (id={1})",
+		_event.event_name, _event.event_id);
+});
 
 var _particle_type = get_particle_type_at_index(0);
 var _particle_type_index = 0;

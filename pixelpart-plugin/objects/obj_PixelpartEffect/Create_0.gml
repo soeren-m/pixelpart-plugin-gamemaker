@@ -9,6 +9,9 @@ effect = new PixelpartEffect(effect_resource);
 // This event is never invoked for effects with repeating particle emitters.
 finished_event = effect.finished_event;
 
+// Custom effect event.
+effect_event = effect.effect_event;
+
 /// @desc Restart the effect.
 /// @param {bool} _clear Whether to remove existing particles
 restart = function(_clear)

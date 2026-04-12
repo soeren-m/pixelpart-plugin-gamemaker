@@ -170,11 +170,17 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_advance_effect(pixelpart_gm::strin
 	std::uint32_t seed = static_cast<std::uint32_t>(std::max(paramBuffer.read<pixelpart_gm::real>(), 0.0));
 	bool randomSeed = paramBuffer.read<pixelpart_gm::real>() > 0.5;
 
+	effectRuntime->invokedEventIds.clear();
+
 	effectRuntime->simulationTime += dt * speed;
 
 	while(effectRuntime->simulationTime > timeStep) {
 		effectRuntime->simulationTime -= timeStep;
 		effectRuntime->effectEngine->advance(timeStep);
+
+		for(pixelpart::id_t eventId : effectRuntime->effectEngine->context().invokedEvents()) {
+			effectRuntime->invokedEventIds.push_back(eventId);
+		}
 
 		if(loop && effectRuntime->effectEngine->context().time() > loopTime) {
 			effectRuntime->effectEngine->restart();

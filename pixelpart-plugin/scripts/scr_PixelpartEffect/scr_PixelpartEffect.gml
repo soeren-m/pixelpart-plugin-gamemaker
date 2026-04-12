@@ -45,7 +45,8 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	// This event is never invoked for effects with repeating particle emitters.
 	finished_event = new PixelpartEvent();
 
-	advance_effect_param_buffer = buffer_create(7 * 8, buffer_fixed, 1);
+	// Custom effect event.
+	effect_event = new PixelpartEvent();
 
 	effect_ptr = "";
 	effect_renderer = pointer_null;
@@ -75,13 +76,18 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			pixelpart_last_error());
 	}
 
-	trigger_collection = new PixelpartTriggerCollection(effect_ptr);
 	effect_input_collection = new PixelpartEffectInputCollection(effect_ptr);
+	effect_trigger_collection = new PixelpartEffectTriggerCollection(effect_ptr);
+	effect_event_collection = new PixelpartEffectEventCollection(effect_ptr);
+
+	advance_effect_param_buffer = buffer_create(7 * 8, buffer_fixed, 1);
+	invoked_effect_event_ids = buffer_create(struct_names_count(effect_event_collection.events) * 4, buffer_fixed, 1);
 
 	/// @desc Cleanup effect.
 	static cleanup = function()
 	{
-		delete finished_event;
+		buffer_delete(invoked_effect_event_ids);
+		buffer_delete(advance_effect_param_buffer);
 
 		if effect_renderer != pointer_null
 		{
@@ -95,8 +101,12 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 			effect_ptr = "";
 		}
 
-		delete trigger_collection;
+		delete effect_event_collection;
+		delete effect_trigger_collection;
 		delete effect_input_collection;
+
+		delete effect_event;
+		delete finished_event;
 	}
 
 	/// @desc Draw effect, should be called in Draw event.
@@ -162,6 +172,22 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		buffer_write(advance_effect_param_buffer, buffer_f64, random_seed);
 
 		pixelpart_advance_effect(effect_ptr, buffer_get_address(advance_effect_param_buffer));
+
+		var _invoked_event_count = pixelpart_get_invoked_effect_events(effect_ptr, buffer_get_address(invoked_effect_event_ids));
+		for (var _event_index = 0; _event_index < _invoked_event_count; _event_index += 1)
+		{
+			var _event_id = buffer_peek(invoked_effect_event_ids, _event_index * 4, buffer_u32);
+			var _event_name = effect_event_collection.get_event_name(_event_id);
+			if is_undefined(_event_name)
+			{
+				continue;
+			}
+
+			effect_event.invoke({
+				event_id: _event_id,
+				event_name: _event_name
+			});
+		}
 
 		if !finished_event_invoked && !loop && pixelpart_is_effect_finished(effect_ptr)
 		{
@@ -456,7 +482,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @param {string} _trigger_name Name of the trigger
 	static activate_trigger = function(_trigger_name)
 	{
-		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
+		var _trigger_id = effect_trigger_collection.get_trigger_id(_trigger_name);
 		if _trigger_id < 0
 		{
 			return;
@@ -470,7 +496,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	/// @returns {bool} true if the trigger was activated
 	static is_trigger_activated = function(_trigger_name)
 	{
-		var _trigger_id = trigger_collection.get_trigger_id(_trigger_name);
+		var _trigger_id = effect_trigger_collection.get_trigger_id(_trigger_name);
 		if _trigger_id < 0
 		{
 			return false;

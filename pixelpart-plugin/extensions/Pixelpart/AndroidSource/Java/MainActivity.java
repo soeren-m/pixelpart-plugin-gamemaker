@@ -66,6 +66,11 @@ public class MainActivity {
 	public static native double JNIpixelpartactivateeffecttrigger(String runtimePtr, double triggerId);
 	public static native double JNIpixelpartiseffecttriggeractivated(String runtimePtr, double triggerId);
 
+	// Effect event
+	public static native double JNIpixelpartgeteffecteventcount(String runtimePtr);
+	public static native double JNIpixelpartgeteffectevents(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr);
+	public static native double JNIpixelpartgetinvokedeffectevents(String runtimePtr, ByteBuffer idBufferPtr);
+
 	// Node
 	public static native double JNIpixelpartfindnode(String runtimePtr, String bufferPtr);
 	public static native double JNIpixelpartfindnodebyindex(String runtimePtr, double nodeIndex);

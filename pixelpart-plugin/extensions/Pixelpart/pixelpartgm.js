@@ -408,6 +408,38 @@ function pixelpart_is_effect_trigger_activated(runtimePtr, triggerId) {
 	return result;
 }
 
+// Effect event
+function pixelpart_get_effect_event_count(runtimePtr) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module._pixelpart_get_effect_event_count(runtimeCStr);
+	Module._free(runtimeCStr);
+
+	return result;
+}
+function pixelpart_get_effect_events(runtimePtr, idBufferPtr, nameBufferPtr) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const nativeIdBufferPtr = Module._malloc(idBufferPtr.byteLength);
+	const nativeNameBufferPtr = Module._malloc(nameBufferPtr.byteLength);
+	const result = Module._pixelpart_get_effect_events(runtimeCStr, nativeIdBufferPtr, nativeNameBufferPtr);
+	pixelpartjs_copy_from_native_buffer(idBufferPtr, nativeIdBufferPtr);
+	pixelpartjs_copy_from_native_buffer(nameBufferPtr, nativeNameBufferPtr);
+	Module._free(nativeNameBufferPtr);
+	Module._free(nativeIdBufferPtr);
+	Module._free(runtimeCStr);
+
+	return result;
+}
+function pixelpart_get_invoked_effect_events(runtimePtr, idBufferPtr) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const nativeIdBufferPtr = Module._malloc(idBufferPtr.byteLength);
+	const result = Module._pixelpart_get_invoked_effect_events(runtimeCStr, nativeIdBufferPtr);
+	pixelpartjs_copy_from_native_buffer(idBufferPtr, nativeIdBufferPtr);
+	Module._free(nativeIdBufferPtr);
+	Module._free(runtimeCStr);
+
+	return result;
+}
+
 // Node
 function pixelpart_find_node(runtimePtr, name) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);

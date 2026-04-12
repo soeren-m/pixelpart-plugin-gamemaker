@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_PixelpartTriggerCollection",
+  "%Name":"scr_PixelpartEffectTriggerCollection",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_PixelpartTriggerCollection",
+  "name":"scr_PixelpartEffectTriggerCollection",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

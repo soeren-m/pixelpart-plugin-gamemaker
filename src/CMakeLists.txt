@@ -10,6 +10,7 @@ else()
 		Buffer.cpp
 		Collider.cpp
 		Common.cpp
+		EffectEvent.cpp
 		EffectInput.cpp
 		EffectRuntime.cpp
 		EffectTrigger.cpp
