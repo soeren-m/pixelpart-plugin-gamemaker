@@ -10,6 +10,13 @@ project(pixelpart-gamemaker
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Link C++ runtime statically for Windows and Linux
+if(MSVC)
+	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	add_link_options(-static-libstdc++ -static-libgcc)
+endif()
+
 # Messages
 message(STATUS "Pixelpart plugin for GameMaker: Version ${PIXELPART_GAMEMAKER_VERSION}")
 message(STATUS "Pixelpart plugin for GameMaker: System ${CMAKE_SYSTEM_NAME}")
@@ -22,18 +29,21 @@ else()
 	add_library(pixelpart-gamemaker SHARED)
 endif()
 
+# Set output name
 set_target_properties(pixelpart-gamemaker PROPERTIES
 	OUTPUT_NAME "pixelpartgm")
 
-# OS-specific settings
 if(WIN32)
 	set(CMAKE_SHARED_LIBRARY_PREFIX "")
-
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		OUTPUT_NAME "pixelpartgm_x64")
 elseif(EMSCRIPTEN)
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		OUTPUT_NAME "libpixelpartgm")
+endif()
+
+# Emscripten settings
+if(EMSCRIPTEN)
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		COMPILE_FLAGS "-Os")
 	set_target_properties(pixelpart-gamemaker PROPERTIES
