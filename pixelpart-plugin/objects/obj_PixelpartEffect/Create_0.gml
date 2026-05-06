@@ -34,12 +34,6 @@ get_current_time = function()
 	return effect.get_current_time();
 }
 
-/// @desc Whether the effect is a 3D effect.
-is_3d = function()
-{
-	return effect.is_3d();
-}
-
 #region Inputs
 
 /// @desc Set effect input to the given value. The effect input must be of type bool.

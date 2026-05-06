@@ -54,26 +54,37 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 	first_step = true;
 	finished_event_invoked = false;
 
-	if !buffer_exists(_effect_resource.data_buffer)
+	if buffer_exists(_effect_resource.data_buffer)
 	{
-		show_debug_message("[Pixelpart] Effect resource has not been loaded properly");
-		return;
-	}
+		// Deserialize effect
+		effect_ptr = pixelpart_load_effect(
+			buffer_read(_effect_resource.data_buffer, buffer_string),
+			buffer_get_size(_effect_resource.data_buffer),
+			_particle_capacity);
 
-	// Deserialize effect
-	effect_ptr = pixelpart_load_effect(
-		buffer_read(_effect_resource.data_buffer, buffer_string),
-		buffer_get_size(_effect_resource.data_buffer),
-		_particle_capacity);
+		if effect_ptr != ""
+		{
+			if bool(pixelpart_is_effect_3d(effect_ptr))
+			{
+				show_debug_message("[Pixelpart] Failed to load effect, 3D effects are not supported");
 
-	if effect_ptr != ""
-	{
-		effect_renderer = new PixelpartEffectRenderer(effect_ptr);
+				pixelpart_delete_effect(effect_ptr);
+				effect_ptr = "";
+			}
+			else
+			{
+				effect_renderer = new PixelpartEffectRenderer(effect_ptr);
+			}
+		}
+		else
+		{
+			show_debug_message("[Pixelpart] Failed to load effect with error: {0}",
+				pixelpart_last_error());
+		}
 	}
 	else
 	{
-		show_debug_message("[Pixelpart] Failed to load effect with error: {0}",
-			pixelpart_last_error());
+		show_debug_message("[Pixelpart] Effect resource has not been loaded properly");
 	}
 
 	effect_input_collection = new PixelpartEffectInputCollection(effect_ptr);
@@ -248,18 +259,6 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		}
 
 		return pixelpart_get_effect_time(effect_ptr);
-	}
-
-	/// @desc Whether the effect is a 3D effect.
-	static is_3d = function()
-	{
-		if effect_ptr == ""
-		{
-			show_debug_message("[Pixelpart] Effect is not associated with any effect asset");
-			return false;
-		}
-
-		return bool(pixelpart_is_effect_3d(effect_ptr));
 	}
 
 	#region Inputs
