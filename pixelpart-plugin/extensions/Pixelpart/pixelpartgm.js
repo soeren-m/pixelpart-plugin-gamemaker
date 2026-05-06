@@ -23,11 +23,11 @@ function pixelpart_last_error() {
 }
 
 // Effect runtime
-function pixelpart_load_effect(data, size, particleCapacity) {
+function pixelpart_load_effect(data, size) {
 	const dataCStr = Module._malloc(size + 1);
 	Module.stringToUTF8(data, dataCStr, size + 1);
 
-	const result = Module.UTF8ToString(Module._pixelpart_load_effect(dataCStr, size, particleCapacity));
+	const result = Module.UTF8ToString(Module._pixelpart_load_effect(dataCStr, size));
 	Module._free(dataCStr);
 
 	return result;

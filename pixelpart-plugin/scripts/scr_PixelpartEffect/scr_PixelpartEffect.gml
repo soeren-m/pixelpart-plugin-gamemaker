@@ -1,8 +1,7 @@
 /// @desc An object that plays a Pixelpart effect.
 /// This struct offers methods and properties to change how the effect is simulated and rendered.
 /// @param {struct} _effect_resource Effect resource to play
-/// @param {real} _particle_capacity Maximum number of particles per particle type
-function PixelpartEffect(_effect_resource, _particle_capacity = 10000) constructor
+function PixelpartEffect(_effect_resource) constructor
 {
 	// Whether the effect is currently playing or not.
 	playing = true;
@@ -59,8 +58,7 @@ function PixelpartEffect(_effect_resource, _particle_capacity = 10000) construct
 		// Deserialize effect
 		effect_ptr = pixelpart_load_effect(
 			buffer_read(_effect_resource.data_buffer, buffer_string),
-			buffer_get_size(_effect_resource.data_buffer),
-			_particle_capacity);
+			buffer_get_size(_effect_resource.data_buffer));
 
 		if effect_ptr != ""
 		{

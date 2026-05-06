@@ -23,8 +23,8 @@ public class PixelpartAndroid {
 	}
 
 	// Effect runtime
-	public String pixelpart_load_effect(String data, double size, double particleCapacity) {
-		return JNIpixelpartloadeffect(data, size, particleCapacity);
+	public String pixelpart_load_effect(String data, double size) {
+		return JNIpixelpartloadeffect(data, size);
 	}
 	public double pixelpart_delete_effect(String runtimePtr) {
 		return JNIpixelpartdeleteeffect(runtimePtr);

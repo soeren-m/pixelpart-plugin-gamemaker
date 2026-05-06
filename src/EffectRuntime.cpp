@@ -28,7 +28,7 @@ std::string effectRuntimePtrString = "";
 }
 
 extern "C" {
-GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::string data, pixelpart_gm::real size, pixelpart_gm::real particleCapacity) {
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::string data, pixelpart_gm::real size) {
 	if(!data || size <= 0) {
 		pixelpart_gm::lastError = "Effect data is empty";
 		pixelpart_gm::effectRuntimePtrString = "";
@@ -45,14 +45,12 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::
 			effectRuntime->effectAsset.effect(),
 			std::make_shared<pixelpart::DefaultParticleGenerator>(),
 			std::make_shared<pixelpart::DefaultParticleModifier>(),
-			pixelpart_gm::threadPool,
-			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
+			pixelpart_gm::threadPool);
 #else
 		effectRuntime->effectEngine = std::make_unique<pixelpart::SingleThreadedEffectEngine>(
 			effectRuntime->effectAsset.effect(),
 			std::make_shared<pixelpart::DefaultParticleGenerator>(),
-			std::make_shared<pixelpart::DefaultParticleModifier>(),
-			static_cast<std::uint32_t>(std::max(particleCapacity, 1.0)));
+			std::make_shared<pixelpart::DefaultParticleModifier>());
 #endif
 
 		effectRuntime->effectAsset.effect().applyInputs();
