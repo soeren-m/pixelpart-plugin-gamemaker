@@ -11,7 +11,7 @@
   ],
   "parent":{
     "name":"Objects",
-    "path":"folders/Objects.yy",
+    "path":"folders/Pixelpart Sample/Objects.yy",
   },
   "parentObjectId":{
     "name":"obj_PixelpartEffect",

@@ -6,7 +6,7 @@
   "name":"scr_PixelpartLineCollider",
   "parent":{
     "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "path":"folders/Pixelpart/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -4,7 +4,7 @@
   "name":"sha_PixelpartSpriteUnlit",
   "parent":{
     "name":"Shaders",
-    "path":"folders/Shaders.yy",
+    "path":"folders/Pixelpart/Shaders.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

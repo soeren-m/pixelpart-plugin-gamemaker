@@ -290,7 +290,7 @@
   "packageId":"",
   "parent":{
     "name":"Extensions",
-    "path":"folders/Extensions.yy",
+    "path":"folders/Pixelpart/Extensions.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

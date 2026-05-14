@@ -18,7 +18,7 @@
   "name":"rm_Sample",
   "parent":{
     "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "path":"folders/Pixelpart Sample/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
