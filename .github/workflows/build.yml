@@ -37,34 +37,34 @@ jobs:
     needs: [windows-build, linux-build, macos-build, android-build, html5-build]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download Windows artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-windows
           path: artifacts/windows
 
       - name: Download Linux artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-linux
           path: artifacts/linux
 
       - name: Download macOS artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-macos
           path: artifacts/macos
 
       - name: Download Android artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-android
           path: artifacts/android
 
       - name: Download HTML5 artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-html5
           path: artifacts/html5
@@ -86,7 +86,7 @@ jobs:
           cp -r artifacts/html5/*.js ./pixelpart-plugin/extensions/Pixelpart/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pixelpart-plugin-gamemaker
           path: ./pixelpart-plugin

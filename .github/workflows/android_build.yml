@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Update submodules
         uses: ./.github/actions/submodules
@@ -30,7 +30,7 @@ jobs:
           cmake --build build/android-arm --target install --config Release
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pixelpart-android
           path: ./pixelpart-plugin/extensions/Pixelpart/AndroidSource/libs/

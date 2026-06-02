@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Update submodules
         uses: ./.github/actions/submodules
@@ -20,7 +20,7 @@ jobs:
           cmake --build build/windows-x64 --target install --config Release
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pixelpart-windows
           path: ./pixelpart-plugin/extensions/Pixelpart/pixelpartgm_x64.dll
