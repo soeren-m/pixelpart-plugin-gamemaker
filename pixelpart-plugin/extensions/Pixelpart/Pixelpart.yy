@@ -10,13 +10,13 @@
   "androidProps":true,
   "androidsourcedir":"",
   "author":"",
-  "classname":"",
-  "copyToTargets":234,
+  "classname":"PixelpartiOS",
+  "copyToTargets":238,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"1.9.0",
   "files":[
-    {"$GMExtensionFile":"v1","%Name":"Pixelpart.ext","constants":[],"copyToTargets":234,"filename":"Pixelpart.ext","final":"pixelpart_shutdown","functions":[
+    {"$GMExtensionFile":"v1","%Name":"Pixelpart.ext","constants":[],"copyToTargets":238,"filename":"Pixelpart.ext","final":"pixelpart_shutdown","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_shutdown","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_shutdown","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
         {"$GMExtensionFunction":"","%Name":"pixelpart_load_effect","argCount":0,"args":[1,2,],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_load_effect","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
@@ -277,9 +277,11 @@
   "ioscodeinjection":"",
   "iosdelegatename":"",
   "iosplistinject":null,
-  "iosProps":false,
+  "iosProps":true,
   "iosSystemFrameworkEntries":[],
-  "iosThirdPartyFrameworkEntries":[],
+  "iosThirdPartyFrameworkEntries":[
+    {"$GMExtensionFrameworkEntry":"","%Name":"libpixelpartgm.xcframework","embed":0,"name":"libpixelpartgm.xcframework","resourceType":"GMExtensionFrameworkEntry","resourceVersion":"2.0","weakReference":false,},
+  ],
   "license":"",
   "maccompilerflags":"",
   "maclinkerflags":"",

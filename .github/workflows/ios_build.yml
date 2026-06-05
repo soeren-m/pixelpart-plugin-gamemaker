@@ -1,0 +1,42 @@
+name: iOS build
+on:
+  workflow_call:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    name: Build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Compile for arm64
+        run: |
+          cmake --preset ios-arm64
+          cmake --build build/ios-arm64 --target install --config Release
+
+      - name: Compile for simulator (x86_64)
+        run: |
+          cmake --preset ios-simulator
+          cmake --build build/ios-simulator --target install --config Release  
+
+      - name: Create xcframework
+        run: |
+          libtool -static -o "pixelpart-plugin/extensions/Pixelpart/iOS/iphoneos/libpixelpartgm.a" "pixelpart-plugin/extensions/Pixelpart/iOS/iphoneos/libpixelpartgm_no_runtime.a" "pixelpart-plugin/extensions/Pixelpart/iOS/iphoneos/libpixelpart-runtime.a"
+          libtool -static -o "pixelpart-plugin/extensions/Pixelpart/iOS/iphonesimulator/libpixelpartgm.a" "pixelpart-plugin/extensions/Pixelpart/iOS/iphonesimulator/libpixelpartgm_no_runtime.a" "pixelpart-plugin/extensions/Pixelpart/iOS/iphonesimulator/libpixelpart-runtime.a"
+          xcodebuild -create-xcframework -library "pixelpart-plugin/extensions/Pixelpart/iOS/iphoneos/libpixelpartgm.a" -library "pixelpart-plugin/extensions/Pixelpart/iOS/iphonesimulator/libpixelpartgm.a" -output "pixelpart-plugin/extensions/Pixelpart/iOS/libpixelpartgm.xcframework"
+
+      - name: Zip xcframework
+        run: |
+          mkdir -p pixelpart-plugin/extensions/Pixelpart/iOSSourceFromMac
+          cd pixelpart-plugin/extensions/Pixelpart/iOS
+          zip -r ../iOSSourceFromMac/libpixelpartgm.zip libpixelpartgm.xcframework
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: pixelpart-ios
+          path: ./pixelpart-plugin/extensions/Pixelpart/iOSSourceFromMac/libpixelpartgm.zip

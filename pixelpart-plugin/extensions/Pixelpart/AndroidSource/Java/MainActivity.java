@@ -277,6 +277,6 @@ public class MainActivity {
 	public static native double JNIpixelpartanimatedpropertyfloat4getkeyframeinterpolation(String propertyPtr);
 
 	static {
-		System.loadLibrary("pixelpart");
+		System.loadLibrary("pixelpartgm");
 	}
 }

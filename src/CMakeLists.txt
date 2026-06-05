@@ -1,6 +1,9 @@
 if(ANDROID)
 	target_sources(pixelpart-gamemaker PRIVATE
 		AndroidNativeLib.cpp)
+elseif(IOS)
+	target_sources(pixelpart-gamemaker PRIVATE
+		PixelpartiOS.mm)
 else()
 	target_sources(pixelpart-gamemaker PRIVATE
 		AnimatedPropertyFloat.cpp

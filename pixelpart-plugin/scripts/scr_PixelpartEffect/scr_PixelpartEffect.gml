@@ -201,7 +201,7 @@ function PixelpartEffect(_effect_resource) constructor
 		if !finished_event_invoked && !loop && pixelpart_is_effect_finished(effect_ptr)
 		{
 			finished_event_invoked = true;
-			finished_event.invoke();
+			finished_event.invoke(undefined);
 		}
 	}
 

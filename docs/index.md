@@ -15,11 +15,11 @@ Target   | Architectures      | Supported
 Windows  | x86_64             | Yes
 Linux    | x86_64             | Yes
 macOS    | arm64, x86_64      | Yes
-iOS      |                    | No
+iOS      | arm64, simulator   | Yes
 Android  | arm, arm64, x86_64 | Yes
 HTML5    | wasm               | Yes
-GX.games |                    | No
-Console  |                    | No
+GX.games | -                  | No
+Console  | -                  | No
 
 ## Feature support
 

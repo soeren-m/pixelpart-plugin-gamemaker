@@ -26,7 +26,7 @@ if(EMSCRIPTEN)
 	# Need add_executable to generate wasm
 	add_executable(pixelpart-gamemaker)
 else()
-	add_library(pixelpart-gamemaker SHARED)
+	add_library(pixelpart-gamemaker)
 endif()
 
 # Set output name
@@ -37,6 +37,9 @@ if(WIN32)
 	set(CMAKE_SHARED_LIBRARY_PREFIX "")
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		OUTPUT_NAME "pixelpartgm_x64")
+elseif(IOS)
+	set_target_properties(pixelpart-gamemaker PROPERTIES
+		OUTPUT_NAME "pixelpartgm_no_runtime")
 elseif(EMSCRIPTEN)
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		OUTPUT_NAME "libpixelpartgm")
@@ -69,6 +72,11 @@ target_link_libraries(pixelpart-gamemaker
 	PRIVATE pixelpart-runtime)
 
 # Install binaries
-install(TARGETS pixelpart-gamemaker
-	LIBRARY DESTINATION .
-	RUNTIME DESTINATION .)
+if(BUILD_SHARED_LIBS OR EMSCRIPTEN)
+	install(TARGETS pixelpart-gamemaker
+		LIBRARY DESTINATION .
+		RUNTIME DESTINATION .)
+else()
+	install(TARGETS pixelpart-gamemaker pixelpart-runtime
+		ARCHIVE DESTINATION .)
+endif()

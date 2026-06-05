@@ -7,6 +7,7 @@
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
+                "BUILD_SHARED_LIBS": "ON",
                 "CMAKE_BUILD_TYPE": "Release",
                 "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
@@ -28,6 +29,7 @@
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
+                "BUILD_SHARED_LIBS": "ON",
                 "CMAKE_BUILD_TYPE": "Release",
                 "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
@@ -49,8 +51,10 @@
             "binaryDir": "build/${presetName}",
             "installDir": "pixelpart-plugin/extensions/Pixelpart",
             "cacheVariables": {
+                "BUILD_SHARED_LIBS": "ON",
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64",
+                "CMAKE_OSX_DEPLOYMENT_TARGET": "13.3",
                 "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             },
             "condition": {
@@ -60,14 +64,52 @@
             }
         },
         {
+            "name": "ios-base",
+            "binaryDir": "build/${presetName}",
+            "cacheVariables": {
+                "BUILD_SHARED_LIBS": "OFF",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_SYSTEM_NAME": "iOS",
+                "CMAKE_OSX_DEPLOYMENT_TARGET": "16.3",
+                "PIXELPART_RUNTIME_MULTITHREADING": "ON"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "ios-arm64",
+            "displayName": "iOS arm64",
+            "inherits": "ios-base",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart/iOS/iphoneos",
+            "cacheVariables": {
+                "CMAKE_OSX_SYSROOT": "iphoneos",
+                "CMAKE_OSX_ARCHITECTURES": "arm64"
+            }
+        },
+        {
+            "name": "ios-simulator",
+            "displayName": "iOS Simulator",
+            "inherits": "ios-base",
+            "installDir": "pixelpart-plugin/extensions/Pixelpart/iOS/iphonesimulator",
+            "cacheVariables": {
+                "CMAKE_OSX_SYSROOT": "iphonesimulator",
+                "CMAKE_OSX_ARCHITECTURES": "x86_64"
+            }
+        },
+        {
             "name": "android-base",
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "build/${presetName}",
             "toolchainFile": "$env{ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake",
             "cacheVariables": {
+                "BUILD_SHARED_LIBS": "ON",
                 "CMAKE_BUILD_TYPE": "Release",
-                "ANDROID_PLATFORM": "21"
+                "ANDROID_PLATFORM": "21",
+                "PIXELPART_RUNTIME_MULTITHREADING": "ON"
             }
         },
         {

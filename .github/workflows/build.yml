@@ -19,6 +19,10 @@ jobs:
     name: macOS build
     uses: ./.github/workflows/macos_build.yml
 
+  ios-build:
+    name: iOS build
+    uses: ./.github/workflows/ios_build.yml
+
   android-build:
     name: Android build
     uses: ./.github/workflows/android_build.yml
@@ -30,7 +34,7 @@ jobs:
   package:
     name: Package plugin
     runs-on: ubuntu-latest
-    needs: [windows-build, linux-build, macos-build, android-build, html5-build]
+    needs: [windows-build, linux-build, macos-build, ios-build, android-build, html5-build]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -53,6 +57,12 @@ jobs:
           name: pixelpart-macos
           path: artifacts/macos
 
+      - name: Download iOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: pixelpart-ios
+          path: artifacts/ios
+
       - name: Download Android artifacts
         uses: actions/download-artifact@v8
         with:
@@ -73,6 +83,8 @@ jobs:
           cp -r artifacts/windows/*.dll ./pixelpart-plugin/extensions/Pixelpart/
           cp -r artifacts/linux/*.so ./pixelpart-plugin/extensions/Pixelpart/
           cp -r artifacts/macos/*.dylib ./pixelpart-plugin/extensions/Pixelpart/
+          mkdir -p ./pixelpart-plugin/extensions/Pixelpart/iOSSourceFromMac/
+          cp -r artifacts/ios/*.zip ./pixelpart-plugin/extensions/Pixelpart/iOSSourceFromMac/
           mkdir -p ./pixelpart-plugin/extensions/Pixelpart/AndroidSource/libs/x86_64/
           mkdir -p ./pixelpart-plugin/extensions/Pixelpart/AndroidSource/libs/arm64-v8a/
           mkdir -p ./pixelpart-plugin/extensions/Pixelpart/AndroidSource/libs/armeabi-v7a/

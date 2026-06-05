@@ -17,7 +17,8 @@ The plugin supports the following target platforms:
 - Windows
 - Linux
 - macOS
+- iOS
 - Android
 - HTML5
 
-At the moment, iOS and console targets are not supported.
+Console and GX.games targets are not supported.
