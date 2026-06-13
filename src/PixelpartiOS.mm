@@ -30,7 +30,7 @@
 @implementation PixelpartiOS
 
 - (void) Init {
-	
+
 }
 
 // Init
@@ -47,8 +47,14 @@
 }
 
 // Effect runtime
-- (NSString*)pixelpart_load_effect:(char*)data size:(double)size {
-	return [NSString stringWithUTF8String:pixelpart_load_effect(data, size)];
+- (NSString*)pixelpart_load_effect_resource:(char*)data size:(double)size {
+	return [NSString stringWithUTF8String:pixelpart_load_effect_resource(data, size)];
+}
+- (double)pixelpart_delete_effect_resource:(char*)resourcePtr {
+	return pixelpart_delete_effect_resource(resourcePtr);
+}
+- (NSString*)pixelpart_create_effect:(char*)resourcePtr {
+	return [NSString stringWithUTF8String:pixelpart_create_effect(resourcePtr)];
 }
 - (double)pixelpart_delete_effect:(char*)runtimePtr {
 	return pixelpart_delete_effect(runtimePtr);

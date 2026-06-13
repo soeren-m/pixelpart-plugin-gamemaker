@@ -60,8 +60,14 @@ JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartlasterror(
 }
 
 // Effect runtime
-JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartloadeffect(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return toJavaString(env, pixelpart_load_effect(toStdString(env, arg0).data(), arg1));
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartloadeffectresource(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_load_effect_resource(toStdString(env, arg0).data(), arg1));
+}
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartdeleteeffectresource(JNIEnv* env, jclass cl, jstring arg0) {
+	return pixelpart_delete_effect_resource(toStdString(env, arg0).data());
+}
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartcreateeffect(JNIEnv* env, jclass cl, jstring arg0) {
+	return toJavaString(env, pixelpart_create_effect(toStdString(env, arg0).data()));
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartdeleteeffect(JNIEnv* env, jclass cl, jstring arg0) {
 	return pixelpart_delete_effect(toStdString(env, arg0).data());

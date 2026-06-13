@@ -3,5 +3,4 @@
 effect.cleanup();
 delete effect;
 
-effect_resource.cleanup();
-delete effect_resource;
+pixelpart_cache_release(effect_resource_path);

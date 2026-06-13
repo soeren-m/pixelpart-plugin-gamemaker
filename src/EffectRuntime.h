@@ -19,6 +19,10 @@ namespace pixelpart_gm {
 extern std::shared_ptr<pixelpart::ThreadPool> threadPool;
 extern std::mt19937 rng;
 
+struct EffectResource {
+	pixelpart::EffectAsset effectAsset;
+};
+
 struct EffectRuntime {
 	pixelpart::EffectAsset effectAsset;
 	std::unique_ptr<pixelpart::EffectEngine> effectEngine;

@@ -1,7 +1,6 @@
 /// @desc Load effect
 
-effect_resource = new PixelpartEffectResource();
-effect_resource.load(effect_resource_path);
+effect_resource = pixelpart_cache_load(effect_resource_path);
 
 effect = new PixelpartEffect(effect_resource);
 

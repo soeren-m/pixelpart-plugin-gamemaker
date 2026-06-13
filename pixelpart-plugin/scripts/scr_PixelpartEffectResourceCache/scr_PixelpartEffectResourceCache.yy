@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_PixelpartEffectResourceCache",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_PixelpartEffectResourceCache",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Pixelpart/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

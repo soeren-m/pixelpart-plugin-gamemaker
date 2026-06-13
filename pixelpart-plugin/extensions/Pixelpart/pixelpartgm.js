@@ -23,12 +23,26 @@ function pixelpart_last_error() {
 }
 
 // Effect runtime
-function pixelpart_load_effect(data, size) {
+function pixelpart_load_effect_resource(data, size) {
 	const dataCStr = Module._malloc(size + 1);
 	Module.stringToUTF8(data, dataCStr, size + 1);
 
-	const result = Module.UTF8ToString(Module._pixelpart_load_effect(dataCStr, size));
+	const result = Module.UTF8ToString(Module._pixelpart_load_effect_resource(dataCStr, size));
 	Module._free(dataCStr);
+
+	return result;
+}
+function pixelpart_delete_effect_resource(resourcePtr) {
+	const resourceCStr = Module.stringToNewUTF8(resourcePtr);
+	const result = Module._pixelpart_delete_effect_resource(resourceCStr);
+	Module._free(resourceCStr);
+
+	return result;
+}
+function pixelpart_create_effect(resourcePtr) {
+	const resourceCStr = Module.stringToNewUTF8(resourcePtr);
+	const result = Module.UTF8ToString(Module._pixelpart_create_effect(resourceCStr));
+	Module._free(resourceCStr);
 
 	return result;
 }

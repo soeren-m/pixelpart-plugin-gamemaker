@@ -12,7 +12,9 @@ public class MainActivity {
 	public static native String JNIpixelpartlasterror();
 
 	// Effect runtime
-	public static native String JNIpixelpartloadeffect(String data, double size);
+	public static native String JNIpixelpartloadeffectresource(String data, double size);
+	public static native double JNIpixelpartdeleteeffectresource(String resourcePtr);
+	public static native String JNIpixelpartcreateeffect(String resourcePtr);
 	public static native double JNIpixelpartdeleteeffect(String runtimePtr);
 	public static native double JNIpixelpartseteffectscale(String runtimePtr, double scaleX, double scaleY);
 	public static native double JNIpixelpartseteffecttransform(String runtimePtr, double x, double y);

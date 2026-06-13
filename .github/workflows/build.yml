@@ -58,7 +58,7 @@ jobs:
           path: artifacts/macos
 
       - name: Download iOS artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: pixelpart-ios
           path: artifacts/ios

@@ -53,12 +53,10 @@ function PixelpartEffect(_effect_resource) constructor
 	first_step = true;
 	finished_event_invoked = false;
 
-	if buffer_exists(_effect_resource.data_buffer)
+	if _effect_resource.resource_ptr != ""
 	{
 		// Deserialize effect
-		effect_ptr = pixelpart_load_effect(
-			buffer_read(_effect_resource.data_buffer, buffer_string),
-			buffer_get_size(_effect_resource.data_buffer));
+		effect_ptr = pixelpart_create_effect(_effect_resource.resource_ptr);
 
 		if effect_ptr != ""
 		{
@@ -76,7 +74,7 @@ function PixelpartEffect(_effect_resource) constructor
 		}
 		else
 		{
-			show_debug_message("[Pixelpart] Failed to load effect with error: {0}",
+			show_debug_message("[Pixelpart] Failed to create effect with error: {0}",
 				pixelpart_last_error());
 		}
 	}

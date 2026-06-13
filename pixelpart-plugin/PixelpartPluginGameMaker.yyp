@@ -26,7 +26,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"PixelpartPluginGameMaker",
   "resources":[
@@ -51,6 +51,7 @@
     {"id":{"name":"scr_PixelpartEffectInputCollection","path":"scripts/scr_PixelpartEffectInputCollection/scr_PixelpartEffectInputCollection.yy",},},
     {"id":{"name":"scr_PixelpartEffectRenderer","path":"scripts/scr_PixelpartEffectRenderer/scr_PixelpartEffectRenderer.yy",},},
     {"id":{"name":"scr_PixelpartEffectResource","path":"scripts/scr_PixelpartEffectResource/scr_PixelpartEffectResource.yy",},},
+    {"id":{"name":"scr_PixelpartEffectResourceCache","path":"scripts/scr_PixelpartEffectResourceCache/scr_PixelpartEffectResourceCache.yy",},},
     {"id":{"name":"scr_PixelpartEffectTriggerCollection","path":"scripts/scr_PixelpartEffectTriggerCollection/scr_PixelpartEffectTriggerCollection.yy",},},
     {"id":{"name":"scr_PixelpartEvent","path":"scripts/scr_PixelpartEvent/scr_PixelpartEvent.yy",},},
     {"id":{"name":"scr_PixelpartForceField","path":"scripts/scr_PixelpartForceField/scr_PixelpartForceField.yy",},},

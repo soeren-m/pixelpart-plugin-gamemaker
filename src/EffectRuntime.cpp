@@ -24,13 +24,52 @@ namespace pixelpart_gm {
 std::shared_ptr<pixelpart::ThreadPool> threadPool;
 std::mt19937 rng;
 
+std::string effectResourcePtrString = "";
 std::string effectRuntimePtrString = "";
 }
 
 extern "C" {
-GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::string data, pixelpart_gm::real size) {
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect_resource(pixelpart_gm::string data, pixelpart_gm::real size) {
 	if(!data || size <= 0) {
 		pixelpart_gm::lastError = "Effect data is empty";
+		pixelpart_gm::effectResourcePtrString = "";
+
+		return pixelpart_gm::effectResourcePtrString.c_str();
+	}
+
+	try {
+		pixelpart_gm::EffectResource* effectResource = new pixelpart_gm::EffectResource();
+		effectResource->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
+
+		pixelpart_gm::effectResourcePtrString = pixelpart_gm::ptrToString(effectResource);
+
+		return pixelpart_gm::effectResourcePtrString.c_str();
+	}
+	catch(const std::exception& e) {
+		pixelpart_gm::lastError = std::string(e.what());
+	}
+
+	pixelpart_gm::effectResourcePtrString = "";
+
+	return pixelpart_gm::effectResourcePtrString.c_str();
+}
+
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_delete_effect_resource(pixelpart_gm::string resourcePtr) {
+	pixelpart_gm::EffectResource* effectResource = pixelpart_gm::parsePtr<pixelpart_gm::EffectResource>(resourcePtr);
+	if(!effectResource) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectResourceError;
+		return -1;
+	}
+
+	delete effectResource;
+
+	return 1;
+}
+
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_create_effect(pixelpart_gm::string resourcePtr) {
+	pixelpart_gm::EffectResource* effectResource = pixelpart_gm::parsePtr<pixelpart_gm::EffectResource>(resourcePtr);
+	if(!effectResource) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectResourceError;
 		pixelpart_gm::effectRuntimePtrString = "";
 
 		return pixelpart_gm::effectRuntimePtrString.c_str();
@@ -38,7 +77,7 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_load_effect(pixelpart_gm::
 
 	try {
 		pixelpart_gm::EffectRuntime* effectRuntime = new pixelpart_gm::EffectRuntime();
-		effectRuntime->effectAsset = pixelpart::deserializeEffectAsset(data, static_cast<std::size_t>(size));
+		effectRuntime->effectAsset = effectResource->effectAsset;
 
 #ifdef PIXELPART_RUNTIME_MULTITHREADING
 		effectRuntime->effectEngine = std::make_unique<pixelpart::MultiThreadedEffectEngine>(
