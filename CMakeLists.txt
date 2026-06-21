@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-set(PIXELPART_GAMEMAKER_VERSION 1.9.0)
+set(PIXELPART_GAMEMAKER_VERSION 1.9.3)
 
 project(pixelpart-gamemaker
 	VERSION ${PIXELPART_GAMEMAKER_VERSION}

@@ -14,7 +14,7 @@
   "copyToTargets":238,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.9.0",
+  "extensionVersion":"1.9.3",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"Pixelpart.ext","constants":[],"copyToTargets":238,"filename":"Pixelpart.ext","final":"pixelpart_shutdown","functions":[
         {"$GMExtensionFunction":"","%Name":"pixelpart_init","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":true,"kind":1,"name":"pixelpart_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
