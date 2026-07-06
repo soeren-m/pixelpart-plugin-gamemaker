@@ -33,7 +33,7 @@ public class MainActivity {
 
 	// Resources
 	public static native double JNIpixelpartgetimageresourcecount(String runtimePtr);
-	public static native double JNIpixelpartgetimageresourceid(String runtimePtr, double index, ByteBuffer resourceIdBufferPtr, double resourceIdBufferSize);
+	public static native String JNIpixelpartgetimageresourceid(String runtimePtr, double index);
 	public static native double JNIpixelpartgetimageresourcewidth(String runtimePtr, String resourceId);
 	public static native double JNIpixelpartgetimageresourceheight(String runtimePtr, String resourceId);
 	public static native double JNIpixelpartgetimageresourcechannels(String runtimePtr, String resourceId);
@@ -176,7 +176,7 @@ public class MainActivity {
 	public static native double JNIpixelpartparticletypeisvisible(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetlayer(String runtimePtr, double particleTypeId, double layer);
 	public static native double JNIpixelpartparticletypegetlayer(String runtimePtr, double particleTypeId);
-	public static native double JNIpixelpartparticletypegetmaterialid(String runtimePtr, double particleTypeId, ByteBuffer bufferPtr, double bufferSize);
+	public static native String JNIpixelpartparticletypegetmaterialid(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypeismaterialbuiltin(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypegetmaterialparametercount(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypegetmaterialparameterids(String runtimePtr, double particleTypeId, ByteBuffer parameterIdBufferPtr);
