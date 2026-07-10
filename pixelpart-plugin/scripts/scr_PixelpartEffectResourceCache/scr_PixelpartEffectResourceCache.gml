@@ -1,5 +1,11 @@
 function pixelpart_cache_load(_filepath)
 {
+	// Avoid error "illegal to use empty names"
+	if _filepath == ""
+	{
+		return new PixelpartEffectResource();
+	}
+
 	var _cache = pixelpart_cache_get();
 
 	if (!variable_struct_exists(_cache, _filepath))
