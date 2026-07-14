@@ -2,7 +2,7 @@
 #include "Error.h"
 #include "Buffer.h"
 #include "EffectRuntime.h"
-#include "pixelpart-runtime/common/Id.h"
+#include "pixelpart-runtime/types/Id.h"
 #include "pixelpart-runtime/effect/EffectTrigger.h"
 #include "pixelpart-runtime/effect/EffectTriggerCollection.h"
 #include <cstdlib>

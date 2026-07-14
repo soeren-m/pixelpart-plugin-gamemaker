@@ -2,10 +2,10 @@
 #include "Error.h"
 #include "Buffer.h"
 #include "EffectRuntime.h"
-#include "pixelpart-runtime/common/Id.h"
-#include "pixelpart-runtime/common/Types.h"
-#include "pixelpart-runtime/common/Curve.h"
+#include "pixelpart-runtime/types/Id.h"
+#include "pixelpart-runtime/types/Types.h"
 #include "pixelpart-runtime/math/Geometry.h"
+#include "pixelpart-runtime/effect/Curve.h"
 #include "pixelpart-runtime/effect/AnimatedProperty.h"
 #include "pixelpart-runtime/effect/ParticleEmitter.h"
 #include <cstdint>

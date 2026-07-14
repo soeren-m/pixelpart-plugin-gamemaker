@@ -1,7 +1,7 @@
 #include "Common.h"
 #include "Error.h"
 #include "EffectRuntime.h"
-#include "pixelpart-runtime/common/StdThreadPool.h"
+#include "pixelpart-runtime/platform/StdThreadPool.h"
 #include "pixelpart-runtime/effect/ComputeGraph.h"
 #include <memory>
 #include <exception>

@@ -2,9 +2,9 @@
 #define EFFECT_RUNTIME_H
 
 #include "Common.h"
-#include "pixelpart-runtime/common/Types.h"
-#include "pixelpart-runtime/common/Id.h"
-#include "pixelpart-runtime/common/ThreadPool.h"
+#include "pixelpart-runtime/types/Types.h"
+#include "pixelpart-runtime/types/Id.h"
+#include "pixelpart-runtime/platform/ThreadPool.h"
 #include "pixelpart-runtime/effect/ParticleEmissionPair.h"
 #include "pixelpart-runtime/asset/EffectAsset.h"
 #include "pixelpart-runtime/engine/EffectEngine.h"

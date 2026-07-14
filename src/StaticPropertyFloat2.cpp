@@ -1,7 +1,7 @@
 #include "Common.h"
 #include "Buffer.h"
 #include "Error.h"
-#include "pixelpart-runtime/common/Types.h"
+#include "pixelpart-runtime/types/Types.h"
 #include "pixelpart-runtime/effect/StaticProperty.h"
 
 extern "C" {
