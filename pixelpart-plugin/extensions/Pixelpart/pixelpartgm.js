@@ -757,6 +757,13 @@ function pixelpart_force_field_get_strength(runtimePtr, forceFieldId) {
 
 	return result;
 }
+function pixelpart_attraction_field_get_falloff_power(runtimePtr, forceFieldId) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module.UTF8ToString(Module._pixelpart_attraction_field_get_falloff_power(runtimeCStr, forceFieldId));
+	Module._free(runtimeCStr);
+
+	return result;
+}
 function pixelpart_acceleration_field_get_acceleration_direction(runtimePtr, forceFieldId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
 	const result = Module.UTF8ToString(Module._pixelpart_acceleration_field_get_acceleration_direction(runtimeCStr, forceFieldId));

@@ -349,6 +349,9 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartforcefield
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartforcefieldgetstrength(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_force_field_get_strength(toStdString(env, arg0).data(), arg1));
 }
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartattractionfieldgetfalloffpower(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_attraction_field_get_falloff_power(toStdString(env, arg0).data(), arg1));
+}
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartaccelerationfieldgetaccelerationdirection(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_acceleration_field_get_acceleration_direction(toStdString(env, arg0).data(), arg1));
 }

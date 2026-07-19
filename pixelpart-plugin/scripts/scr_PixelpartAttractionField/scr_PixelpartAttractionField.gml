@@ -5,5 +5,7 @@
 /// @param {real} _node_id Node ID
 function PixelpartAttractionField(_effect_ptr, _node_id) : PixelpartForceField(_effect_ptr, _node_id) constructor
 {
-
+	// How the strength of the force field decreases based on the distance to the center.
+	falloff_power = new PixelpartAnimatedPropertyFloat(
+		pixelpart_attraction_field_get_falloff_power(_effect_ptr, _node_id));
 }

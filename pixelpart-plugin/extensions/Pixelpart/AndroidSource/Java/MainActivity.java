@@ -119,6 +119,7 @@ public class MainActivity {
 	public static native double JNIpixelpartforcefieldsetinfinite(String runtimePtr, double forceFieldId, double mode);
 	public static native double JNIpixelpartforcefieldisinfinite(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartforcefieldgetstrength(String runtimePtr, double forceFieldId);
+	public static native String JNIpixelpartattractionfieldgetfalloffpower(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartaccelerationfieldgetaccelerationdirection(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartaccelerationfieldgetaccelerationdirectionvariance(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartaccelerationfieldgetaccelerationstrengthvariance(String runtimePtr, double forceFieldId);

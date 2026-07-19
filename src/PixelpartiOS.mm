@@ -336,6 +336,9 @@
 - (NSString*)pixelpart_force_field_get_strength:(char*)runtimePtr forceFieldId:(double)forceFieldId {
 	return [NSString stringWithUTF8String:pixelpart_force_field_get_strength(runtimePtr, forceFieldId)];
 }
+- (NSString*)pixelpart_attraction_field_get_falloff_power:(char*)runtimePtr forceFieldId:(double)forceFieldId {
+	return [NSString stringWithUTF8String:pixelpart_attraction_field_get_falloff_power(runtimePtr, forceFieldId)];
+}
 - (NSString*)pixelpart_acceleration_field_get_acceleration_direction:(char*)runtimePtr forceFieldId:(double)forceFieldId {
 	return [NSString stringWithUTF8String:pixelpart_acceleration_field_get_acceleration_direction(runtimePtr, forceFieldId)];
 }

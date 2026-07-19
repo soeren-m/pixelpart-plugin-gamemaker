@@ -312,6 +312,9 @@ public class PixelpartAndroid {
 	public String pixelpart_force_field_get_strength(String runtimePtr, double forceFieldId) {
 		return JNIpixelpartforcefieldgetstrength(runtimePtr, forceFieldId);
 	}
+	public String pixelpart_attraction_field_get_falloff_power(String runtimePtr, double forceFieldId) {
+		return JNIpixelpartattractionfieldgetfalloffpower(runtimePtr, forceFieldId);
+	}
 	public String pixelpart_acceleration_field_get_acceleration_direction(String runtimePtr, double forceFieldId) {
 		return JNIpixelpartaccelerationfieldgetaccelerationdirection(runtimePtr, forceFieldId);
 	}
