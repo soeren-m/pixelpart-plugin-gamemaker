@@ -11,6 +11,7 @@ else()
 		AnimatedPropertyFloat3.cpp
 		AnimatedPropertyFloat4.cpp
 		Buffer.cpp
+		BuiltInMaterial.cpp
 		Collider.cpp
 		Common.cpp
 		EffectEvent.cpp

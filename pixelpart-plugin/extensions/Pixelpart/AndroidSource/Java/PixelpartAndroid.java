@@ -115,6 +115,14 @@ public class PixelpartAndroid {
 		return JNIpixelpartgenerateparticlevertexdata(runtimePtr, particleEmitterId, particleTypeId, vertexBufferPtr);
 	}
 
+	// Built-in material
+	public double pixelpart_get_builtin_material_parameter_count(String materialName) {
+		return JNIpixelpartgetbuiltinmaterialparametercount(materialName);
+	}
+	public double pixelpart_get_builtin_material_parameters(String materialName, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr) {
+		return JNIpixelpartgetbuiltinmaterialparameters(materialName, idBufferPtr, nameBufferPtr);
+	}
+
 	// Effect input
 	public double pixelpart_get_effect_input_count(String runtimePtr) {
 		return JNIpixelpartgeteffectinputcount(runtimePtr);

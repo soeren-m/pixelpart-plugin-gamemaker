@@ -5,7 +5,7 @@ enum PixelpartBlendMode
 	OFF = 0,
 
 	// Particles are blended together based on their opacity.
-	NORMAL = 1,
+	ALPHA = 1,
 
 	// Particle colors are added together.
 	ADDITIVE = 2,

@@ -66,7 +66,7 @@ function PixelpartParticleMaterial(_effect_ptr, _emitter_id, _type_id, _material
 			case PixelpartBlendMode.OFF:
 				gpu_set_blendenable(false);
 				break;
-			case PixelpartBlendMode.NORMAL:
+			case PixelpartBlendMode.ALPHA:
 				gpu_set_blendenable(true);
 				gpu_set_blendmode(bm_normal);
 				break;

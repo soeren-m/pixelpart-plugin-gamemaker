@@ -50,13 +50,10 @@ if(EMSCRIPTEN)
 	set_target_properties(pixelpart-gamemaker PROPERTIES
 		COMPILE_FLAGS "-Os")
 	set_target_properties(pixelpart-gamemaker PROPERTIES
-		LINK_FLAGS "--no-entry -Os -s WASM=1 -s SINGLE_FILE=1 -s ALLOW_MEMORY_GROWTH=1 \
+		LINK_FLAGS "--no-entry -Os -s WASM=1 -s SINGLE_FILE=1 -s STACK_SIZE=1mb -s ALLOW_MEMORY_GROWTH=1 \
 			-s EXPORTED_FUNCTIONS=[\"_malloc\",\"_free\"] \
 			-s EXPORTED_RUNTIME_METHODS=[\"HEAPU8\",\"UTF8ToString\",\"stringToUTF8\",\"stringToNewUTF8\",\"lengthBytesUTF8\"]")
 endif()
-
-# Options for pixelpart-runtime
-set(PIXELPART_RUNTIME_SIMD ON)
 
 # Includes
 include_directories(.)

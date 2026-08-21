@@ -3,6 +3,7 @@
 
 #include "Common.cpp"
 #include "Buffer.cpp"
+#include "BuiltInMaterial.cpp"
 #include "Init.cpp"
 #include "Error.cpp"
 #include "EffectRuntime.cpp"
@@ -150,6 +151,14 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartconstructp
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgenerateparticlevertexdata(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2, jobject arg3) {
 	return pixelpart_generate_particle_vertex_data(toStdString(env, arg0).data(), arg1, arg2, toBufferPtr(env, arg3));
+}
+
+// Built-in material
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetbuiltinmaterialparametercount(JNIEnv* env, jclass cl, jstring arg0) {
+	return pixelpart_get_builtin_material_parameter_count(toStdString(env, arg0).data());
+}
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartgetbuiltinmaterialparameters(JNIEnv* env, jclass cl, jstring arg0, jobject arg1, jobject arg2) {
+	return pixelpart_get_builtin_material_parameters(toStdString(env, arg0).data(), toBufferPtr(env, arg1), toBufferPtr(env, arg2));
 }
 
 // Effect input

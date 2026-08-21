@@ -262,6 +262,28 @@ function pixelpart_generate_particle_vertex_data(runtimePtr, particleEmitterId, 
 	return result;
 }
 
+// Built-in material
+function pixelpart_get_builtin_material_parameter_count(materialName) {
+	const nameCStr = Module.stringToNewUTF8(materialName);
+	const result = Module._pixelpart_get_builtin_material_parameter_count(nameCStr);
+	Module._free(nameCStr);
+
+	return result;
+}
+function pixelpart_get_builtin_material_parameters(materialName, idBufferPtr, nameBufferPtr) {
+	const nameCStr = Module.stringToNewUTF8(materialName);
+	const nativeIdBufferPtr = Module._malloc(idBufferPtr.byteLength);
+	const nativeNameBufferPtr = Module._malloc(nameBufferPtr.byteLength);
+	const result = Module._pixelpart_get_builtin_material_parameters(nameCStr, nativeIdBufferPtr, nativeNameBufferPtr);
+	pixelpartjs_copy_from_native_buffer(idBufferPtr, nativeIdBufferPtr);
+	pixelpartjs_copy_from_native_buffer(nameBufferPtr, nativeNameBufferPtr);
+	Module._free(nativeNameBufferPtr);
+	Module._free(nativeIdBufferPtr);
+	Module._free(nameCStr);
+
+	return result;
+}
+
 // Effect input
 function pixelpart_get_effect_input_count(runtimePtr) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);

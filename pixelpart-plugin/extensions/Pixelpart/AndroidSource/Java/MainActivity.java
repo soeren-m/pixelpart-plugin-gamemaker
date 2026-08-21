@@ -46,6 +46,10 @@ public class MainActivity {
 	public static native double JNIpixelpartconstructparticlegeometry(String runtimePtr, double particleEmitterId, double particleTypeId, ByteBuffer bufferSizeBufferPtr);
 	public static native double JNIpixelpartgenerateparticlevertexdata(String runtimePtr, double particleEmitterId, double particleTypeId, ByteBuffer vertexBufferPtr);
 
+	// Built-in material
+	public static native double JNIpixelpartgetbuiltinmaterialparametercount(String materialName);
+	public static native double JNIpixelpartgetbuiltinmaterialparameters(String materialName, ByteBuffer idBufferPtr, ByteBuffer nameBufferPtr);
+
 	// Effect input
 	public static native double JNIpixelpartgeteffectinputcount(String runtimePtr);
 	public static native double JNIpixelpartgeteffectinputs(String runtimePtr, ByteBuffer idBufferPtr, ByteBuffer typeBufferPtr, ByteBuffer nameBufferPtr);

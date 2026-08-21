@@ -2,6 +2,7 @@
 
 #include "Common.cpp"
 #include "Buffer.cpp"
+#include "BuiltInMaterial.cpp"
 #include "Init.cpp"
 #include "Error.cpp"
 #include "EffectRuntime.cpp"
@@ -137,6 +138,14 @@
 }
 - (double)pixelpart_generate_particle_vertex_data:(char*)runtimePtr particleEmitterId:(double)particleEmitterId particleTypeId:(double)particleTypeId vertexBufferPtr:(char*)vertexBufferPtr {
 	return pixelpart_generate_particle_vertex_data(runtimePtr, particleEmitterId, particleTypeId, vertexBufferPtr);
+}
+
+// Built-in material
+- (double)pixelpart_get_builtin_material_parameter_count:(char*)materialName {
+	return pixelpart_get_builtin_material_parameter_count(materialName);
+}
+- (double)pixelpart_get_builtin_material_parameters:(char*)materialName idBufferPtr:(char*)idBufferPtr nameBufferPtr:(char*)nameBufferPtr {
+	return pixelpart_get_builtin_material_parameters(materialName, idBufferPtr, nameBufferPtr);
 }
 
 // Effect input
