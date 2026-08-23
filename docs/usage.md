@@ -46,10 +46,10 @@ effect_resource.load("Sprite2d.ppfx");
 effect = new PixelpartEffect(effect_resource);
 ```
 
-To step the effect simulation, use the *advance* method of the *PixelpartEffect* struct. The first argument represents the time in seconds to advance the effect simulation. In most cases you should use the time passed since the last frame, i.e. *delta_time* and convert it to seconds. You also need to provide the x and y position of the effect as the second and third argument. This code could be put into a *Step* script, for example.
+To step the effect simulation, use the *advance* method of the *PixelpartEffect* struct. The first argument represents the time in seconds to advance the effect simulation. In most cases you should use the time passed since the last frame, i.e. *delta_time* and convert it to seconds. You also need to provide the position and rotation angle of the effect in the other arguments. This code could be put into a *Step* script, for example.
 
 ```gml
-effect.advance(delta_time / 1000000, x, y);
+effect.advance(delta_time / 1000000, x, y, image_angle);
 ```
 
 To actually draw the effect, call the *draw* method. This should be done inside a *Draw* event.

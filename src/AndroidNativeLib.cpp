@@ -76,8 +76,8 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartdeleteeffe
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartseteffectscale(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_set_effect_scale(toStdString(env, arg0).data(), arg1, arg2);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartseteffecttransform(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
-	return pixelpart_set_effect_transform(toStdString(env, arg0).data(), arg1, arg2);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartseteffecttransform(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2, jdouble arg3) {
+	return pixelpart_set_effect_transform(toStdString(env, arg0).data(), arg1, arg2, arg3);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartselecteffectlodforcamera(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_select_effect_lod_for_camera(toStdString(env, arg0).data(), arg1, arg2);

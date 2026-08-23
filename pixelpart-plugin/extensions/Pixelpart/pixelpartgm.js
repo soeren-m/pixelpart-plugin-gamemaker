@@ -60,9 +60,9 @@ function pixelpart_set_effect_scale(runtimePtr, scaleX, scaleY) {
 
 	return result;
 }
-function pixelpart_set_effect_transform(runtimePtr, x, y) {
+function pixelpart_set_effect_transform(runtimePtr, x, y, rotation) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_set_effect_transform(runtimeCStr, x, y);
+	const result = Module._pixelpart_set_effect_transform(runtimeCStr, x, y, rotation);
 	Module._free(runtimeCStr);
 
 	return result;

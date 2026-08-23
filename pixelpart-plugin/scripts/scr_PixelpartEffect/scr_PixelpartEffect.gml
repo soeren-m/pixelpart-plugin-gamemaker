@@ -129,9 +129,10 @@ function PixelpartEffect(_effect_resource) constructor
 
 	/// @desc Advance the effect simulation by given time.
 	/// @param {real} _dt Time to advance the effect simulation in seconds
-	/// @param {real} _pos_x X position of the effect
-	/// @param {real} _pos_y Y position of the effect
-	static advance = function(_dt, _pos_x, _pos_y)
+	/// @param {real} _position_x X position of the effect
+	/// @param {real} _position_y Y position of the effect
+	/// @param {real} _rotation Rotation angle of the effect in degrees
+	static advance = function(_dt, _position_x, _position_y, _rotation)
 	{
 		if effect_ptr == "" || !playing
 		{
@@ -145,10 +146,11 @@ function PixelpartEffect(_effect_resource) constructor
 			_scale_x,
 			_scale_y);
 		pixelpart_set_effect_transform(effect_ptr,
-			_pos_x,
-			_pos_y);
+			_position_x,
+			_position_y,
+			_rotation);
 
-		var _camera_position = _get_closest_camera_position(_pos_x, _pos_y);
+		var _camera_position = _get_closest_camera_position(_position_x, _position_y);
 
 		pixelpart_select_effect_lod_for_camera(effect_ptr,
 			_camera_position[0] / _scale_x,

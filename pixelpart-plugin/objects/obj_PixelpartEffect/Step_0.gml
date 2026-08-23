@@ -12,4 +12,4 @@ effect.effect_scale = effect_scale;
 effect.flip_h = effect_flip_h;
 effect.flip_v = effect_flip_v;
 
-effect.advance(delta_time * 0.000001, x, y);
+effect.advance(delta_time * 0.000001, x, y, image_angle);

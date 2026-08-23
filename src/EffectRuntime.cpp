@@ -3,7 +3,6 @@
 #include "Buffer.h"
 #include "pixelpart-runtime/types/Types.h"
 #include "pixelpart-runtime/effect/Curve.h"
-#include "pixelpart-runtime/effect/Transform.h"
 #include "pixelpart-runtime/effect/Effect.h"
 #include "pixelpart-runtime/effect/Node.h"
 #include "pixelpart-runtime/effect/ParticleEmitter.h"
@@ -161,17 +160,12 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_scale(pixelpart_gm::str
 	return 1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm::string runtimePtr, pixelpart_gm::real x, pixelpart_gm::real y) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm::string runtimePtr, pixelpart_gm::real x, pixelpart_gm::real y, pixelpart_gm::real rotation) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
 		return -1;
 	}
-
-	pixelpart::Transform transform(
-		pixelpart::float3_t(x, y, 0),
-		pixelpart::float3_t(0),
-		pixelpart::float3_t(1));
 
 	for(const std::unique_ptr<pixelpart::Node>& node : effectRuntime->effectAsset.effect().sceneGraph().nodes()) {
 		if(node->parentId()) {
@@ -179,13 +173,13 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm:
 		}
 
 		node->position().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
-			transform.position() / effectRuntime->effectScale
+			pixelpart::float3_t(x, y, 0.0) / effectRuntime->effectScale
 		} });
 		node->rotation().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
-			transform.rotation()
+			pixelpart::float3_t(rotation, 0.0, 0.0)
 		} });
 		node->scale().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
-			transform.scale()
+			pixelpart::float3_t(1.0)
 		} });
 	}
 

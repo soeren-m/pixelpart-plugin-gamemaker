@@ -63,8 +63,8 @@
 - (double)pixelpart_set_effect_scale:(char*)runtimePtr scaleX:(double)scaleX scaleY:(double)scaleY {
 	return pixelpart_set_effect_scale(runtimePtr, scaleX, scaleY);
 }
-- (double)pixelpart_set_effect_transform:(char*)runtimePtr x:(double)x y:(double)y {
-	return pixelpart_set_effect_transform(runtimePtr, x, y);
+- (double)pixelpart_set_effect_transform:(char*)runtimePtr x:(double)x y:(double)y rotation:(double)rotation {
+	return pixelpart_set_effect_transform(runtimePtr, x, y, rotation);
 }
 - (double)pixelpart_select_effect_lod_for_camera:(char*)runtimePtr cameraPositionX:(double)cameraPositionX cameraPositionY:(double)cameraPositionY {
 	return pixelpart_select_effect_lod_for_camera(runtimePtr, cameraPositionX, cameraPositionY);

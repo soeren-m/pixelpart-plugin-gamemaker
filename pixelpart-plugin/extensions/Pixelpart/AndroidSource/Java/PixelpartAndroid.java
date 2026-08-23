@@ -38,8 +38,8 @@ public class PixelpartAndroid {
 	public double pixelpart_set_effect_scale(String runtimePtr, double scaleX, double scaleY) {
 		return JNIpixelpartseteffectscale(runtimePtr, scaleX, scaleY);
 	}
-	public double pixelpart_set_effect_transform(String runtimePtr, double x, double y) {
-		return JNIpixelpartseteffecttransform(runtimePtr, x, y);
+	public double pixelpart_set_effect_transform(String runtimePtr, double x, double y, double rotation) {
+		return JNIpixelpartseteffecttransform(runtimePtr, x, y, rotation);
 	}
 	public double pixelpart_select_effect_lod_for_camera(String runtimePtr, double cameraPositionX, double cameraPositionY) {
 		return JNIpixelpartselecteffectlodforcamera(runtimePtr, cameraPositionX, cameraPositionY);
