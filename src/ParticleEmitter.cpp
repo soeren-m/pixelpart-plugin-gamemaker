@@ -11,38 +11,11 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
-#include <vector>
 #include <exception>
 #include <algorithm>
 
 namespace pixelpart_gm {
 std::string particleEmitterPropertyPtrString = "";
-
-void setParticleEmitterShapePoints(pixelpart::ParticleEmitter& particleEmitter, const std::vector<pixelpart::float3_t>& points) {
-	std::vector<pixelpart::float_t> distances(points.size(), 0.0);
-	pixelpart::float_t length = 0.0;
-
-	for(std::size_t i = 1; i < points.size(); i++) {
-		length += std::max(pixelpart::math::distance(points[i], points[i - 1]), 0.000001);
-		distances[i] = length;
-	}
-
-	pixelpart::Curve<pixelpart::float3_t> modifiedPath;
-	for(std::size_t i = 0; i < points.size(); i++) {
-		modifiedPath.addPoint(distances[i] / length, points[i]);
-	}
-
-	particleEmitter.path() = modifiedPath;
-}
-
-std::vector<pixelpart::float3_t> getParticleEmitterShapePoints(const pixelpart::ParticleEmitter& particleEmitter) {
-	std::vector<pixelpart::float3_t> points(particleEmitter.path().pointCount(), pixelpart::float3_t(0.0));
-	for(std::size_t i = 0; i < particleEmitter.path().pointCount(); i++) {
-		points[i] = particleEmitter.path().point(i).value;
-	}
-
-	return points;
-}
 }
 
 extern "C" {
@@ -103,12 +76,8 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_emitter_add_shape_point(p
 		pixelpart::ParticleEmitter& emitter =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
-		std::vector<pixelpart::float3_t> points = pixelpart_gm::getParticleEmitterShapePoints(emitter);
-
 		pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
-		points.push_back(valueBuffer.read<pixelpart::float3_t>());
-
-		pixelpart_gm::setParticleEmitterShapePoints(emitter, points);
+		emitter.path().addPoint(valueBuffer.read<pixelpart::float3_t>());
 
 		return 1;
 	}
@@ -134,10 +103,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_emitter_remove_shape_poin
 		pixelpart::ParticleEmitter& emitter =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
-		std::vector<pixelpart::float3_t> points = pixelpart_gm::getParticleEmitterShapePoints(emitter);
-		points.erase(points.begin() + static_cast<std::size_t>(index));
-
-		pixelpart_gm::setParticleEmitterShapePoints(emitter, points);
+		emitter.path().removePoint(static_cast<std::size_t>(index));
 
 		return 1;
 	}
@@ -163,12 +129,8 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_emitter_set_shape_point(p
 		pixelpart::ParticleEmitter& emitter =
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
-		std::vector<pixelpart::float3_t> points = pixelpart_gm::getParticleEmitterShapePoints(emitter);
-
 		pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
-		points.at(static_cast<std::size_t>(index)) = valueBuffer.read<pixelpart::float3_t>();
-
-		pixelpart_gm::setParticleEmitterShapePoints(emitter, points);
+		emitter.path().setPoint(static_cast<std::size_t>(index), valueBuffer.read<pixelpart::float3_t>());
 
 		return 1;
 	}
@@ -195,7 +157,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_emitter_get_shape_point(p
 			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::ParticleEmitter>(pixelpart::id_t(emitterId));
 
 		pixelpart_gm::Buffer valueBuffer(valueBufferPtr);
-		valueBuffer.write(emitter.path().point(static_cast<std::size_t>(index)).value);
+		valueBuffer.write(emitter.path().point(static_cast<std::size_t>(index)));
 
 		return 1;
 	}
