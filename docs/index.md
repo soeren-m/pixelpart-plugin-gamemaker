@@ -12,24 +12,30 @@ The plugin supports the following target platforms:
 
 Target   | Architectures      | Supported
 -------- | ------------------ | ---------
-Windows  | x86_64             | Yes
-Linux    | x86_64             | Yes
-macOS    | arm64, x86_64      | Yes
-iOS      | arm64, simulator   | Yes
-Android  | arm, arm64, x86_64 | Yes
-HTML5    | wasm               | Yes
-GX.games | -                  | No
-Console  | -                  | No
+Windows | x86_64 | @emoji :heavy_check_mark:
+Linux | x86_64 | @emoji :heavy_check_mark:
+macOS | arm64, x86_64 | @emoji :heavy_check_mark:
+iOS | arm64, simulator | @emoji :heavy_check_mark:
+Android | arm64, arm32, x86_64 | @emoji :heavy_check_mark:
+HTML5 | wasm32 | @emoji :heavy_check_mark:
+GX.games | - | @emoji :heavy_multiplication_x:
+Console | - | @emoji :heavy_multiplication_x:
 
 ## Feature support
 
-The plugin supports the following features:
+The following Pixelpart features are supported by the plugin:
 
 Feature | Supported
 ------- | ---------
-2D effects | Yes
-3D effects | No
-Inputs | Yes
-Triggers | Yes
-Events | Yes
-Custom materials | No
+2D effects | @emoji :heavy_check_mark:
+3D effects | @emoji :heavy_multiplication_x:
+Keyframe animation | @emoji :heavy_check_mark:
+Inputs | @emoji :heavy_check_mark:
+Triggers | @emoji :heavy_check_mark:
+Events | @emoji :heavy_check_mark:
+Level of detail | @emoji :heavy_check_mark:
+Sprite particles | @emoji :heavy_check_mark:
+Trail particles | @emoji :heavy_check_mark:
+Mesh particles | @emoji :heavy_multiplication_x:
+Built-in materials | @emoji :heavy_check_mark:
+Custom materials | @emoji :heavy_multiplication_x:

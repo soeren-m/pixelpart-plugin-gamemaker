@@ -35,7 +35,7 @@ These method are available for the *obj_PixelpartEffect* object as well as the *
 Triggers are used to make effects react to events in your game. The following example shows how a trigger can be activated with *GML* using the *activate_trigger* method:
 
 ```gml
-effect.activate_trigger("Event")
+effect.activate_trigger("MyTrigger")
 ```
 
 To check if a trigger has already been activated, use *is_trigger_activated*. These method are available for the *obj_PixelpartEffect* object as well as the *PixelpartEffect* struct.

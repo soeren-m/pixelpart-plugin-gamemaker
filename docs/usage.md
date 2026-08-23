@@ -8,7 +8,7 @@ The Pixelpart plugin supports two different workflows for integrating Pixelpart 
 
 ## Object-based workflow
 
-The object-based workflow is the preferred approach and makes use of the *obj_PixelpartEffect* object, which acts as a base object for all Pixelpart effect. Create a custom object, for example *obj_MyEffect*, and set *obj_PixelpartEffect* as its parent.
+The object-based workflow is the preferred approach and makes use of the *obj_PixelpartEffect* object, which serves as a base object for all Pixelpart effects. Create a custom object, for example *obj_MyEffect*, and set *obj_PixelpartEffect* as its parent.
 
 ![Effect parent object](./images/effect-parent-object.png)
 
