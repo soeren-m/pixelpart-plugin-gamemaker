@@ -18,6 +18,7 @@ public class MainActivity {
 	public static native double JNIpixelpartdeleteeffect(String runtimePtr);
 	public static native double JNIpixelpartseteffectscale(String runtimePtr, double scaleX, double scaleY);
 	public static native double JNIpixelpartseteffecttransform(String runtimePtr, double x, double y);
+	public static native double JNIpixelpartselecteffectlodforcamera(String runtimePtr, double cameraPositionX, double cameraPositionY);
 	public static native double JNIpixelpartadvanceeffect(String runtimePtr, ByteBuffer paramBufferPtr);
 	public static native double JNIpixelpartrestarteffect(String runtimePtr, double clear);
 	public static native double JNIpixelpartreseedeffect(String runtimePtr, double seed);
@@ -179,6 +180,7 @@ public class MainActivity {
 	public static native String JNIpixelpartparticletypegetmotionpathforce(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetvisible(String runtimePtr, double particleTypeId, double visible);
 	public static native double JNIpixelpartparticletypeisvisible(String runtimePtr, double particleTypeId);
+	public static native double JNIpixelpartparticletypeisvisibleatcurrentlod(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetlayer(String runtimePtr, double particleTypeId, double layer);
 	public static native double JNIpixelpartparticletypegetlayer(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetmaterialid(String runtimePtr, double particleTypeId);

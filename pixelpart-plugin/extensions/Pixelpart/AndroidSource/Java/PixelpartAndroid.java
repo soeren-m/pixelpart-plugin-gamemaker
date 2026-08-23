@@ -41,6 +41,9 @@ public class PixelpartAndroid {
 	public double pixelpart_set_effect_transform(String runtimePtr, double x, double y) {
 		return JNIpixelpartseteffecttransform(runtimePtr, x, y);
 	}
+	public double pixelpart_select_effect_lod_for_camera(String runtimePtr, double cameraPositionX, double cameraPositionY) {
+		return JNIpixelpartselecteffectlodforcamera(runtimePtr, cameraPositionX, cameraPositionY);
+	}
 	public double pixelpart_advance_effect(String runtimePtr, ByteBuffer paramBufferPtr) {
 		return JNIpixelpartadvanceeffect(runtimePtr, paramBufferPtr);
 	}
@@ -475,6 +478,9 @@ public class PixelpartAndroid {
 	}
 	public double pixelpart_particle_type_is_visible(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypeisvisible(runtimePtr, particleTypeId);
+	}
+	public double pixelpart_particle_type_is_visible_at_current_lod(String runtimePtr, double particleTypeId) {
+		return JNIpixelpartparticletypeisvisibleatcurrentlod(runtimePtr, particleTypeId);
 	}
 	public double pixelpart_particle_type_set_layer(String runtimePtr, double particleTypeId, double layer) {
 		return JNIpixelpartparticletypesetlayer(runtimePtr, particleTypeId, layer);

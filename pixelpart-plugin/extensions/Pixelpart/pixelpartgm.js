@@ -67,6 +67,13 @@ function pixelpart_set_effect_transform(runtimePtr, x, y) {
 
 	return result;
 }
+function pixelpart_select_effect_lod_for_camera(runtimePtr, cameraPositionX, cameraPositionY) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module._pixelpart_select_effect_lod_for_camera(runtimeCStr, cameraPositionX, cameraPositionY);
+	Module._free(runtimeCStr);
+
+	return result;
+}
 function pixelpart_advance_effect(runtimePtr, paramBufferPtr) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
 	const nativeParamBufferPtr = pixelpartjs_copy_to_native_buffer(paramBufferPtr);
@@ -1142,6 +1149,13 @@ function pixelpart_particle_type_set_visible(runtimePtr, particleTypeId, visible
 function pixelpart_particle_type_is_visible(runtimePtr, particleTypeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
 	const result = Module._pixelpart_particle_type_is_visible(runtimeCStr, particleTypeId);
+	Module._free(runtimeCStr);
+
+	return result;
+}
+function pixelpart_particle_type_is_visible_at_current_lod(runtimePtr, particleTypeId) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module._pixelpart_particle_type_is_visible_at_current_lod(runtimeCStr, particleTypeId);
 	Module._free(runtimeCStr);
 
 	return result;

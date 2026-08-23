@@ -138,11 +138,21 @@ function PixelpartEffect(_effect_resource) constructor
 			return;
 		}
 
+		var _scale_x = max(effect_scale, 0.000001) * (flip_h ? -1.0 : +1.0);
+		var _scale_y = max(effect_scale, 0.000001) * (flip_v ? -1.0 : +1.0);
+
 		pixelpart_set_effect_scale(effect_ptr,
-			effect_scale * (flip_h ? -1.0 : +1.0),
-			effect_scale * (flip_v ? -1.0 : +1.0));
+			_scale_x,
+			_scale_y);
 		pixelpart_set_effect_transform(effect_ptr,
-			_pos_x, _pos_y);
+			_pos_x,
+			_pos_y);
+
+		var _camera_position = _get_closest_camera_position(_pos_x, _pos_y);
+
+		pixelpart_select_effect_lod_for_camera(effect_ptr,
+			_camera_position[0] / _scale_x,
+			_camera_position[1] / _scale_y);
 
 		var _time_step = 1.0 / max(frame_rate, 0.01);
 
@@ -663,4 +673,31 @@ function PixelpartEffect(_effect_resource) constructor
 	}
 
 	#endregion
+
+	static _get_closest_camera_position = function(_pos_x, _pos_y)
+	{
+		var _closest_camera_position = [0, 0];
+		var _closest_distance = infinity;
+
+		for (var _ci = 0; _ci < 8; _ci++)
+		{
+			var _camera = view_camera[_ci];
+			if _camera == -1
+			{
+				break;
+			}
+
+			var _camera_center_x = camera_get_view_x(_camera) + camera_get_view_width(_camera) * 0.5;
+			var _camera_center_y = camera_get_view_y(_camera) + camera_get_view_height(_camera) * 0.5;
+
+			var _dist = point_distance(_pos_x, _pos_y, _camera_center_x, _camera_center_y);
+			if _dist < _closest_distance
+			{
+				_closest_distance = _dist;
+				_closest_camera_position = [_camera_center_x, _camera_center_y];
+			}
+		}
+
+		return _closest_camera_position;
+	}
 }

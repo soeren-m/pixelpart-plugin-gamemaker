@@ -333,6 +333,26 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_is_visible(pixelpart
 	return -1;
 }
 
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_is_visible_at_current_lod(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		return -1;
+	}
+
+	try {
+		const pixelpart::ParticleType& particleType =
+			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
+
+		return particleType.visibleAtLod(effectRuntime->effectEngine->context().lod()) ? 1 : 0;
+	}
+	catch(const std::exception& e) {
+		pixelpart_gm::lastError = std::string(e.what());
+	}
+
+	return -1;
+}
+
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_set_layer(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId, pixelpart_gm::real layer) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {

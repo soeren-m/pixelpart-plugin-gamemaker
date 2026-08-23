@@ -9,6 +9,7 @@
 #include "pixelpart-runtime/effect/ParticleEmitter.h"
 #include "pixelpart-runtime/effect/ParticleType.h"
 #include "pixelpart-runtime/effect/EffectRuntimeContext.h"
+#include "pixelpart-runtime/engine/EffectRuntimeQuery.h"
 #include "pixelpart-runtime/engine/MultiThreadedEffectEngine.h"
 #include "pixelpart-runtime/engine/SingleThreadedEffectEngine.h"
 #include "pixelpart-runtime/engine/DefaultParticleGenerator.h"
@@ -187,6 +188,22 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm:
 			transform.scale()
 		} });
 	}
+
+	return 1;
+}
+
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_select_effect_lod_for_camera(pixelpart_gm::string runtimePtr, pixelpart_gm::real cameraPositionX, pixelpart_gm::real cameraPositionY) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		return -1;
+	}
+
+	std::uint32_t lod = pixelpart::queryEffectLod(
+		effectRuntime->effectAsset.effect(), effectRuntime->effectEngine->context(),
+		pixelpart::float3_t(cameraPositionX, cameraPositionY, 0.0));
+
+	effectRuntime->effectEngine->selectLod(lod);
 
 	return 1;
 }

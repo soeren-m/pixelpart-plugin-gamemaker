@@ -96,6 +96,12 @@ function PixelpartParticleRenderer(_effect_ptr, _emitter_id, _type_id, _graphics
 
 	static render = function()
 	{
+		var _visible = bool(pixelpart_particle_type_is_visible_at_current_lod(effect_ptr, type_id));
+		if !_visible
+		{
+			return;
+		}
+
 		// Update vertices in vertex buffer
 		var _vertex_count = update_vertices();
 		if _vertex_count <= 0

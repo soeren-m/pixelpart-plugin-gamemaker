@@ -79,6 +79,9 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartseteffects
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartseteffecttransform(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_set_effect_transform(toStdString(env, arg0).data(), arg1, arg2);
 }
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartselecteffectlodforcamera(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
+	return pixelpart_select_effect_lod_for_camera(toStdString(env, arg0).data(), arg1, arg2);
+}
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartadvanceeffect(JNIEnv* env, jclass cl, jstring arg0, jobject arg1) {
 	return pixelpart_advance_effect(toStdString(env, arg0).data(), toBufferPtr(env, arg1));
 }
@@ -513,6 +516,9 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticlety
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypeisvisible(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_particle_type_is_visible(toStdString(env, arg0).data(), arg1);
+}
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypeisvisibleatcurrentlod(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_particle_type_is_visible_at_current_lod(toStdString(env, arg0).data(), arg1);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypesetlayer(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_particle_type_set_layer(toStdString(env, arg0).data(), arg1, arg2);

@@ -66,6 +66,9 @@
 - (double)pixelpart_set_effect_transform:(char*)runtimePtr x:(double)x y:(double)y {
 	return pixelpart_set_effect_transform(runtimePtr, x, y);
 }
+- (double)pixelpart_select_effect_lod_for_camera:(char*)runtimePtr cameraPositionX:(double)cameraPositionX cameraPositionY:(double)cameraPositionY {
+	return pixelpart_select_effect_lod_for_camera(runtimePtr, cameraPositionX, cameraPositionY);
+}
 - (double)pixelpart_advance_effect:(char*)runtimePtr paramBufferPtr:(char*)paramBufferPtr {
 	return pixelpart_advance_effect(runtimePtr, paramBufferPtr);
 }
@@ -500,6 +503,9 @@
 }
 - (double)pixelpart_particle_type_is_visible:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return pixelpart_particle_type_is_visible(runtimePtr, particleTypeId);
+}
+- (double)pixelpart_particle_type_is_visible_at_current_lod:(char*)runtimePtr particleTypeId:(double)particleTypeId {
+	return pixelpart_particle_type_is_visible_at_current_lod(runtimePtr, particleTypeId);
 }
 - (double)pixelpart_particle_type_set_layer:(char*)runtimePtr particleTypeId:(double)particleTypeId layer:(double)layer {
 	return pixelpart_particle_type_set_layer(runtimePtr, particleTypeId, layer);
