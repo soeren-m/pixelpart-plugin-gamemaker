@@ -49,6 +49,9 @@ while !is_undefined(_node)
 		case PixelpartNodeType.DRAG_FIELD:
 			_typestr = "DragField";
 			break;
+		case PixelpartNodeType.VORTEX_FIELD:
+			_typestr = "VortexField";
+			break;
 		case PixelpartNodeType.LINE_COLLIDER:
 			_typestr = "LineCollider";
 			break;

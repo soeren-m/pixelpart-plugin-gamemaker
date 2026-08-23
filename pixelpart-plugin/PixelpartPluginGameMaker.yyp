@@ -79,6 +79,7 @@
     {"id":{"name":"scr_PixelpartStaticPropertyFloat4","path":"scripts/scr_PixelpartStaticPropertyFloat4/scr_PixelpartStaticPropertyFloat4.yy",},},
     {"id":{"name":"scr_PixelpartStaticPropertyInt","path":"scripts/scr_PixelpartStaticPropertyInt/scr_PixelpartStaticPropertyInt.yy",},},
     {"id":{"name":"scr_PixelpartVectorField","path":"scripts/scr_PixelpartVectorField/scr_PixelpartVectorField.yy",},},
+    {"id":{"name":"scr_PixelpartVortexField","path":"scripts/scr_PixelpartVortexField/scr_PixelpartVortexField.yy",},},
     {"id":{"name":"sha_PixelpartSpriteUnlit","path":"shaders/sha_PixelpartSpriteUnlit/sha_PixelpartSpriteUnlit.yy",},},
     {"id":{"name":"sha_PixelpartTrailUnlit","path":"shaders/sha_PixelpartTrailUnlit/sha_PixelpartTrailUnlit.yy",},},
   ],

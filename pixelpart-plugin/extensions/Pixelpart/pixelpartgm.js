@@ -935,6 +935,20 @@ function pixelpart_drag_field_get_size_influence(runtimePtr, forceFieldId) {
 
 	return result;
 }
+function pixelpart_vortex_field_get_tangential_strength(runtimePtr, forceFieldId) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module.UTF8ToString(Module._pixelpart_vortex_field_get_tangential_strength(runtimeCStr, forceFieldId));
+	Module._free(runtimeCStr);
+
+	return result;
+}
+function pixelpart_vortex_field_get_radial_strength(runtimePtr, forceFieldId) {
+	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
+	const result = Module.UTF8ToString(Module._pixelpart_vortex_field_get_radial_strength(runtimeCStr, forceFieldId));
+	Module._free(runtimeCStr);
+
+	return result;
+}
 
 // Collider
 function pixelpart_collider_get_kill_on_contact(runtimePtr, colliderId) {

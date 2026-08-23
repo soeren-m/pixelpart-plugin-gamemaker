@@ -411,6 +411,12 @@
 - (NSString*)pixelpart_drag_field_get_size_influence:(char*)runtimePtr forceFieldId:(double)forceFieldId {
 	return [NSString stringWithUTF8String:pixelpart_drag_field_get_size_influence(runtimePtr, forceFieldId)];
 }
+- (NSString*)pixelpart_vortex_field_get_tangential_strength:(char*)runtimePtr forceFieldId:(double)forceFieldId {
+	return [NSString stringWithUTF8String:pixelpart_vortex_field_get_tangential_strength(runtimePtr, forceFieldId)];
+}
+- (NSString*)pixelpart_vortex_field_get_radial_strength:(char*)runtimePtr forceFieldId:(double)forceFieldId {
+	return [NSString stringWithUTF8String:pixelpart_vortex_field_get_radial_strength(runtimePtr, forceFieldId)];
+}
 
 // Collider
 - (NSString*)pixelpart_collider_get_kill_on_contact:(char*)runtimePtr colliderId:(double)colliderId {

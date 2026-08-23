@@ -386,6 +386,12 @@ public class PixelpartAndroid {
 	public String pixelpart_drag_field_get_size_influence(String runtimePtr, double forceFieldId) {
 		return JNIpixelpartdragfieldgetsizeinfluence(runtimePtr, forceFieldId);
 	}
+	public String pixelpart_vortex_field_get_tangential_strength(String runtimePtr, double forceFieldId) {
+		return JNIpixelpartvortexfieldgettangentialstrength(runtimePtr, forceFieldId);
+	}
+	public String pixelpart_vortex_field_get_radial_strength(String runtimePtr, double forceFieldId) {
+		return JNIpixelpartvortexfieldgetradialstrength(runtimePtr, forceFieldId);
+	}
 
 	// Collider
 	public String pixelpart_collider_get_kill_on_contact(String runtimePtr, double colliderId) {

@@ -145,6 +145,8 @@ public class MainActivity {
 	public static native String JNIpixelpartnoisefieldgetnoiseanimationtimebase(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartdragfieldgetvelocityinfluence(String runtimePtr, double forceFieldId);
 	public static native String JNIpixelpartdragfieldgetsizeinfluence(String runtimePtr, double forceFieldId);
+	public static native String JNIpixelpartvortexfieldgettangentialstrength(String runtimePtr, double forceFieldId);
+	public static native String JNIpixelpartvortexfieldgetradialstrength(String runtimePtr, double forceFieldId);
 
 	// Collider
 	public static native String JNIpixelpartcollidergetkilloncontact(String runtimePtr, double colliderId);

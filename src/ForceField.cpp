@@ -12,6 +12,7 @@
 #include "pixelpart-runtime/effect/VectorField.h"
 #include "pixelpart-runtime/effect/NoiseField.h"
 #include "pixelpart-runtime/effect/DragField.h"
+#include "pixelpart-runtime/effect/VortexField.h"
 #include <cstdint>
 #include <string>
 #include <exception>
@@ -567,6 +568,54 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_drag_field_get_size_influe
 
 		pixelpart_gm::forceFieldPropertyPtrString = pixelpart_gm::ptrToString(
 			&forceField.sizeInfluence());
+	}
+	catch(const std::exception& e) {
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::forceFieldPropertyPtrString = "";
+	}
+
+	return pixelpart_gm::forceFieldPropertyPtrString.c_str();
+}
+
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_vortex_field_get_tangential_strength(pixelpart_gm::string runtimePtr, pixelpart_gm::real forceFieldId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::forceFieldPropertyPtrString = "";
+
+		return pixelpart_gm::forceFieldPropertyPtrString.c_str();
+	}
+
+	try {
+		pixelpart::VortexField& forceField =
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VortexField>(pixelpart::id_t(forceFieldId));
+
+		pixelpart_gm::forceFieldPropertyPtrString = pixelpart_gm::ptrToString(
+			&forceField.tangentialStrength());
+	}
+	catch(const std::exception& e) {
+		pixelpart_gm::lastError = std::string(e.what());
+		pixelpart_gm::forceFieldPropertyPtrString = "";
+	}
+
+	return pixelpart_gm::forceFieldPropertyPtrString.c_str();
+}
+
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_vortex_field_get_radial_strength(pixelpart_gm::string runtimePtr, pixelpart_gm::real forceFieldId) {
+	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
+	if(!effectRuntime) {
+		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
+		pixelpart_gm::forceFieldPropertyPtrString = "";
+
+		return pixelpart_gm::forceFieldPropertyPtrString.c_str();
+	}
+
+	try {
+		pixelpart::VortexField& forceField =
+			effectRuntime->effectAsset.effect().sceneGraph().at<pixelpart::VortexField>(pixelpart::id_t(forceFieldId));
+
+		pixelpart_gm::forceFieldPropertyPtrString = pixelpart_gm::ptrToString(
+			&forceField.radialStrength());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());

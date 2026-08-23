@@ -12,6 +12,7 @@
 #include "pixelpart-runtime/effect/VectorField.h"
 #include "pixelpart-runtime/effect/NoiseField.h"
 #include "pixelpart-runtime/effect/DragField.h"
+#include "pixelpart-runtime/effect/VortexField.h"
 #include "pixelpart-runtime/effect/LineCollider.h"
 #include "pixelpart-runtime/effect/PlaneCollider.h"
 #include "pixelpart-runtime/effect/DirectionalLightSource.h"
@@ -83,11 +84,12 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_type(pixelpart_gm::string
 		vectorField = 4,
 		noiseField = 5,
 		dragField = 6,
-		lineCollider = 7,
-		planeCollider = 8,
-		directionalLightSource = 9,
-		pointLightSource = 10,
-		spotLightSource = 11
+		vortexField = 7,
+		lineCollider = 8,
+		planeCollider = 9,
+		directionalLightSource = 10,
+		pointLightSource = 11,
+		spotLightSource = 12
 	};
 
 	if(!effectRuntime) {
@@ -119,6 +121,9 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_type(pixelpart_gm::string
 		}
 		else if(dynamic_cast<const pixelpart::DragField*>(&node)) {
 			return static_cast<pixelpart_gm::real>(pixelpart_node_type::dragField);
+		}
+		else if(dynamic_cast<const pixelpart::VortexField*>(&node)) {
+			return static_cast<pixelpart_gm::real>(pixelpart_node_type::vortexField);
 		}
 		else if(dynamic_cast<const pixelpart::LineCollider*>(&node)) {
 			return static_cast<pixelpart_gm::real>(pixelpart_node_type::lineCollider);

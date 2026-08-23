@@ -424,6 +424,12 @@ JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartdragfieldg
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartdragfieldgetsizeinfluence(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_drag_field_get_size_influence(toStdString(env, arg0).data(), arg1));
 }
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartvortexfieldgettangentialstrength(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_vortex_field_get_tangential_strength(toStdString(env, arg0).data(), arg1));
+}
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartvortexfieldgetradialstrength(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_vortex_field_get_radial_strength(toStdString(env, arg0).data(), arg1));
+}
 
 // Collider
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartcollidergetkilloncontact(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {

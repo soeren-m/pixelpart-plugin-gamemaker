@@ -7,11 +7,12 @@ enum PixelpartNodeType
 	VECTOR_FIELD = 4,
 	NOISE_FIELD = 5,
 	DRAG_FIELD = 6,
-	LINE_COLLIDER = 7,
-	PLANE_COLLIDER = 8,
-	DIRECTIONAL_LIGHT_SOURCE = 9,
-	POINT_LIGHT_SOURCE = 10,
-	SPOT_LIGHT_SOURCE = 11
+	VORTEX_FIELD = 7,
+	LINE_COLLIDER = 8,
+	PLANE_COLLIDER = 9,
+	DIRECTIONAL_LIGHT_SOURCE = 10,
+	POINT_LIGHT_SOURCE = 11,
+	SPOT_LIGHT_SOURCE = 12
 }
 
 /// @desc Create node object given
@@ -38,6 +39,8 @@ function pixelpart_create_node(_effect_ptr, _node_id)
 			return new PixelpartNoiseField(_effect_ptr, _node_id);
 		case PixelpartNodeType.DRAG_FIELD:
 			return new PixelpartDragField(_effect_ptr, _node_id);
+		case PixelpartNodeType.VORTEX_FIELD:
+			return new PixelpartVortexField(_effect_ptr, _node_id);
 		case PixelpartNodeType.LINE_COLLIDER:
 			return new PixelpartLineCollider(_effect_ptr, _node_id);
 		case PixelpartNodeType.PLANE_COLLIDER:
