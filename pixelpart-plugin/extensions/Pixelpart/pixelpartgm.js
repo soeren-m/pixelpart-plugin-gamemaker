@@ -528,16 +528,16 @@ function pixelpart_node_get_parent_id(runtimePtr, nodeId) {
 
 	return result;
 }
-function pixelpart_node_set_start(runtimePtr, nodeId, value) {
+function pixelpart_node_set_lifetime_start(runtimePtr, nodeId, value) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_node_set_start(runtimeCStr, nodeId, value);
+	const result = Module._pixelpart_node_set_lifetime_start(runtimeCStr, nodeId, value);
 	Module._free(runtimeCStr);
 
 	return result;
 }
-function pixelpart_node_set_duration(runtimePtr, nodeId, value) {
+function pixelpart_node_set_lifetime_duration(runtimePtr, nodeId, value) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_node_set_duration(runtimeCStr, nodeId, value);
+	const result = Module._pixelpart_node_set_lifetime_duration(runtimeCStr, nodeId, value);
 	Module._free(runtimeCStr);
 
 	return result;
@@ -549,16 +549,16 @@ function pixelpart_node_set_repeat(runtimePtr, nodeId, value) {
 
 	return result;
 }
-function pixelpart_node_get_start(runtimePtr, nodeId) {
+function pixelpart_node_get_lifetime_start(runtimePtr, nodeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_node_get_start(runtimeCStr, nodeId);
+	const result = Module._pixelpart_node_get_lifetime_start(runtimeCStr, nodeId);
 	Module._free(runtimeCStr);
 
 	return result;
 }
-function pixelpart_node_get_duration(runtimePtr, nodeId) {
+function pixelpart_node_get_lifetime_duration(runtimePtr, nodeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_node_get_duration(runtimeCStr, nodeId);
+	const result = Module._pixelpart_node_get_lifetime_duration(runtimeCStr, nodeId);
 	Module._free(runtimeCStr);
 
 	return result;

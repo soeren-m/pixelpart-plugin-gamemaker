@@ -252,20 +252,20 @@ JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetnam
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetparentid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_node_get_parent_id(toStdString(env, arg0).data(), arg1);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodesetstart(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
-	return pixelpart_node_set_start(toStdString(env, arg0).data(), arg1, arg2);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodesetlifetimestart(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
+	return pixelpart_node_set_lifetime_start(toStdString(env, arg0).data(), arg1, arg2);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodesetduration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
-	return pixelpart_node_set_duration(toStdString(env, arg0).data(), arg1, arg2);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodesetlifetimeduration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
+	return pixelpart_node_set_lifetime_duration(toStdString(env, arg0).data(), arg1, arg2);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodesetrepeat(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_node_set_repeat(toStdString(env, arg0).data(), arg1, arg2);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetstart(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_node_get_start(toStdString(env, arg0).data(), arg1);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetlifetimestart(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_node_get_lifetime_start(toStdString(env, arg0).data(), arg1);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetduration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_node_get_duration(toStdString(env, arg0).data(), arg1);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodegetlifetimeduration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_node_get_lifetime_duration(toStdString(env, arg0).data(), arg1);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartnodeisrepeating(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_node_is_repeating(toStdString(env, arg0).data(), arg1);

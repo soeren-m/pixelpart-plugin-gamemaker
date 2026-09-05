@@ -287,27 +287,11 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_effect_finished(pixelpart_gm::s
 		return -1;
 	}
 
-	const pixelpart::Effect& effect = effectRuntime->effectAsset.effect();
-	pixelpart::float_t time = effectRuntime->effectEngine->context().time();
+	bool finished = pixelpart::isEffectSimulationFinished(effectRuntime->effectAsset.effect(),
+		effectRuntime->effectEngine->state(),
+		effectRuntime->effectEngine->context());
 
-	for(const auto* particleEmitter : effect.sceneGraph().nodesWithType<pixelpart::ParticleEmitter>()) {
-		if(!particleEmitter->primary()) {
-			continue;
-		}
-
-		if(particleEmitter->active(effectRuntime->effectEngine->context()) || particleEmitter->repeat() ||
-			time < particleEmitter->start() + particleEmitter->duration()) {
-			return 0;
-		}
-	}
-
-	for(const auto& [emissionPair, particleCollection] : effectRuntime->effectEngine->state().particleCollections()) {
-		if(particleCollection.count() > 0) {
-			return 0;
-		}
-	}
-
-	return 1;
+	return finished ? 1 : 0;
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_is_effect_3d(pixelpart_gm::string runtimePtr) {

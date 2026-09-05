@@ -214,20 +214,20 @@ public class PixelpartAndroid {
 	public double pixelpart_node_get_parent_id(String runtimePtr, double nodeId) {
 		return JNIpixelpartnodegetparentid(runtimePtr, nodeId);
 	}
-	public double pixelpart_node_set_start(String runtimePtr, double nodeId, double value) {
-		return JNIpixelpartnodesetstart(runtimePtr, nodeId, value);
+	public double pixelpart_node_set_lifetime_start(String runtimePtr, double nodeId, double value) {
+		return JNIpixelpartnodesetlifetimestart(runtimePtr, nodeId, value);
 	}
-	public double pixelpart_node_set_duration(String runtimePtr, double nodeId, double value) {
-		return JNIpixelpartnodesetduration(runtimePtr, nodeId, value);
+	public double pixelpart_node_set_lifetime_duration(String runtimePtr, double nodeId, double value) {
+		return JNIpixelpartnodesetlifetimeduration(runtimePtr, nodeId, value);
 	}
 	public double pixelpart_node_set_repeat(String runtimePtr, double nodeId, double value) {
 		return JNIpixelpartnodesetrepeat(runtimePtr, nodeId, value);
 	}
-	public double pixelpart_node_get_start(String runtimePtr, double nodeId) {
-		return JNIpixelpartnodegetstart(runtimePtr, nodeId);
+	public double pixelpart_node_get_lifetime_start(String runtimePtr, double nodeId) {
+		return JNIpixelpartnodegetlifetimestart(runtimePtr, nodeId);
 	}
-	public double pixelpart_node_get_duration(String runtimePtr, double nodeId) {
-		return JNIpixelpartnodegetduration(runtimePtr, nodeId);
+	public double pixelpart_node_get_lifetime_duration(String runtimePtr, double nodeId) {
+		return JNIpixelpartnodegetlifetimeduration(runtimePtr, nodeId);
 	}
 	public double pixelpart_node_is_repeating(String runtimePtr, double nodeId) {
 		return JNIpixelpartnodeisrepeating(runtimePtr, nodeId);

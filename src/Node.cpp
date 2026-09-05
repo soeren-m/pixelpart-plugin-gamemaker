@@ -190,7 +190,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_parent_id(pixelpart_gm::s
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_start(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId, pixelpart_gm::real value) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_lifetime_start(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId, pixelpart_gm::real value) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -201,7 +201,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_start(pixelpart_gm::strin
 		pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		node.start(value);
+		node.lifetimeStart(value);
 
 		return 1;
 	}
@@ -212,7 +212,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_start(pixelpart_gm::strin
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_duration(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId, pixelpart_gm::real value) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_lifetime_duration(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId, pixelpart_gm::real value) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -223,7 +223,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_duration(pixelpart_gm::st
 		pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		node.duration(value);
+		node.lifetimeDuration(value);
 
 		return 1;
 	}
@@ -256,7 +256,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_set_repeat(pixelpart_gm::stri
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_start(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_lifetime_start(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -267,7 +267,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_start(pixelpart_gm::strin
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.start();
+		return node.lifetimeStart();
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());
@@ -276,7 +276,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_start(pixelpart_gm::strin
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_duration(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_lifetime_duration(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -287,7 +287,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_get_duration(pixelpart_gm::st
 		const pixelpart::Node& node =
 			effectRuntime->effectAsset.effect().sceneGraph().at(pixelpart::id_t(nodeId));
 
-		return node.duration();
+		return node.lifetimeDuration();
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());

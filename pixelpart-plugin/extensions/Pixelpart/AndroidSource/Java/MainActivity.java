@@ -85,11 +85,11 @@ public class MainActivity {
 	public static native double JNIpixelpartnodegettype(String runtimePtr, double nodeId);
 	public static native String JNIpixelpartnodegetname(String runtimePtr, double nodeId);
 	public static native double JNIpixelpartnodegetparentid(String runtimePtr, double nodeId);
-	public static native double JNIpixelpartnodesetstart(String runtimePtr, double nodeId, double value);
-	public static native double JNIpixelpartnodesetduration(String runtimePtr, double nodeId, double value);
+	public static native double JNIpixelpartnodesetlifetimestart(String runtimePtr, double nodeId, double value);
+	public static native double JNIpixelpartnodesetlifetimeduration(String runtimePtr, double nodeId, double value);
 	public static native double JNIpixelpartnodesetrepeat(String runtimePtr, double nodeId, double value);
-	public static native double JNIpixelpartnodegetstart(String runtimePtr, double nodeId);
-	public static native double JNIpixelpartnodegetduration(String runtimePtr, double nodeId);
+	public static native double JNIpixelpartnodegetlifetimestart(String runtimePtr, double nodeId);
+	public static native double JNIpixelpartnodegetlifetimeduration(String runtimePtr, double nodeId);
 	public static native double JNIpixelpartnodeisrepeating(String runtimePtr, double nodeId);
 	public static native double JNIpixelpartnodeisactive(String runtimePtr, double nodeId);
 	public static native double JNIpixelpartnodegetlocaltime(String runtimePtr, double nodeId);

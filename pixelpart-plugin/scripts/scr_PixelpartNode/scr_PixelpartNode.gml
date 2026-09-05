@@ -52,28 +52,28 @@ function PixelpartNode(_effect_ptr, _node_id) constructor
 	/// @param {real} _start Time in seconds until the node becomes active
 	static set_lifetime_start = function(_start)
 	{
-		pixelpart_node_set_start(effect_ptr, node_id, _start);
+		pixelpart_node_set_lifetime_start(effect_ptr, node_id, _start);
 	}
 
 	/// @desc Time in seconds until the node becomes active.
 	/// @returns {real} Time in seconds until the node becomes active
 	static get_lifetime_start = function()
 	{
-		return pixelpart_node_get_start(effect_ptr, node_id);
+		return pixelpart_node_get_lifetime_start(effect_ptr, node_id);
 	}
 
 	/// @desc Set how long the node stays active in seconds.
 	/// @param {real} _duration How long the node stays active in seconds
 	static set_lifetime_duration = function(_duration)
 	{
-		pixelpart_node_set_duration(effect_ptr, node_id, _duration);
+		pixelpart_node_set_lifetime_duration(effect_ptr, node_id, _duration);
 	}
 
 	/// @desc How long the node is active in seconds.
 	/// @returns {real} How long the node is active in seconds
 	static get_lifetime_duration = function()
 	{
-		return pixelpart_node_get_duration(effect_ptr, node_id);
+		return pixelpart_node_get_lifetime_duration(effect_ptr, node_id);
 	}
 
 	/// @desc Set whether the node repeats its behavior after its lifetime is over.

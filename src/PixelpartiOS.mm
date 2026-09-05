@@ -239,20 +239,20 @@
 - (double)pixelpart_node_get_parent_id:(char*)runtimePtr nodeId:(double)nodeId {
 	return pixelpart_node_get_parent_id(runtimePtr, nodeId);
 }
-- (double)pixelpart_node_set_start:(char*)runtimePtr nodeId:(double)nodeId value:(double)value {
-	return pixelpart_node_set_start(runtimePtr, nodeId, value);
+- (double)pixelpart_node_set_lifetime_start:(char*)runtimePtr nodeId:(double)nodeId value:(double)value {
+	return pixelpart_node_set_lifetime_start(runtimePtr, nodeId, value);
 }
-- (double)pixelpart_node_set_duration:(char*)runtimePtr nodeId:(double)nodeId value:(double)value {
-	return pixelpart_node_set_duration(runtimePtr, nodeId, value);
+- (double)pixelpart_node_set_lifetime_duration:(char*)runtimePtr nodeId:(double)nodeId value:(double)value {
+	return pixelpart_node_set_lifetime_duration(runtimePtr, nodeId, value);
 }
 - (double)pixelpart_node_set_repeat:(char*)runtimePtr nodeId:(double)nodeId value:(double)value {
 	return pixelpart_node_set_repeat(runtimePtr, nodeId, value);
 }
-- (double)pixelpart_node_get_start:(char*)runtimePtr nodeId:(double)nodeId {
-	return pixelpart_node_get_start(runtimePtr, nodeId);
+- (double)pixelpart_node_get_lifetime_start:(char*)runtimePtr nodeId:(double)nodeId {
+	return pixelpart_node_get_lifetime_start(runtimePtr, nodeId);
 }
-- (double)pixelpart_node_get_duration:(char*)runtimePtr nodeId:(double)nodeId {
-	return pixelpart_node_get_duration(runtimePtr, nodeId);
+- (double)pixelpart_node_get_lifetime_duration:(char*)runtimePtr nodeId:(double)nodeId {
+	return pixelpart_node_get_lifetime_duration(runtimePtr, nodeId);
 }
 - (double)pixelpart_node_is_repeating:(char*)runtimePtr nodeId:(double)nodeId {
 	return pixelpart_node_is_repeating(runtimePtr, nodeId);
