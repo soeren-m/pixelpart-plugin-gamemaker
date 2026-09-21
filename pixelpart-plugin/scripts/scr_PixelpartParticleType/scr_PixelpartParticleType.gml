@@ -229,7 +229,7 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 	/// @param {real} _mode Rotation mode
 	static set_rotation_mode = function(_mode)
 	{
-		pixelpart_particle_type_set_rotation_mode(effect_ptr, node_id, _mode);
+		pixelpart_particle_type_set_rotation_mode(effect_ptr, particle_type_id, _mode);
 	}
 
 	/// @desc Whether the rotation property represents the exact rotation of particles
@@ -237,35 +237,35 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 	/// @returns {real} Rotation mode
 	static get_rotation_mode = function()
 	{
-		return pixelpart_particle_type_get_rotation_mode(effect_ptr, node_id);
+		return pixelpart_particle_type_get_rotation_mode(effect_ptr, particle_type_id);
 	}
 
 	/// @desc Set direction to which particles are aligned.
 	/// @param {real} _mode Alignment mode
 	static set_alignment_mode = function(_mode)
 	{
-		pixelpart_particle_type_set_alignment_mode(effect_ptr, node_id, _mode);
+		pixelpart_particle_type_set_alignment_mode(effect_ptr, particle_type_id, _mode);
 	}
 
 	/// @desc Direction to which particles are aligned.
 	/// @returns {real} Alignment mode
 	static get_alignment_mode = function()
 	{
-		return pixelpart_particle_type_get_alignment_mode(effect_ptr, node_id);
+		return pixelpart_particle_type_get_alignment_mode(effect_ptr, particle_type_id);
 	}
 
 	/// @desc Set whether particles of this type are visible.
 	/// @param {bool} _visible Whether particles of this type are visible
 	static set_visible = function(_visible)
 	{
-		pixelpart_particle_type_set_visible(effect_ptr, node_id, _visible);
+		pixelpart_particle_type_set_visible(effect_ptr, particle_type_id, _visible);
 	}
 
 	/// @desc Whether particles of this type are visible.
 	/// @returns {bool} Whether particles of this type are visible
 	static is_visible = function()
 	{
-		return bool(pixelpart_particle_type_is_visible(effect_ptr, node_id));
+		return bool(pixelpart_particle_type_is_visible(effect_ptr, particle_type_id));
 	}
 
 	/// @desc Set layer particles are drawn on.
@@ -273,13 +273,13 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 	/// @param {real} _layer Layer
 	static set_layer = function(_layer)
 	{
-		pixelpart_particle_type_set_layer(effect_ptr, node_id, _layer);
+		pixelpart_particle_type_set_layer(effect_ptr, particle_type_id, _layer);
 	}
 
 	/// @desc Layer particles are drawn on.
 	/// @returns {real} Layer
 	static get_layer = function()
 	{
-		return pixelpart_particle_type_get_layer(effect_ptr, node_id);
+		return pixelpart_particle_type_get_layer(effect_ptr, particle_type_id);
 	}
 }
