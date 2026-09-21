@@ -455,11 +455,11 @@ public class PixelpartAndroid {
 	public String pixelpart_particle_type_get_name(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypegetname(runtimePtr, particleTypeId);
 	}
-	public double pixelpart_particle_type_set_position_relative(String runtimePtr, double particleTypeId, double relative) {
-		return JNIpixelpartparticletypesetpositionrelative(runtimePtr, particleTypeId, relative);
+	public double pixelpart_particle_type_set_simulation_space(String runtimePtr, double particleTypeId, double space) {
+		return JNIpixelpartparticletypesetsimulationspace(runtimePtr, particleTypeId, space);
 	}
-	public double pixelpart_particle_type_is_position_relative(String runtimePtr, double particleTypeId) {
-		return JNIpixelpartparticletypeispositionrelative(runtimePtr, particleTypeId);
+	public double pixelpart_particle_type_get_simulation_space(String runtimePtr, double particleTypeId) {
+		return JNIpixelpartparticletypegetsimulationspace(runtimePtr, particleTypeId);
 	}
 	public double pixelpart_particle_type_set_rotation_mode(String runtimePtr, double particleTypeId, double mode) {
 		return JNIpixelpartparticletypesetrotationmode(runtimePtr, particleTypeId, mode);

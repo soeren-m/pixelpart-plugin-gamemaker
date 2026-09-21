@@ -1,3 +1,13 @@
+// Whether particles are simulated in global or local coordinates.
+enum PixelpartSimulationSpace
+{
+	// Particles are simulated in global coordinates.
+	GLOBAL = 0,
+
+	// Particles are simulated in local coordinates and move relative to their parent emitter.
+	LOCAL = 1
+}
+
 // Whether the rotation property represents the exact rotation of particles or their angular velocity.
 enum PixelpartRotationMode
 {
@@ -184,18 +194,34 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 		return pixelpart_particle_type_get_name(effect_ptr, particle_type_id);
 	}
 
+	/// @desc Set whether particles are simulated in global or local coordinates.
+	/// @param {real} _space Simulation space
+	static set_simulation_space = function(_space)
+	{
+		pixelpart_particle_type_set_simulation_space(effect_ptr, particle_type_id, _space);
+	}
+
+	/// @desc Set whether the position of particles is tied to the pope_idsition of the emitter.
+	/// @returns {real} Simulation space
+	static get_simulation_space = function()
+	{
+		return pixelpart_particle_type_get_simulation_space(effect_ptr, particle_type_id);
+	}
+
 	/// @desc Set whether the position of particles is tied to the position of the emitter.
+	/// @deprecated Use `set_simulation_space` instead.
 	/// @param {real} _relative Relative particle position
 	static set_position_relative = function(_relative)
 	{
-		pixelpart_particle_type_set_position_relative(effect_ptr, node_id, _relative);
+		set_simulation_space(_relative ? PixelpartSimulationSpace.LOCAL : PixelpartSimulationSpace.GLOBAL);
 	}
 
 	/// @desc Whether the position of particles is tied to the position of the emitter.
+	/// @deprecated Use `get_simulation_space` instead.
 	/// @returns {bool} Relative particle position
 	static is_position_relative = function()
 	{
-		return bool(pixelpart_particle_type_is_position_relative(effect_ptr, node_id));
+		return get_simulation_space() == PixelpartSimulationSpace.LOCAL;
 	}
 
 	/// @desc Set whether the rotation property represents the exact rotation of particles

@@ -1097,16 +1097,16 @@ function pixelpart_particle_type_get_name(runtimePtr, particleTypeId) {
 
 	return result;
 }
-function pixelpart_particle_type_set_position_relative(runtimePtr, particleTypeId, relative) {
+function pixelpart_particle_type_set_simulation_space(runtimePtr, particleTypeId, space) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_particle_type_set_position_relative(runtimeCStr, particleTypeId, relative);
+	const result = Module._pixelpart_particle_type_set_simulation_space(runtimeCStr, particleTypeId, space);
 	Module._free(runtimeCStr);
 
 	return result;
 }
-function pixelpart_particle_type_is_position_relative(runtimePtr, particleTypeId) {
+function pixelpart_particle_type_get_simulation_space(runtimePtr, particleTypeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_particle_type_is_position_relative(runtimeCStr, particleTypeId);
+	const result = Module._pixelpart_particle_type_get_simulation_space(runtimeCStr, particleTypeId);
 	Module._free(runtimeCStr);
 
 	return result;

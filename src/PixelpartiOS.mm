@@ -480,11 +480,11 @@
 - (NSString*)pixelpart_particle_type_get_name:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return [NSString stringWithUTF8String:pixelpart_particle_type_get_name(runtimePtr, particleTypeId)];
 }
-- (double)pixelpart_particle_type_set_position_relative:(char*)runtimePtr particleTypeId:(double)particleTypeId relative:(double)relative {
-	return pixelpart_particle_type_set_position_relative(runtimePtr, particleTypeId, relative);
+- (double)pixelpart_particle_type_set_simulation_space:(char*)runtimePtr particleTypeId:(double)particleTypeId space:(double)space {
+	return pixelpart_particle_type_set_simulation_space(runtimePtr, particleTypeId, space);
 }
-- (double)pixelpart_particle_type_is_position_relative:(char*)runtimePtr particleTypeId:(double)particleTypeId {
-	return pixelpart_particle_type_is_position_relative(runtimePtr, particleTypeId);
+- (double)pixelpart_particle_type_get_simulation_space:(char*)runtimePtr particleTypeId:(double)particleTypeId {
+	return pixelpart_particle_type_get_simulation_space(runtimePtr, particleTypeId);
 }
 - (double)pixelpart_particle_type_set_rotation_mode:(char*)runtimePtr particleTypeId:(double)particleTypeId mode:(double)mode {
 	return pixelpart_particle_type_set_rotation_mode(runtimePtr, particleTypeId, mode);

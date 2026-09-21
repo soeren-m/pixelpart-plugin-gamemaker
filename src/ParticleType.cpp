@@ -117,7 +117,7 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_name(pix
 	return "";
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_set_position_relative(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId, pixelpart_gm::real relative) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_set_simulation_space(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId, pixelpart_gm::real space) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -128,7 +128,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_set_position_relativ
 		pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		particleType.positionRelative(relative > 0.5);
+		particleType.simulationSpace(static_cast<pixelpart::ParticleSimulationSpace>(space));
 
 		return 1;
 	}
@@ -139,7 +139,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_set_position_relativ
 	return -1;
 }
 
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_is_position_relative(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
+GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_simulation_space(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -150,7 +150,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_is_position_relative
 		const pixelpart::ParticleType& particleType =
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
-		return particleType.positionRelative() ? 1 : 0;
+		return static_cast<pixelpart_gm::real>(particleType.simulationSpace());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());

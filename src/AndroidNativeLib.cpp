@@ -493,11 +493,11 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticlety
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetname(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_particle_type_get_name(toStdString(env, arg0).data(), arg1));
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypesetpositionrelative(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
-	return pixelpart_particle_type_set_position_relative(toStdString(env, arg0).data(), arg1, arg2);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypesetsimulationspace(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
+	return pixelpart_particle_type_set_simulation_space(toStdString(env, arg0).data(), arg1, arg2);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypeispositionrelative(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_particle_type_is_position_relative(toStdString(env, arg0).data(), arg1);
+JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetsimulationspace(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return pixelpart_particle_type_get_simulation_space(toStdString(env, arg0).data(), arg1);
 }
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypesetrotationmode(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1, jdouble arg2) {
 	return pixelpart_particle_type_set_rotation_mode(toStdString(env, arg0).data(), arg1, arg2);

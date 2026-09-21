@@ -172,8 +172,8 @@ public class MainActivity {
 	public static native double JNIpixelpartparticletypegetindex(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypegetparentid(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetname(String runtimePtr, double particleTypeId);
-	public static native double JNIpixelpartparticletypesetpositionrelative(String runtimePtr, double particleTypeId, double relative);
-	public static native double JNIpixelpartparticletypeispositionrelative(String runtimePtr, double particleTypeId);
+	public static native double JNIpixelpartparticletypesetsimulationspace(String runtimePtr, double particleTypeId, double space);
+	public static native double JNIpixelpartparticletypegetsimulationspace(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetrotationmode(String runtimePtr, double particleTypeId, double mode);
 	public static native double JNIpixelpartparticletypegetrotationmode(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetalignmentmode(String runtimePtr, double particleTypeId, double mode);
