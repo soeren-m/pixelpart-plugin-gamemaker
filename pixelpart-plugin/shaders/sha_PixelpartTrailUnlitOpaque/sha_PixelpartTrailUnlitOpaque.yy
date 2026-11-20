@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"sha_PixelpartSpriteUnlit",
-  "name":"sha_PixelpartSpriteUnlit",
+  "%Name":"sha_PixelpartTrailUnlitOpaque",
+  "name":"sha_PixelpartTrailUnlitOpaque",
   "parent":{
     "name":"Shaders",
     "path":"folders/Pixelpart/Shaders.yy",

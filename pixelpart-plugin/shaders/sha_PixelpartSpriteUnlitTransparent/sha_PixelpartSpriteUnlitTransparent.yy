@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"sha_PixelpartSpriteUnlitTransparent",
+  "name":"sha_PixelpartSpriteUnlitTransparent",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Pixelpart/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

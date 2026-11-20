@@ -64,8 +64,11 @@ function PixelpartBuiltinMaterialProvider() constructor
 			_shader, _blend_mode, _lighting_mode, _param_ids);
 	}
 
-	add_material("SpriteUnlitAlpha", sha_PixelpartSpriteUnlit, PixelpartBlendMode.ALPHA, PixelpartLightingMode.UNLIT);
-	add_material("SpriteUnlitAdditive", sha_PixelpartSpriteUnlit, PixelpartBlendMode.ADDITIVE, PixelpartLightingMode.UNLIT);
-	add_material("TrailUnlitAlpha", sha_PixelpartTrailUnlit, PixelpartBlendMode.ALPHA, PixelpartLightingMode.UNLIT);
-	add_material("TrailUnlitAdditive", sha_PixelpartTrailUnlit, PixelpartBlendMode.ADDITIVE, PixelpartLightingMode.UNLIT);
+	add_material("SpriteUnlitOpaque", sha_PixelpartSpriteUnlitOpaque, PixelpartBlendMode.OFF, PixelpartLightingMode.UNLIT);
+	add_material("SpriteUnlitAlpha", sha_PixelpartSpriteUnlitTransparent, PixelpartBlendMode.ALPHA, PixelpartLightingMode.UNLIT);
+	add_material("SpriteUnlitAdditive", sha_PixelpartSpriteUnlitTransparent, PixelpartBlendMode.ADDITIVE, PixelpartLightingMode.UNLIT);
+
+	add_material("TrailUnlitOpaque", sha_PixelpartTrailUnlitOpaque, PixelpartBlendMode.OFF, PixelpartLightingMode.UNLIT);
+	add_material("TrailUnlitAlpha", sha_PixelpartTrailUnlitTransparent, PixelpartBlendMode.ALPHA, PixelpartLightingMode.UNLIT);
+	add_material("TrailUnlitAdditive", sha_PixelpartTrailUnlitTransparent, PixelpartBlendMode.ADDITIVE, PixelpartLightingMode.UNLIT);
 }
