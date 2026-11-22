@@ -484,9 +484,6 @@ JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartfindpartic
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypeexists(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_particle_type_exists(toStdString(env, arg0).data(), arg1);
 }
-JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetindex(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return pixelpart_particle_type_get_index(toStdString(env, arg0).data(), arg1);
-}
 JNIEXPORT jdouble JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetparentid(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return pixelpart_particle_type_get_parent_id(toStdString(env, arg0).data(), arg1);
 }
@@ -595,8 +592,8 @@ JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticlety
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetrotationbyspeed(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_particle_type_get_rotation_by_speed(toStdString(env, arg0).data(), arg1));
 }
-JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetacceleration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
-	return toJavaString(env, pixelpart_particle_type_get_acceleration(toStdString(env, arg0).data(), arg1));
+JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetlinearacceleration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
+	return toJavaString(env, pixelpart_particle_type_get_linear_acceleration(toStdString(env, arg0).data(), arg1));
 }
 JNIEXPORT jstring JNICALL Java_net_pixelpart_MainActivity_JNIpixelpartparticletypegetradialacceleration(JNIEnv* env, jclass cl, jstring arg0, jdouble arg1) {
 	return toJavaString(env, pixelpart_particle_type_get_radial_acceleration(toStdString(env, arg0).data(), arg1));

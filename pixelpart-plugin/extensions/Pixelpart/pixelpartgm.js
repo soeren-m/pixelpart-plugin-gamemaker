@@ -1076,13 +1076,6 @@ function pixelpart_particle_type_exists(runtimePtr, particleTypeId) {
 
 	return result;
 }
-function pixelpart_particle_type_get_index(runtimePtr, particleTypeId) {
-	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module._pixelpart_particle_type_get_index(runtimeCStr, particleTypeId);
-	Module._free(runtimeCStr);
-
-	return result;
-}
 function pixelpart_particle_type_get_parent_id(runtimePtr, particleTypeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
 	const result = Module._pixelpart_particle_type_get_parent_id(runtimeCStr, particleTypeId);
@@ -1341,9 +1334,9 @@ function pixelpart_particle_type_get_rotation_by_speed(runtimePtr, particleTypeI
 
 	return result;
 }
-function pixelpart_particle_type_get_acceleration(runtimePtr, particleTypeId) {
+function pixelpart_particle_type_get_linear_acceleration(runtimePtr, particleTypeId) {
 	const runtimeCStr = Module.stringToNewUTF8(runtimePtr);
-	const result = Module.UTF8ToString(Module._pixelpart_particle_type_get_acceleration(runtimeCStr, particleTypeId));
+	const result = Module.UTF8ToString(Module._pixelpart_particle_type_get_linear_acceleration(runtimeCStr, particleTypeId));
 	Module._free(runtimeCStr);
 
 	return result;

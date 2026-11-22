@@ -118,8 +118,12 @@ function PixelpartParticleType(_effect_ptr, _particle_type_id) constructor
 		pixelpart_particle_type_get_rotation_by_speed(_effect_ptr, _particle_type_id));
 
 	// Linear acceleration applied to each particle over its lifetime.
-	acceleration = new PixelpartAnimatedPropertyFloat(
-		pixelpart_particle_type_get_acceleration(_effect_ptr, _particle_type_id));
+	linear_acceleration = new PixelpartAnimatedPropertyFloat(
+		pixelpart_particle_type_get_linear_acceleration(_effect_ptr, _particle_type_id));
+
+	// Linear acceleration applied to each particle over its lifetime.
+	/// @deprecated Use `linear_acceleration` instead.
+	acceleration = linear_acceleration;
 
 	// Acceleration of each particle towards the emitter over its lifetime.
 	radial_acceleration = new PixelpartAnimatedPropertyFloat(

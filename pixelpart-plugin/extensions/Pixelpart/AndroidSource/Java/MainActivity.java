@@ -169,7 +169,6 @@ public class MainActivity {
 	public static native double JNIpixelpartfindparticletype(String runtimePtr, String bufferPtr);
 	public static native double JNIpixelpartfindparticletypebyindex(String runtimePtr, double particleTypeIndex);
 	public static native double JNIpixelpartparticletypeexists(String runtimePtr, double particleTypeId);
-	public static native double JNIpixelpartparticletypegetindex(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypegetparentid(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetname(String runtimePtr, double particleTypeId);
 	public static native double JNIpixelpartparticletypesetsimulationspace(String runtimePtr, double particleTypeId, double space);
@@ -206,7 +205,7 @@ public class MainActivity {
 	public static native String JNIpixelpartparticletypegetphysicalsize(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetrotation(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetrotationbyspeed(String runtimePtr, double particleTypeId);
-	public static native String JNIpixelpartparticletypegetacceleration(String runtimePtr, double particleTypeId);
+	public static native String JNIpixelpartparticletypegetlinearacceleration(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetradialacceleration(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetweight(String runtimePtr, double particleTypeId);
 	public static native String JNIpixelpartparticletypegetbounce(String runtimePtr, double particleTypeId);

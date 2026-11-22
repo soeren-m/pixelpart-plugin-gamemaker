@@ -10,6 +10,7 @@
 #include <cstdint>
 #include <cstring>
 #include <string>
+#include <iterator>
 #include <algorithm>
 #include <exception>
 
@@ -46,7 +47,10 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_particle_type_by_index(pixelp
 		return -1;
 	}
 
-	return effectRuntime->effectAsset.effect().particleTypes().atIndex(static_cast<std::uint32_t>(particleTypeIndex)).id().value();
+	auto it = effectRuntime->effectAsset.effect().particleTypes().begin();
+	std::advance(it, static_cast<std::ptrdiff_t>(particleTypeIndex));
+
+	return it->id().value();
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_exists(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
@@ -60,21 +64,6 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_exists(pixelpart_gm:
 	}
 
 	return effectRuntime->effectAsset.effect().particleTypes().contains(pixelpart::id_t(particleTypeId)) ? 1 : 0;
-}
-
-GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_index(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
-	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
-	if(!effectRuntime) {
-		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
-		return -1;
-	}
-
-	auto particleTypeIndex = effectRuntime->effectAsset.effect().particleTypes().indexOf(pixelpart::id_t(particleTypeId));
-	if(!particleTypeIndex) {
-		return -1;
-	}
-
-	return static_cast<pixelpart_gm::real>(particleTypeIndex.value());
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_particle_type_get_parent_id(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
@@ -914,7 +903,7 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_rotation
 	return pixelpart_gm::particleTypePropertyPtrString.c_str();
 }
 
-GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_acceleration(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
+GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_linear_acceleration(pixelpart_gm::string runtimePtr, pixelpart_gm::real particleTypeId) {
 	pixelpart_gm::EffectRuntime* effectRuntime = pixelpart_gm::parsePtr<pixelpart_gm::EffectRuntime>(runtimePtr);
 	if(!effectRuntime) {
 		pixelpart_gm::lastError = pixelpart_gm::invalidEffectRuntimeError;
@@ -928,7 +917,7 @@ GM_EXPORT pixelpart_gm::const_string GM_API pixelpart_particle_type_get_accelera
 			effectRuntime->effectAsset.effect().particleTypes().at(pixelpart::id_t(particleTypeId));
 
 		pixelpart_gm::particleTypePropertyPtrString = pixelpart_gm::ptrToString(
-			&particleType.acceleration());
+			&particleType.linearAcceleration());
 	}
 	catch(const std::exception& e) {
 		pixelpart_gm::lastError = std::string(e.what());

@@ -114,7 +114,7 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_generate_particle_vertex_data(pixe
 
 		auto& vertexGenerator = effectRuntime->vertexGenerators.at(emissionPair);
 		vertexGenerator->generateVertexData(pixelpart::VertexDataBufferCollection({
-				reinterpret_cast<std::uint8_t*>(vertexBufferPtr)
+				reinterpret_cast<unsigned char*>(vertexBufferPtr)
 			}),
 			particleCollection->readPtr(),
 			particleCollection->count(),

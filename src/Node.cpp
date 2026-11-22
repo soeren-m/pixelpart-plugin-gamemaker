@@ -1,6 +1,5 @@
 #include "Common.h"
 #include "Error.h"
-#include "Buffer.h"
 #include "EffectRuntime.h"
 #include "pixelpart-runtime/types/Types.h"
 #include "pixelpart-runtime/types/Id.h"
@@ -19,9 +18,8 @@
 #include "pixelpart-runtime/effect/PointLightSource.h"
 #include "pixelpart-runtime/effect/SpotLightSource.h"
 #include <cstdint>
-#include <cstring>
 #include <string>
-#include <algorithm>
+#include <iterator>
 #include <exception>
 
 namespace pixelpart_gm {
@@ -38,8 +36,8 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_node(pixelpart_gm::string run
 
 	std::string nodeName(name);
 	for(const auto& node : effectRuntime->effectAsset.effect().sceneGraph()) {
-		if(node->name() == nodeName) {
-			return node->id().value();
+		if(node.name() == nodeName) {
+			return node.id().value();
 		}
 	}
 
@@ -57,7 +55,10 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_find_node_by_index(pixelpart_gm::s
 		return -1;
 	}
 
-	return effectRuntime->effectAsset.effect().sceneGraph().atIndex(static_cast<std::uint32_t>(nodeIndex)).id().value();
+	auto nodeIt = effectRuntime->effectAsset.effect().sceneGraph().begin();
+	std::advance(nodeIt, static_cast<std::ptrdiff_t>(nodeIndex));
+
+	return nodeIt->id().value();
 }
 
 GM_EXPORT pixelpart_gm::real GM_API pixelpart_node_exists(pixelpart_gm::string runtimePtr, pixelpart_gm::real nodeId) {

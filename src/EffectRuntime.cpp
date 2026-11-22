@@ -167,18 +167,18 @@ GM_EXPORT pixelpart_gm::real GM_API pixelpart_set_effect_transform(pixelpart_gm:
 		return -1;
 	}
 
-	for(const std::unique_ptr<pixelpart::Node>& node : effectRuntime->effectAsset.effect().sceneGraph().nodes()) {
-		if(node->parentId()) {
+	for(pixelpart::Node& node : effectRuntime->effectAsset.effect().sceneGraph()) {
+		if(node.parentId()) {
 			continue;
 		}
 
-		node->position().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
+		node.position().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
 			pixelpart::float3_t(x, y, 0.0) / effectRuntime->effectScale
 		} });
-		node->rotation().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
+		node.rotation().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
 			pixelpart::float3_t(rotation, 0.0, 0.0)
 		} });
-		node->scale().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
+		node.scale().keyframes({ pixelpart::Curve<pixelpart::float3_t>::Point{ 0.0,
 			pixelpart::float3_t(1.0)
 		} });
 	}

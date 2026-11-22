@@ -471,9 +471,6 @@
 - (double)pixelpart_particle_type_exists:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return pixelpart_particle_type_exists(runtimePtr, particleTypeId);
 }
-- (double)pixelpart_particle_type_get_index:(char*)runtimePtr particleTypeId:(double)particleTypeId {
-	return pixelpart_particle_type_get_index(runtimePtr, particleTypeId);
-}
 - (double)pixelpart_particle_type_get_parent_id:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return pixelpart_particle_type_get_parent_id(runtimePtr, particleTypeId);
 }
@@ -582,8 +579,8 @@
 - (NSString*)pixelpart_particle_type_get_rotation_by_speed:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return [NSString stringWithUTF8String:pixelpart_particle_type_get_rotation_by_speed(runtimePtr, particleTypeId)];
 }
-- (NSString*)pixelpart_particle_type_get_acceleration:(char*)runtimePtr particleTypeId:(double)particleTypeId {
-	return [NSString stringWithUTF8String:pixelpart_particle_type_get_acceleration(runtimePtr, particleTypeId)];
+- (NSString*)pixelpart_particle_type_get_linear_acceleration:(char*)runtimePtr particleTypeId:(double)particleTypeId {
+	return [NSString stringWithUTF8String:pixelpart_particle_type_get_linear_acceleration(runtimePtr, particleTypeId)];
 }
 - (NSString*)pixelpart_particle_type_get_radial_acceleration:(char*)runtimePtr particleTypeId:(double)particleTypeId {
 	return [NSString stringWithUTF8String:pixelpart_particle_type_get_radial_acceleration(runtimePtr, particleTypeId)];

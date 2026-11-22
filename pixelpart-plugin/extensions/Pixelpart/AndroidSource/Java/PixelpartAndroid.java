@@ -446,9 +446,6 @@ public class PixelpartAndroid {
 	public double pixelpart_particle_type_exists(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypeexists(runtimePtr, particleTypeId);
 	}
-	public double pixelpart_particle_type_get_index(String runtimePtr, double particleTypeId) {
-		return JNIpixelpartparticletypegetindex(runtimePtr, particleTypeId);
-	}
 	public double pixelpart_particle_type_get_parent_id(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypegetparentid(runtimePtr, particleTypeId);
 	}
@@ -557,8 +554,8 @@ public class PixelpartAndroid {
 	public String pixelpart_particle_type_get_rotation_by_speed(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypegetrotationbyspeed(runtimePtr, particleTypeId);
 	}
-	public String pixelpart_particle_type_get_acceleration(String runtimePtr, double particleTypeId) {
-		return JNIpixelpartparticletypegetacceleration(runtimePtr, particleTypeId);
+	public String pixelpart_particle_type_get_linear_acceleration(String runtimePtr, double particleTypeId) {
+		return JNIpixelpartparticletypegetlinearacceleration(runtimePtr, particleTypeId);
 	}
 	public String pixelpart_particle_type_get_radial_acceleration(String runtimePtr, double particleTypeId) {
 		return JNIpixelpartparticletypegetradialacceleration(runtimePtr, particleTypeId);
